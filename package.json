@@ -1,0 +1,61 @@
+{
+  "homepage": "https://marcotrinelli.com/",
+  "name": "marcotrinelli.com",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "colorthief": "^2.3.0",
+    "gh-pages": "^2.1.1",
+    "jest-canvas-mock": "^2.3.1",
+    "lottie-colorify": "^0.8.0",
+    "lottie-web": "^5.8.1",
+    "react": "^17.0.2",
+    "react-awesome-reveal": "^3.8.1",
+    "react-bootstrap": "^2.0.4",
+    "react-dark-mode-toggle": "^0.2.0",
+    "react-dom": "^17.0.2",
+    "react-easy-emoji": "^1.6.1",
+    "react-headroom": "^3.2.0",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "^5.0.0",
+    "sass": "^1.32.8",
+    "styled-components": "^5.3.3",
+    "typewriter-effect": "^2.18.2"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "start": "node fetch.js && react-scripts start",
+    "build": "node fetch.js && react-scripts build",
+    "deploy": "gh-pages -b master -d build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"./**/*.{js,css,json,scss}\"",
+    "check-format": "prettier -c \"./**/*.{js,css,json,scss}\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.3%",
+      "not ie 11",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.3%",
+      "not ie 11",
+      "not dead",
+      "not op_mini all",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "dotenv": "^8.6.0",
+    "prettier": "^2.3.1"
+  }
+}
