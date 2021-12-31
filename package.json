@@ -1,6 +1,6 @@
 {
-  "homepage": "marcotrinelli.github.io/mt-portfolio/",
-  "name": "marcotrinelli.com",
+  "homepage": ".",
+  "name": "marcotrinelli",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
