@@ -1,0 +1,262 @@
+.contact-main {
+  width: 100%;
+}
+
+.basic-contact {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.contact-heading-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-title-and-social {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.contact-social-media {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.blog-heading-div {
+  display: flex;
+}
+
+.address-heading-div {
+  display: flex;
+  gap: 40px;
+}
+
+.blog-heading-div > * {
+  flex: 1;
+}
+
+.contact-heading-div > * {
+  flex: 1;
+}
+
+.address-heading-div > * {
+  flex: 1;
+}
+
+.contact-heading-img-div {
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-heading-img-div {
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-heading-text-div {
+  text-align: center;
+}
+
+.blog-heading-text-div {
+  text-align: center;
+}
+
+.address-heading-text-div {
+  text-align: center;
+}
+
+.contact-heading-img-div > * {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-heading-img-div > * {
+  max-width: 100%;
+  height: auto;
+}
+
+.contact-heading-text {
+  font-size: 56px;
+  font-weight: 400;
+  font-family: "Google Sans Medium";
+  line-height: 1.1;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 0;
+}
+
+.blog-heading-text {
+  font-size: 56px;
+  font-weight: 400;
+  font-family: "Google Sans Medium";
+  line-height: 1.1;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.address-heading-text {
+  font-size: 30px;
+  font-family: "Google Sans Regular";
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.contact-header-detail-text {
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: "Google Sans Medium";
+}
+
+.blog-header-detail-text {
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: "Google Sans Medium";
+}
+
+.resume-btn-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.blogsite-btn-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.address-btn-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+}
+
+@media (max-width: 1380px) {
+  .contact-heading-text {
+    font-size: 50px;
+    margin-top: 80px;
+  }
+
+  .blog-heading-text {
+    font-size: 50px;
+    margin-top: 40px;
+  }
+}
+
+/* Contact Form Styles */
+.captcha-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 1.5rem;
+  width: 100%;
+  gap: 2rem;
+}
+
+
+.contact-form-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form-button .main-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .contact-heading-text {
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  .blog-heading-text {
+    font-size: 30px;
+    margin-top: 0px;
+  }
+
+  .address-heading-text {
+    font-size: 20px;
+  }
+
+  .blog-heading-div {
+    flex-direction: column-reverse;
+    margin-top: 60px;
+  }
+
+  .address-heading-div {
+    flex-direction: column;
+  }
+
+  .blog-heading-text-div {
+    margin-top: 40px;
+  }
+
+  .address-heading-text-div {
+    margin-top: 40px;
+  }
+
+  .contact-heading-div {
+    flex-direction: column;
+  }
+  
+  .contact-title-and-social {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .contact-social-media {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+  }
+
+  .contact-header-detail-text {
+    font-size: 16px;
+    margin-left: 0px;
+    margin-right: 0px;
+    line-height: normal;
+    text-align: center;
+  }
+
+  .blog-header-detail-text {
+    font-size: 16px;
+    margin-left: 0px;
+    margin-right: 0px;
+    line-height: normal;
+    text-align: center;
+  }
+
+  .captcha-button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .button-wrapper {
+    margin-left: 0;
+  }
+  
+  .contact-form-button .main-button {
+    font-size: 14px;
+  }
+}
