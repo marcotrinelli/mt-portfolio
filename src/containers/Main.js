@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, HashRouter } from "react-router-dom";
 import Home from "../pages/home/HomeComponent";
 // import EducationComponent from "../pages/education/EducationComponent";
 // import Experience from "../pages/experience/Experience";
@@ -23,7 +23,7 @@ const notfound = {
 export default function Main() {
     return (
         <>
-            <BrowserRouter>
+            <HashRouter>
                 <GoToTop>
                     <Routes>
                         <Route
@@ -65,7 +65,7 @@ export default function Main() {
                         />
                     </Routes>
                 </GoToTop>
-            </BrowserRouter>
+            </HashRouter>
         </>
     );
 
