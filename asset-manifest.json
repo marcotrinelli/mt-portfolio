@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.58df3e6a.css",
-    "main.js": "./static/js/main.c0b1349a.js",
+    "main.js": "./static/js/main.b9485290.js",
     "static/media/marcoProfile.png": "./static/media/marcoProfile.fd840fc9b446a323b888.png",
     "static/media/Montserrat-Regular.ttf": "./static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/minotourLogo.png": "./static/media/minotourLogo.ca241a4a44a48d878255.png",
@@ -20,10 +20,10 @@
     "index.html": "./index.html",
     "static/media/ciscoLogo.svg": "./static/media/ciscoLogo.675f158409a4df77cba6a88ba338a3c1.svg",
     "main.58df3e6a.css.map": "./static/css/main.58df3e6a.css.map",
-    "main.c0b1349a.js.map": "./static/js/main.c0b1349a.js.map"
+    "main.b9485290.js.map": "./static/js/main.b9485290.js.map"
   },
   "entrypoints": [
     "static/css/main.58df3e6a.css",
-    "static/js/main.c0b1349a.js"
+    "static/js/main.b9485290.js"
   ]
 }
