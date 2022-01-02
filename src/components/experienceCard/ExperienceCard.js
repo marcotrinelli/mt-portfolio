@@ -53,12 +53,18 @@ export default function ExperienceCard({ cardInfo }) {
                 </div>
             </div>
             <div className="experience-text-details">
-                {/* <h5 className="experience-text-company">{cardInfo.company}</h5> */}
+                {/* <h5 className="experience-text-company" style={{ color: theme.text }}>{cardInfo.company} </h5> */}
                 <h5
                     className={"experience-text-role"}
                     style={{ color: theme.text }}
                 >
                     {cardInfo.role}
+                </h5>
+                <h5
+                    className="experience-text-location"
+                    style={{ color: theme.text }}
+                >
+                    {cardInfo.location}
                 </h5>
                 <h5
                     className={"experience-text-date"}

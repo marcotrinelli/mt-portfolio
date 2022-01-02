@@ -23,6 +23,7 @@ export default function WorkExperience() {
                                             key={i}
                                             cardInfo={{
                                                 company: card.company,
+                                                location: card.location,
                                                 desc: card.desc,
                                                 date: card.date,
                                                 companylogo: card.companylogo,

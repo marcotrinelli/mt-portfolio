@@ -204,6 +204,7 @@ const workExperiences = {
         {
             role: "Software Engineer, Inventor",
             company: "Cisco",
+            location: "San Jose (CA) – Lausanne (CH)",
             companylogo: CiscoLogo,
             date: "May 2019 – Present",
             desc: "I'm currently part of the innovation-centric Emerging Technology and Incubation (ETI) organization. \nDepending on the projects which I'm involved in, I daily do:",
@@ -216,6 +217,7 @@ const workExperiences = {
         {
             role: "Software Engineer - Intern",
             company: "Nokia Bell Labs",
+            location: "Paris (FR)",
             companylogo: NokiaLogo,
             date: "July 2018 – Jan. 2019",
             desc: "At Bell Labs, I designed, implemented and validated a modular, transparent and programmable network framework that allows legacy hardware to run AR/VR services at the Edge infrastructure using Machine Learning techniques",
