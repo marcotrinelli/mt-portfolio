@@ -232,7 +232,7 @@ const workExperiences = {
 // Some big projects you have worked on
 
 const bigProjects = {
-    title: "Projects and achievements",
+    title: "Projects",
     // subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
     projects: [
         {

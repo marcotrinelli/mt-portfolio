@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Headroom from "react-headroom";
 import { useTheme } from 'styled-components'
-import { greeting } from "../../portfolio.js";
+import { Fade } from "react-awesome-reveal";
+import { greeting } from "../../portfolio";
+import NoTranslate from "../notranslate/notranslate";
 import SeoHeader from "../seoHeader/SeoHeader";
 import "./Header.scss";
 
@@ -25,7 +27,7 @@ const onMouseOut = (event) => {
     el.style.backgroundColor = "transparent";
 };
 
-function handleClickLink(event){
+function handleClickLink(event) {
     const menuBtn = document.getElementById("menu-btn");
     menuBtn.checked = false;
     // onMouseOut(event)
@@ -33,13 +35,13 @@ function handleClickLink(event){
 
 export default function Header() {
     const theme = useTheme();
-    const[headerStyle, SetHeaderStyle] = useState({ boxShadow: `0px 10px 30px -15px ${theme.boxShadowColor}` });
+    const [headerStyle, SetHeaderStyle] = useState({ boxShadow: `0px 10px 30px -15px ${theme.boxShadowColor}` });
 
-    function handleUnpin(){
+    function handleUnpin() {
         SetHeaderStyle({ boxShadow: "none" })
     }
 
-    function handlePin(){
+    function handlePin() {
         SetHeaderStyle({ boxShadow: `0px 10px 30px -15px ${theme.boxShadowColor}` })
     }
 
@@ -70,30 +72,32 @@ export default function Header() {
 
     return (
         <>
-            {/* // <Fade top duration={1000} distance="20px"> */}
+            {/* <Fade top duration={1000} distance="20px"> */}
             <SeoHeader />
             <Headroom style={headerStyle} onPin={handlePin} onUnpin={handleUnpin}>
-                <header className="header"
-                    style={{
-                        backgroundColor: theme.bodyDarker,
-                    }}>
-                    <NavLink to="/home" className="logo">
-                        <span style={{ color: theme.textOnDark }}> &lt;</span>
-                        <span className="logo-name" style={{ color: theme.textOnDark }}>
-                            {greeting.username}
-                        </span>
-                        <span style={{ color: theme.textOnDark }}>/&gt;</span>
-                    </NavLink>
-                    <input className="menu-btn" type="checkbox" id="menu-btn" />
-                    <label className="menu-icon" htmlFor="menu-btn">
-                        <span className={theme.isDark ? "navicon navicon-dark" : "navicon"}></span>
-                    </label>
-                    <ul className="menu">
-                        {createMenuItems()}
-                    </ul>
-                </header>
+                <NoTranslate>
+                    <header className="header"
+                        style={{
+                            backgroundColor: theme.bodyDarker,
+                        }}>
+                        <NavLink to="/home" className="logo">
+                            <span style={{ color: theme.textOnDark }}> &lt;</span>
+                            <span className="logo-name" style={{ color: theme.textOnDark }}>
+                                {greeting.username}
+                            </span>
+                            <span style={{ color: theme.textOnDark }}>/&gt;</span>
+                        </NavLink>
+                        <input className="menu-btn" type="checkbox" id="menu-btn" />
+                        <label className="menu-icon" htmlFor="menu-btn">
+                            <span className={theme.isDark ? "navicon navicon-dark" : "navicon"}></span>
+                        </label>
+                        <ul className="menu">
+                            {createMenuItems()}
+                        </ul>
+                    </header>
+                </NoTranslate>
             </Headroom>
-            {/* // </Fade> */}
+            {/* </Fade> */}
         </>
     );
 }

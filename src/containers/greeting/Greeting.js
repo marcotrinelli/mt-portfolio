@@ -6,6 +6,7 @@ import { Fade } from "react-awesome-reveal";
 import profilePic from "../../assets/images/marcoProfile.png";
 import Typewriter from 'typewriter-effect';
 import { useTheme } from 'styled-components'
+import NoTranslate from "../../components/notranslate/notranslate";
 
 export default function Greeting() {
     const theme = useTheme();
@@ -18,22 +19,24 @@ export default function Greeting() {
                             <h1 className="greeting-text" style={{ color: theme.primary }}>
                                 {" "}
                                 {/* {greeting.title}{" "} */}
-                                <Typewriter
-                                    onInit={(typewriter) => {
-                                        typewriter
-                                            .changeDelay(75)
-                                            .typeString("Hi! ")
-                                            .pauseFor(300)
-                                            .typeString("I'm Marco :)")
-                                            .callFunction((state) => {
-                                                // turn off animation
-                                                state.elements.cursor.style.animation = 'none'
-                                                // hide cursor
-                                                state.elements.cursor.style.display = 'none'
-                                            })
-                                            .start()
-                                    }}
-                                />
+                                <NoTranslate>
+                                    <Typewriter
+                                        onInit={(typewriter) => {
+                                            typewriter
+                                                .changeDelay(75)
+                                                .typeString("Hi! ")
+                                                .pauseFor(300)
+                                                .typeString("I'm Marco :)")
+                                                .callFunction((state) => {
+                                                    // turn off animation
+                                                    state.elements.cursor.style.animation = 'none'
+                                                    // hide cursor
+                                                    state.elements.cursor.style.display = 'none'
+                                                })
+                                                .start()
+                                        }}
+                                    />
+                                </NoTranslate>
                             </h1>
                             <p
                                 className="greeting-text-p"

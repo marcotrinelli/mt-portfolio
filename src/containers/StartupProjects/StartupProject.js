@@ -4,6 +4,7 @@ import { bigProjects } from "../../portfolio";
 import { Fade } from "react-awesome-reveal";
 import Button from "../../components/button/Button";
 import { useTheme } from 'styled-components'
+import NoTranslate from "../../components/notranslate/notranslate";
 
 export default function StartupProject() {
     const theme = useTheme();
@@ -52,12 +53,14 @@ export default function StartupProject() {
                                         </div>
                                     ) : null}
                                     <div className="project-detail">
-                                        <h5
-                                            className={"card-title"}
-                                            style={{ color: theme.text }}
-                                        >
-                                            {project.projectName}
-                                        </h5>
+                                        <NoTranslate>
+                                            <h5
+                                                className={"card-title"}
+                                                style={{ color: theme.text }}
+                                            >
+                                                {project.projectName}
+                                            </h5>
+                                        </NoTranslate>
                                         <p
                                             className={"card-subtitle"}
                                             style={{ color: theme.text }}
@@ -88,12 +91,12 @@ export default function StartupProject() {
                 </div>
             </div>
             <div style={{ textAlign: "center", paddingTop: "20px" }}>
-                    <Button
-                        text="See more"
-                        to="/projects"
-                        theme={theme}
-                    />
-                </div>
+                <Button
+                    text="See more"
+                    to="/projects"
+                    theme={theme}
+                />
+            </div>
         </Fade>
     );
 }
