@@ -2,6 +2,8 @@ import React, { useState, createRef } from "react";
 import "./ExperienceCard.scss";
 import ColorThief from "colorthief";
 import { useTheme } from 'styled-components'
+import LinkIcon from "../linkIcon/LinkIcon";
+
 
 export default function ExperienceCard({ cardInfo }) {
     const [colorArrays, setColorArrays] = useState([]);
@@ -27,7 +29,8 @@ export default function ExperienceCard({ cardInfo }) {
                     className={"subTitle experience-text-bullets"}
                     style={{ color: theme.text }}
                 >
-                    {item}
+                    {item.desc}
+                    {item.url && <LinkIcon key={item.url} url={item.url} style={{ color: theme.text }}/>}
                 </li>
             ))
             : null;

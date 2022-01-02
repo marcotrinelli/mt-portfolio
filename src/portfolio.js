@@ -5,7 +5,6 @@
 import emoji from "react-easy-emoji";
 import CiscoLogo from "./assets/images/ciscoLogo.svg";
 import NokiaLogo from "./assets/images/nokiabelllabsLogo.svg";
-import LinkIcon from "./components/link/LinkIcon";
 
 //SEO Related settings
 const seo = {
@@ -47,7 +46,7 @@ const socialMediaLinks = [
     // facebook: "https://www.facebook.com/l .19/",
     // twitter: "https://twitter.com/ _1919",
     // instagram: "https://www.instagram.com/ /"
-  
+
     // {
     //   name: "Github",
     //   link: "https://github.com/ 1919",
@@ -90,7 +89,7 @@ const socialMediaLinks = [
     //   fontAwesomeIcon: "fa-instagram", // Reference https://fontawesome.com/icons/instagram?style=brands
     //   backgroundColor: "#E4405F", // Reference https://simpleicons.org/?q=instagram
     // },
-  ];
+];
 
 // Skills Section
 
@@ -209,9 +208,9 @@ const workExperiences = {
             date: "May 2019 – Present",
             desc: "I'm currently part of the innovation-centric Emerging Technology and Incubation (ETI) organization. \nDepending on the projects which I'm involved in, I daily do:",
             descBullets: [
-                "Design and code proof of concepts, eventually protected by Intellectual Property (patents)",
-                "Write production-ready code for ETI-internal ventures",
-                "Maintain Cisco Switzerland (Rolle) data center"
+                {desc: "Design and code proof of concepts, eventually protected by Intellectual Property (patents)"},
+                {desc: "Write production-ready code for ETI-internal ventures"},
+                {desc: "Maintain Cisco Switzerland (Rolle) data center"},
             ]
         },
         {
@@ -222,10 +221,10 @@ const workExperiences = {
             date: "July 2018 – Jan. 2019",
             desc: "At Bell Labs, I designed, implemented and validated a modular, transparent and programmable network framework that allows legacy hardware to run AR/VR services at the Edge infrastructure using Machine Learning techniques",
             descBullets: [
-                [
-                    "Publication: Transparent AR Processing Acceleration at the Edge, Marco Trinelli et al., EdgeSys ’19",
-                    <LinkIcon key={"https://dl.acm.org/doi/10.1145/3301418.3313942"} url="https://dl.acm.org/doi/10.1145/3301418.3313942" />
-                ]
+                {
+                    desc: "Publication: Transparent AR Processing Acceleration at the Edge, Marco Trinelli et al., EdgeSys ’19",
+                    url: "https://dl.acm.org/doi/10.1145/3301418.3313942"
+                }
             ]
         },
     ]
@@ -317,7 +316,7 @@ const certifications = {
         //     alt_name: "Stanford University",
         //     color_code: "#8C151599",
         // }
-    
+
     ],
 };
 
