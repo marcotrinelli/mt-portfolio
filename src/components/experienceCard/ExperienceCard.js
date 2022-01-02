@@ -24,7 +24,7 @@ export default function ExperienceCard({ cardInfo }) {
             ? descBullets.map((item, i) => (
                 <li
                     key={i}
-                    className={"subTitle"}
+                    className={"subTitle experience-text-bullets"}
                     style={{ color: theme.text }}
                 >
                     {item}
@@ -66,12 +66,12 @@ export default function ExperienceCard({ cardInfo }) {
                 >
                     {cardInfo.date}
                 </h5>
-                <p
+                <div
                     className={"subTitle experience-text-desc"}
                     style={{ color: theme.text }}
                 >
-                    {cardInfo.desc}
-                </p>
+                    {cardInfo.desc.split(/\n/).map((line, i) => <p key={i}>{line}</p>)}
+                </div>
                 <ul>
                     <GetDescBullets descBullets={cardInfo.descBullets} theme={theme} />
                 </ul>

@@ -5,6 +5,7 @@
 import emoji from "react-easy-emoji";
 import CiscoLogo from "./assets/images/ciscoLogo.svg";
 import NokiaLogo from "./assets/images/nokiabelllabsLogo.svg";
+import LinkIcon from "./components/link/LinkIcon";
 
 //SEO Related settings
 const seo = {
@@ -96,7 +97,7 @@ const socialMediaLinks = [
 const skillsSection = {
     title: "Who I am",
     subTitle:
-        "As a software engineer, I've always been working on innovative products using cutting-edge technology.",
+        "As a software engineer, I've always been working on innovative projects and cutting-edge technology.",
     skills: [
         "My multi-disciplinary background in ",
         emoji("computer networks 🌐"),
@@ -104,7 +105,7 @@ const skillsSection = {
         emoji("artificial intelligence 🤖"),
         emoji("cloud computing ☁️"),
         emoji("full-stack development 👨‍💻"),
-        "allows me to understand todays needs and use the appropriate set of technologies to build patentable prototypes and write industry-ready code 🚀"
+        "allows me to understand today's needs, and use the appropriate set of technologies to build patentable prototypes and write industry-ready code 🚀"
 
     ],
 
@@ -172,6 +173,8 @@ const skillsSection = {
 
 const educationInfo = {
     display: true, // Set false to hide this section, defaults to true
+    title: "Education",
+    subtitle: "I hold two Master's degrees from the following top European universities",
     schools: [
         {
             schoolName: "Polytechnic University of Turin",
@@ -203,20 +206,24 @@ const workExperiences = {
             company: "Cisco",
             companylogo: CiscoLogo,
             date: "May 2019 – Present",
-            desc: "Currently part of the Emerging Technology and Incubation (ETI) organization, I drive innovation through patentable ideas with working prototypes, and I support existing ventures by contributing to their codebase.",
-            // descBullets: [
-            //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-            //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            // ]
+            desc: "I'm currently part of the innovation-centric Emerging Technology and Incubation (ETI) organization. \nDepending on the projects which I'm involved in, I daily do:",
+            descBullets: [
+                "Design and code proof of concepts, eventually protected by Intellectual Property (patents)",
+                "Write production-ready code for ETI-internal ventures",
+                "Maintain Cisco Switzerland (Rolle) data center"
+            ]
         },
         {
             role: "Software Engineer - Intern",
             company: "Nokia Bell Labs",
             companylogo: NokiaLogo,
             date: "July 2018 – Jan. 2019",
-            desc: "At Bell Labs, I designed, implementated and validated a modular, transparent and programmable network framework that allows legacy hardware to run AR/VR services at the Edge infrastructure using Machine Learning techniques",
+            desc: "At Bell Labs, I designed, implemented and validated a modular, transparent and programmable network framework that allows legacy hardware to run AR/VR services at the Edge infrastructure using Machine Learning techniques",
             descBullets: [
-                "Publication: Transparent AR Processing Acceleration at the Edge, Marco Trinelli et al., EdgeSys ’19",
+                [
+                    "Publication: Transparent AR Processing Acceleration at the Edge, Marco Trinelli et al., EdgeSys ’19",
+                    <LinkIcon key={"https://dl.acm.org/doi/10.1145/3301418.3313942"} url="https://dl.acm.org/doi/10.1145/3301418.3313942" />
+                ]
             ]
         },
     ]

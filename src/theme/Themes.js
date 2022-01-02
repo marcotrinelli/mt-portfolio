@@ -4,7 +4,7 @@ export const lightTheme = {
     bodyDarker: "#001C55",
     text: "#001C55",
     textOnDark: "#ffffff",
-    highlight: "#8fd9f8",
+    highlight: "#00b333",
     title: "#001C55",
     paperbg: "#ffffff",
     dark: "#00072D",
