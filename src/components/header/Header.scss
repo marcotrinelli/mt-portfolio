@@ -180,3 +180,9 @@
     font-size: 12px;
   }
 }
+
+@media (max-width: 340px) {
+    .header {
+      font-size: 0.9em;
+    }
+  }
