@@ -33,6 +33,7 @@
     font-size: 15px;
     padding: 12px 18px;
     margin-right: 0px;
+    width: 50%;
   }
 }
 @media (max-width: 320px) {
