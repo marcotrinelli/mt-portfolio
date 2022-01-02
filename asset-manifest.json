@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.6dcb0758.css",
+    "main.css": "./static/css/main.4be9a26e.css",
     "main.js": "./static/js/main.b4a05fad.js",
     "static/media/marcoProfile.png": "./static/media/marcoProfile.fd840fc9b446a323b888.png",
     "static/media/Montserrat-Regular.ttf": "./static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
@@ -19,11 +19,11 @@
     "static/media/nokiabelllabsLogo.svg": "./static/media/nokiabelllabsLogo.5340a9708d043385a7442c36738d69b1.svg",
     "index.html": "./index.html",
     "static/media/ciscoLogo.svg": "./static/media/ciscoLogo.675f158409a4df77cba6a88ba338a3c1.svg",
-    "main.6dcb0758.css.map": "./static/css/main.6dcb0758.css.map",
+    "main.4be9a26e.css.map": "./static/css/main.4be9a26e.css.map",
     "main.b4a05fad.js.map": "./static/js/main.b4a05fad.js.map"
   },
   "entrypoints": [
-    "static/css/main.6dcb0758.css",
+    "static/css/main.4be9a26e.css",
     "static/js/main.b4a05fad.js"
   ]
 }
