@@ -558,6 +558,13 @@ const publicationsHeader = {
     avatar_image_path: "projects_image.svg",
 };
 
+const patentsHeader = {
+    title: "Patents",
+    description:
+        "Patented inventions and pending applications",
+    avatar_image_path: "projects_image.svg",
+};
+
 export {
     seo,
     illustration,
@@ -574,5 +581,6 @@ export {
     competitiveSites,
     experience,
     projectsHeader,
-    publicationsHeader
+    publicationsHeader,
+    patentsHeader
 };

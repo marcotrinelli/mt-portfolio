@@ -54,6 +54,7 @@
   margin-right: 20px;
   font-family: "Google Sans Medium";
 }
+
 .publications-heading-text-div {
   text-align: center;
   font-family: "Google Sans Regular";
@@ -64,6 +65,34 @@
   font-size: 56px;
   font-weight: 600;
 }
+
+/* Patents Section Styles */
+.patents-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+}
+
+.patents-loading,
+.no-patents-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 1.1rem;
+}
+
+.patents-error-message {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: rgba(255, 152, 0, 0.1);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
 .repo-cards-div-main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -71,6 +100,23 @@
   margin-left: 40px;
   margin-right: 40px;
   margin-top: 60px;
+}
+
+.patents-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 0 20px;
+}
+
+.patents-loading,
+.no-patents-message,
+.patents-error-message {
+  text-align: center;
+  padding: 2rem;
+  margin: 1rem 0;
 }
 
 @media (max-width: 1380px) {
@@ -104,6 +150,19 @@
     margin-left: 0px;
     line-height: normal;
     text-align: center;
+  }
+
+  .patents-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .patents-loading,
+  .no-patents-message {
+    padding: 2rem 1rem;
+    font-size: 1rem;
   }
 
   .repo-cards-div-main {

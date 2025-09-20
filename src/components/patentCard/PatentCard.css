@@ -1,0 +1,184 @@
+.patent-card-container {
+    margin: 1rem;
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.patent-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.patent-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.patent-card-header {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.patent-status-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.patent-status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
+}
+
+.patent-number {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.application-number {
+    font-size: 0.75rem;
+    align-self: flex-end;
+}
+
+.patent-card-body {
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.patent-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.patent-dates {
+    margin-bottom: 0.75rem;
+}
+
+.patent-date-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.date-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.date-value {
+    font-size: 0.85rem;
+}
+
+.patent-inventors,
+.patent-applicant {
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.inventors-label,
+.applicant-label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.inventors-list,
+.applicant-name {
+    display: block;
+    line-height: 1.3;
+}
+
+.patent-card-footer {
+    margin-top: auto;
+}
+
+.patent-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.patent-action-button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    flex: 1;
+    text-align: center;
+    min-width: fit-content;
+}
+
+.patent-action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.front-page-button:hover {
+    opacity: 0.8;
+}
+
+.details-button:hover {
+    opacity: 0.9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .patent-card-container {
+        margin: 0.5rem;
+        min-width: 280px;
+        max-width: 100%;
+    }
+    
+    .patent-card {
+        padding: 1rem;
+    }
+    
+    .patent-title {
+        font-size: 1rem;
+    }
+    
+    .patent-actions {
+        flex-direction: column;
+    }
+    
+    .patent-action-button {
+        flex: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .patent-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .application-number {
+        align-self: flex-start;
+    }
+}

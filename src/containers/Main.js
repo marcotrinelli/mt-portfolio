@@ -4,7 +4,7 @@ import Home from "../pages/home/HomeComponent";
 // import EducationComponent from "../pages/education/EducationComponent";
 // import Experience from "../pages/experience/Experience";
 // import Contact from "../pages/contact/ContactComponent";
-// import Projects from "../pages/projects/Projects";
+import Projects from "../pages/projects/Projects";
 import Error from "../pages/error/Error";
 import GoToTop from "../components/goToTop/goToTop";
 
@@ -51,7 +51,7 @@ export default function Main() {
                         />
                         <Route
                             path="/projects"
-                            element={<Error {...wip} />}
+                            element={<Projects />}
                         // element={<Projects theme={this.props.theme} />}
                         />
                         <Route
