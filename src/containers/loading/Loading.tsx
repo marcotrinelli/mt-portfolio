@@ -1,7 +1,7 @@
 import React from "react";
 import "./loading.scss";
 
-export default function Loading() {
+export default function Loading(): JSX.Element {
   return (
     <div className="centerContent">
       <div className="sk-circle">

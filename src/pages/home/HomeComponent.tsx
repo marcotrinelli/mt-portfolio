@@ -9,21 +9,20 @@ import Achievement from "../../containers/achievement/Achievement";
 import Footer from "../../components/footer/Footer";
 import TopButton from "../../components/topButton/TopButton";
 
-const Home = () => {
-    return (
-        <div>
-            <Header />
-            <Greeting />
-            <Skills />
-            <Education />
-            <WorkExperience />
-            <StartupProject />
-            <Achievement />
-            <Footer />
-            <TopButton />
-        </div>
-    );
-
-}
+const Home = (): JSX.Element => {
+  return (
+    <div>
+      <Header />
+      <Greeting />
+      <Skills />
+      <Education />
+      <WorkExperience />
+      <StartupProject />
+      <Achievement />
+      <Footer />
+      <TopButton />
+    </div>
+  );
+};
 
 export default Home;

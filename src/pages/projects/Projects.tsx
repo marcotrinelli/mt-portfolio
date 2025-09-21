@@ -89,13 +89,9 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
           <Fade top duration={2000}>
             <div className="patents-container">
               {patents.length > 0 ? (
-                patents.map((patent, index) =>
-                  React.createElement(PatentCard as any, {
-                    key: patent.applicationNumber || index,
-                    patent,
-                    theme,
-                  })
-                )
+                patents.map((patent, index) => (
+                  <PatentCard key={index} patent={patent} theme={theme} />
+                ))
               ) : (
                 <div
                   className="no-patents-message"

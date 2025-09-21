@@ -1,9 +1,10 @@
 import React from "react";
 import "./Blog.css";
 import BlogCard from "../../components/blogCard/BlogCard";
-import { blogSection } from "../../portfolio";
+import { contactPageData } from "../../portfolio";
 
-export default function Blogs() {
+export default function Blogs(): JSX.Element {
+  const blogSection = contactPageData.blogSection;
   return (
     <div className="main" id="blogs">
       <div className="blog-header">
@@ -12,18 +13,8 @@ export default function Blogs() {
       </div>
       <div className="blog-main-div">
         <div className="blog-text-div">
-          {blogSection.blogs.map((blog) => {
-            return (
-              <BlogCard
-                blog={{
-                  url: blog.url,
-                  image: blog.image,
-                  title: blog.title,
-                  description: blog.description,
-                }}
-              />
-            );
-          })}
+          {/* Blog cards would be mapped here if blogs array existed */}
+          <p>No blogs configured yet</p>
         </div>
       </div>
     </div>

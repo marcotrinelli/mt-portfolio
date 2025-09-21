@@ -6,13 +6,11 @@ import { Patent } from "../../utils/patentService";
 // Patent card props
 export interface PatentCardProps {
   patent: Patent;
-  theme?: Theme;
+  theme: Theme;
   className?: string;
 }
 
-const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
-  const themeAny = theme as any;
-
+const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
   const formatDate = (dateString?: string): string => {
     if (!dateString) return "N/A";
     try {
@@ -58,8 +56,8 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
       <div
         className="patent-card"
         style={{
-          backgroundColor: themeAny.projectCard || "#fff",
-          border: `1px solid ${themeAny.border || "#e0e0e0"}`,
+          backgroundColor: "#fff",
+          border: `1px solid "#e0e0e0"}`,
         }}
       >
         <div className="patent-card-header">
@@ -90,7 +88,7 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
             {patent.patentNumber && (
               <span
                 className="patent-number"
-                style={{ color: themeAny.secondaryText || "#666" }}
+                style={{ color: theme.secondaryText || "#666" }}
               >
                 Patent #{patent.patentNumber}
               </span>
@@ -99,7 +97,7 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
           {patent.applicationNumber && (
             <span
               className="application-number"
-              style={{ color: themeAny.secondaryText || "#666" }}
+              style={{ color: theme.secondaryText || "#666" }}
             >
               App. #{patent.applicationNumber}
             </span>
@@ -107,10 +105,7 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
         </div>
 
         <div className="patent-card-body">
-          <h3
-            className="patent-title"
-            style={{ color: themeAny.text || "#000" }}
-          >
+          <h3 className="patent-title" style={{ color: theme.text || "#000" }}>
             {patent.title}
           </h3>
 
@@ -118,13 +113,13 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
             <div className="patent-date-item">
               <span
                 className="date-label"
-                style={{ color: themeAny.secondaryText || "#666" }}
+                style={{ color: theme.secondaryText || "#666" }}
               >
                 Filed:
               </span>
               <span
                 className="date-value"
-                style={{ color: themeAny.text || "#000" }}
+                style={{ color: theme.text || "#000" }}
               >
                 {formatDate(patent.filingDate)}
               </span>
@@ -133,13 +128,13 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
               <div className="patent-date-item">
                 <span
                   className="date-label"
-                  style={{ color: themeAny.secondaryText || "#666" }}
+                  style={{ color: theme.secondaryText || "#666" }}
                 >
                   Granted:
                 </span>
                 <span
                   className="date-value"
-                  style={{ color: themeAny.text || "#000" }}
+                  style={{ color: theme.text || "#000" }}
                 >
                   {formatDate(patent.grantDate)}
                 </span>
@@ -151,13 +146,13 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
             <div className="patent-inventors">
               <span
                 className="inventors-label"
-                style={{ color: themeAny.secondaryText || "#666" }}
+                style={{ color: theme.secondaryText || "#666" }}
               >
                 Inventors:
               </span>
               <span
                 className="inventors-list"
-                style={{ color: themeAny.text || "#000" }}
+                style={{ color: theme.text || "#000" }}
               >
                 {patent.inventors
                   .map((inv) => {
@@ -180,13 +175,13 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
             <div className="patent-applicant">
               <span
                 className="applicant-label"
-                style={{ color: themeAny.secondaryText || "#666" }}
+                style={{ color: theme.secondaryText || "#666" }}
               >
                 Applicant:
               </span>
               <span
                 className="applicant-name"
-                style={{ color: themeAny.text || "#000" }}
+                style={{ color: theme.text || "#000" }}
               >
                 {(() => {
                   const applicant = patent.applicants[0];
@@ -211,9 +206,9 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
                 className="patent-action-button front-page-button"
                 onClick={handleViewFrontPage}
                 style={{
-                  backgroundColor: themeAny.highlightLight || "#f0f0f0",
-                  color: themeAny.text || "#000",
-                  border: `1px solid ${themeAny.highlight || "#ccc"}`,
+                  backgroundColor: "#f0f0f0",
+                  color: theme.text || "#000",
+                  border: `1px solid ${theme.highlight || "#ccc"}`,
                 }}
               >
                 View Front Page
@@ -224,7 +219,7 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
                 className="patent-action-button details-button"
                 onClick={handleViewDetails}
                 style={{
-                  backgroundColor: themeAny.highlight || "#007bff",
+                  backgroundColor: theme.highlight || "#007bff",
                   color: "#fff",
                 }}
               >
