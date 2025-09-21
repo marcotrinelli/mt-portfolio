@@ -32,6 +32,7 @@
  * @property {string} [frontPageUrl]
  * @property {boolean} isIssued
  * @property {boolean} isPending
+ * @property {boolean} [isContinuation]
  */
 
 /**
@@ -149,15 +150,41 @@ export const getFallbackPatentData = () => {
         frontPageUrl: null,
         isIssued: false,
         isPending: true
+      },
+      {
+        applicationNumber: "18/345678",
+        title: "Enhanced Network Security Protocol - Continuation Application",
+        patentNumber: null,
+        status: "Pending",
+        statusCode: 101,
+        filingDate: "2023-06-20",
+        grantDate: null,
+        inventors: [
+          { 
+            inventorNameText: "Marco Trinelli",
+            firstName: "Marco",
+            lastName: "Trinelli"
+          }
+        ],
+        applicants: [{ 
+          applicantNameText: "Cisco Technology, Inc.",
+          firstName: "Cisco",
+          lastName: "Technology, Inc."
+        }],
+        abstract: "A continuation application of the enhanced network security protocol with additional features and improvements.",
+        detailsUrl: "https://ppubs.uspto.gov/pubwebapp/search.html?q=18/345678",
+        frontPageUrl: null,
+        isIssued: false,
+        isPending: true,
+        isContinuation: true
       }
     ],
-    totalCount: 2
+    totalCount: 3
   };
 };
 
 const patentService = {
-  fetchPatentsByInventor,
-  getFallbackPatentData
+  fetchPatentsByInventor
 };
 
 export default patentService;

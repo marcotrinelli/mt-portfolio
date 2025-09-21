@@ -59,6 +59,17 @@ const PatentCard = ({ patent, theme = {} }) => {
                         >
                             {getStatusText(patent)}
                         </span>
+                        {patent.isContinuation && (
+                            <span 
+                                className="patent-continuation-badge"
+                                style={{ 
+                                    backgroundColor: "#9C27B0", // Purple color for continuation
+                                    color: "#fff"
+                                }}
+                            >
+                                Continuation
+                            </span>
+                        )}
                         {patent.patentNumber && (
                             <span 
                                 className="patent-number"

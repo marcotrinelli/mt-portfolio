@@ -44,13 +44,6 @@ class Projects extends Component {
             }
         } catch (error) {
             console.error("Failed to fetch patents:", error);
-            // Use fallback data on error
-            const fallbackData = patentService.getFallbackPatentData();
-            this.setState({ 
-                patents: fallbackData.patents,
-                patentsLoading: false,
-                patentsError: "Unable to fetch live patent data. Showing sample data."
-            });
         }
     }
 

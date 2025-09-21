@@ -45,6 +45,17 @@
     width: fit-content;
 }
 
+.patent-continuation-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
+    margin-top: 0.25rem;
+}
+
 .patent-number {
     font-size: 0.8rem;
     font-weight: 500;
