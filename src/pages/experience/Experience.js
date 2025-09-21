@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import TopButton from "../../components/topButton/TopButton";
 import "./Experience.css";
-import { experience } from "../../portfolio.js";
+import { experience } from "../../portfolio";
 import { Fade } from "react-awesome-reveal";
 import ExperienceImg from "./ExperienceImg";
 

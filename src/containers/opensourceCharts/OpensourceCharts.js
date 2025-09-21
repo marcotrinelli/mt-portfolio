@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import PullRequestChart from "../../components/pullRequestChart/PullRequestChart.js";
-import IssueChart from "../../components/issueChart/IssueChart.js";
+import PullRequestChart from "../../components/pullRequestChart/PullRequestChart";
+import IssueChart from "../../components/issueChart/IssueChart";
 import { Fade } from "react-awesome-reveal";
 import "./OpensourceCharts.css";
 

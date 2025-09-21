@@ -7,7 +7,7 @@ import Button from "../../components/button/Button";
 import AddressImg from "./AddressImg";
 import { Fade } from "react-awesome-reveal";
 import "./ContactComponent.css";
-import { greeting, contactPageData } from "../../portfolio.js";
+import { greeting, contactPageData } from "../../portfolio";
 
 const ContactData = contactPageData.contactSection;
 // const blogSection = contactPageData.blogSection;

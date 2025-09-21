@@ -5,7 +5,7 @@ import "./Project.css";
 import GithubRepoCard from "../../components/githubRepoCard/GithubRepoCard";
 import Button from "../../components/button/Button";
 import { openSource } from "../../portfolio";
-import { greeting } from "../../portfolio.js";
+import { greeting } from "../../portfolio";
 
 export default function Projects() {
   const [repo, setrepo] = useState([]);
