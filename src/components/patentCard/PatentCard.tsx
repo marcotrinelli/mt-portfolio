@@ -1,6 +1,14 @@
 import React from "react";
 import "./PatentCard.css";
-import { PatentCardProps } from "../../types/components";
+import { Theme } from "../../theme/Themes";
+import { Patent } from "../../utils/patentService";
+
+// Patent card props
+export interface PatentCardProps {
+  patent: Patent;
+  theme?: Theme;
+  className?: string;
+}
 
 const PatentCard: React.FC<PatentCardProps> = ({ patent, theme = {} }) => {
   const themeAny = theme as any;

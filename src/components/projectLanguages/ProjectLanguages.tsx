@@ -1,7 +1,17 @@
 import React from "react";
 import "./ProjectLanguages.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { ProjectLanguagesProps } from "../../types/components";
+
+// Project languages props
+export interface ProjectLanguagesProps {
+  logos: Array<{
+    name: string;
+    iconifyClass: string;
+    style?: React.CSSProperties;
+  }>;
+  theme?: any;
+  className?: string;
+}
 
 const ProjectLanguages: React.FC<ProjectLanguagesProps> = ({ logos }) => {
   return (

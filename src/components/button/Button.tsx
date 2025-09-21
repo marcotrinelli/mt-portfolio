@@ -1,7 +1,15 @@
 import React from "react";
 import "./Button.css";
 import { Link } from "react-router-dom";
-import { ButtonProps } from "../../types/components";
+import { Theme } from "../../theme/Themes";
+
+// Button component props
+export interface ButtonProps {
+  text: string;
+  to: string;
+  theme?: Theme;
+  className?: string;
+}
 
 const onMouseEnter = (
   event: React.MouseEvent<HTMLAnchorElement>,

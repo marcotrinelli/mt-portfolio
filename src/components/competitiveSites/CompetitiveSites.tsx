@@ -1,7 +1,18 @@
 import React from "react";
 import "./CompetitiveSites.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { CompetitiveSitesProps } from "../../types/components";
+
+// Competitive sites props
+export interface CompetitiveSitesProps {
+  logos: Array<{
+    siteName: string;
+    iconifyClassname: string;
+    style: React.CSSProperties;
+    profileLink: string;
+  }>;
+  theme?: any;
+  className?: string;
+}
 
 const CompetitiveSites: React.FC<CompetitiveSitesProps> = ({ logos }) => {
   return (

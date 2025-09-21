@@ -2,7 +2,35 @@ import React from "react";
 import "./IssueCard.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Fade } from "react-awesome-reveal";
-import { IssueCardProps } from "../../types/components";
+
+// Issue card props
+export interface IssueCardProps {
+  issue: {
+    title: string;
+    url: string;
+    number: number;
+    closed: boolean;
+    createdAt: string;
+    assignees: {
+      nodes: Array<{
+        name: string;
+        url: string;
+        avatarUrl: string;
+      }>;
+    };
+    repository: {
+      name: string;
+      url: string;
+      owner: {
+        login: string;
+        url: string;
+        avatarUrl: string;
+      };
+    };
+  };
+  theme?: any;
+  className?: string;
+}
 
 const IssueCard: React.FC<IssueCardProps> = ({ issue }) => {
   const iconPR =

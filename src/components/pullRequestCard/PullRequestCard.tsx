@@ -2,7 +2,36 @@ import React from "react";
 import "./PullRequestCard.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Fade } from "react-awesome-reveal";
-import { PullRequestCardProps } from "../../types/components";
+
+// Pull request card props
+export interface PullRequestCardProps {
+  pullRequest: {
+    title: string;
+    url: string;
+    number: number;
+    state: "OPEN" | "MERGED" | "CLOSED";
+    createdAt: string;
+    changedFiles: number;
+    additions: number;
+    deletions: number;
+    mergedBy: {
+      login: string;
+      url: string;
+      avatarUrl: string;
+    } | null;
+    baseRepository: {
+      name: string;
+      url: string;
+      owner: {
+        login: string;
+        url: string;
+        avatarUrl: string;
+      };
+    };
+  };
+  theme?: any;
+  className?: string;
+}
 
 const PullRequestCard: React.FC<PullRequestCardProps> = ({ pullRequest }) => {
   let iconPR: { iconifyClass: string; style: { color: string } };

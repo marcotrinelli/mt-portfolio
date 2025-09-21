@@ -1,7 +1,22 @@
 import React from "react";
 import "./DegreeCard.css";
 import { Fade, Slide } from "react-awesome-reveal";
-import { DegreeCardProps } from "../../types/components";
+import { Theme } from "../../theme/Themes";
+
+// Degree card props
+export interface DegreeCardProps {
+  degree: {
+    title: string;
+    subtitle: string;
+    logo_path: string;
+    alt_name: string;
+    duration: string;
+    descriptions: string[];
+    website_link: string;
+  };
+  theme: Theme;
+  className?: string;
+}
 
 const DegreeCard: React.FC<DegreeCardProps> = ({ degree, theme }) => {
   if (!theme) return null;

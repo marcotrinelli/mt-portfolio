@@ -1,7 +1,17 @@
 import React from "react";
 import "./SoftwareSkill.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { SoftwareSkillListProps } from "../../types/components";
+
+// Software skill props
+export interface SoftwareSkillListProps {
+  logos: Array<{
+    skillName: string;
+    fontAwesomeClassname: string;
+    style?: React.CSSProperties;
+  }>;
+  theme?: any;
+  className?: string;
+}
 
 const SoftwareSkill: React.FC<SoftwareSkillListProps> = ({ logos }) => {
   return (

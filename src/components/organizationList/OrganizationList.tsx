@@ -2,7 +2,16 @@ import React from "react";
 import "./OrganizationList.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Fade } from "react-awesome-reveal";
-import { OrganizationListProps } from "../../types/components";
+
+// Organization list props
+export interface OrganizationListProps {
+  logos: Array<{
+    login: string;
+    avatarUrl: string;
+  }>;
+  theme?: any;
+  className?: string;
+}
 
 const OrganizationList: React.FC<OrganizationListProps> = ({ logos }) => {
   return (

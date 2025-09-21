@@ -27,18 +27,12 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
       );
 
       // If no patents found from API, use fallback data
-      if (patentData.patents.length === 0) {
-        const fallbackData = patentService.getFallbackPatentData();
-        setPatents(fallbackData.patents);
-      } else {
+      if (patentData.patents.length !== 0) {
         setPatents(patentData.patents);
       }
     } catch (error) {
       console.error("Failed to fetch patents:", error);
       setPatentsError("Failed to load patents. Please try again later.");
-      // Use fallback data on error
-      const fallbackData = patentService.getFallbackPatentData();
-      setPatents(fallbackData.patents);
     } finally {
       setPatentsLoading(false);
     }

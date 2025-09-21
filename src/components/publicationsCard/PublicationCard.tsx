@@ -1,7 +1,20 @@
 import React from "react";
 import "./PublicationCard.css";
 import { Fade } from "react-awesome-reveal";
-import { PublicationCardProps } from "../../types/components";
+import { Theme } from "../../theme/Themes";
+
+// Publication card props
+export interface PublicationCardProps {
+  repo: {
+    id: string;
+    name: string;
+    description: string;
+    url: string;
+    createdAt: string;
+  };
+  theme: Theme;
+  className?: string;
+}
 
 const GithubRepoCard: React.FC<PublicationCardProps> = ({ repo, theme }) => {
   if (!theme) return null;
