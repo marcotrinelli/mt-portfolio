@@ -4,6 +4,8 @@
     position: relative; /* Keep for flip button positioning */
     display: flex;
     flex-direction: column;
+    align-self: stretch;
+    height: 100%;
 }
 
 /* Flip button styles */
@@ -50,7 +52,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    min-height: 420px;
+    flex: 1;
 }
 
 .patent-card-header {
@@ -117,6 +119,7 @@
 
 .patent-dates {
     margin-bottom: 0.5rem;
+    min-height: 3rem;
 }
 
 .patent-date-item {
@@ -141,6 +144,7 @@
 .patent-applicant {
     margin-bottom: 2rem;
     font-size: 0.85rem;
+    min-height: 3.5rem;
 }
 
 .inventors-label,
@@ -194,7 +198,6 @@
     
     .patent-card {
         padding: 1rem;
-        min-height: 380px;
     }
     
     .patent-title {
