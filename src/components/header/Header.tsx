@@ -14,9 +14,9 @@ interface MenuHeaderItem {
 
 const MENU_HEADER_LIST: MenuHeaderItem[] = [
   { path: "/home", text: "Home" },
-  { path: "/education", text: "Education" },
-  { path: "/experience", text: "Experience" },
-  { path: "/projects", text: "Projects" },
+  // { path: "/education", text: "Education" },
+  // { path: "/experience", text: "Experience" },
+  { path: "/patents", text: "Patents" },
   { path: "/hobbies", text: "Hobbies" },
   { path: "/contact", text: "Contact" },
 ];

@@ -1,8 +1,45 @@
 .patent-card-container {
-    margin: 1rem;
-    flex: 1;
-    min-width: 300px;
+    width: 100%;
     max-width: 400px;
+    position: relative; /* Keep for flip button positioning */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Flip button styles */
+.patent-card-flip-button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.patent-card-flip-button:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.patent-card-flip-button:active {
+    transform: scale(0.95);
+}
+
+.patent-card-flip-button svg {
+    width: 18px;
+    height: 18px;
+    color: white;
 }
 
 .patent-card {
@@ -13,11 +50,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.patent-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    min-height: 420px;
 }
 
 .patent-card-header {
@@ -35,35 +68,27 @@
     gap: 0.25rem;
 }
 
-.patent-status-badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    width: fit-content;
+.patent-badges-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
-.patent-continuation-badge {
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
+.patent-application-number {
     font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    width: fit-content;
-    margin-top: 0.25rem;
-}
-
-.patent-number {
-    font-size: 0.8rem;
     font-weight: 500;
+    text-align: left;
 }
 
-.application-number {
-    font-size: 0.75rem;
-    align-self: flex-end;
+.patent-status-badge {
+    padding: 0.125rem 0.75rem;
+    border-radius: 24px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
 }
 
 .patent-card-body {
@@ -75,36 +100,46 @@
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1.4;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
+.patent-number-subtitle {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
 .patent-dates {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .patent-date-item {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 0.25rem;
 }
 
 .date-label {
     font-size: 0.85rem;
     font-weight: 500;
+    width: 4rem;
+    flex-shrink: 0;
+    text-align: left;
 }
 
 .date-value {
     font-size: 0.85rem;
+    margin-left: 1rem;
 }
 
 .patent-inventors,
 .patent-applicant {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
     font-size: 0.85rem;
 }
 
@@ -129,6 +164,7 @@
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .patent-action-button {
@@ -140,9 +176,9 @@
     transition: all 0.2s ease;
     text-decoration: none;
     display: inline-block;
-    flex: 1;
     text-align: center;
     min-width: fit-content;
+    width: auto;
 }
 
 .patent-action-button:hover {
@@ -150,24 +186,15 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.front-page-button:hover {
-    opacity: 0.8;
-}
-
-.details-button:hover {
-    opacity: 0.9;
-}
-
 /* Responsive design */
 @media (max-width: 768px) {
     .patent-card-container {
-        margin: 0.5rem;
-        min-width: 280px;
         max-width: 100%;
     }
     
     .patent-card {
         padding: 1rem;
+        min-height: 380px;
     }
     
     .patent-title {
@@ -175,12 +202,65 @@
     }
     
     .patent-actions {
-        flex-direction: column;
+        justify-content: center;
     }
     
     .patent-action-button {
-        flex: none;
+        width: auto;
     }
+}
+
+/* Patent plaque zoom styles */
+.patent-plaque-image {
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+
+.patent-plaque-image:hover {
+    transform: scale(1.02);
+}
+
+/* Image zoom modal styles */
+.patent-image-modal .modal-dialog {
+    max-width: 90vw;
+    max-height: 90vh;
+    margin: 5vh auto;
+}
+
+.patent-image-modal .modal-content {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.patent-image-modal .modal-body {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patent-image-modal .modal-body img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.patent-image-modal .btn-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: 1051;
+}
+
+.patent-image-modal .btn-close:hover {
+    background: rgba(255, 255, 255, 1);
 }
 
 @media (max-width: 480px) {
@@ -189,7 +269,8 @@
         align-items: flex-start;
     }
     
-    .application-number {
-        align-self: flex-start;
+    .patent-image-modal .btn-close {
+        top: 10px;
+        right: 10px;
     }
 }

@@ -18,7 +18,7 @@ export default function Projects(): JSX.Element {
             <div key={index} className="project-card">
               <h3>{project.projectName}</h3>
               <p>{project.projectDesc}</p>
-              {project.footerLink.map((link, linkIndex: number) => (
+              {project.footerLink?.map((link, linkIndex: number) => (
                 <a
                   key={linkIndex}
                   href={link.url}

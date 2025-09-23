@@ -15,9 +15,10 @@ export interface Applicant {
 }
 
 export interface Patent {
-  applicationNumber: string;
   title: string;
+  applicationNumber: string;
   patentNumber?: string;
+  publicationNumber?: string;
   status: string;
   statusCode?: number;
   filingDate?: string;

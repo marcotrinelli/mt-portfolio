@@ -6,8 +6,12 @@ import { Fade } from "react-awesome-reveal";
 import "./Error.css";
 import Button from "../../components/button/Button";
 import { useTheme } from "styled-components";
-import { ErrorPageProps } from "../../types/components";
 
+interface ErrorPageProps {
+  title: string;
+  subtitle: string;
+  description: string;
+}
 export default function Error({
   title,
   subtitle,

@@ -7,7 +7,7 @@ import { Fade } from "react-awesome-reveal";
 import { publicationsHeader, patentsHeader } from "../../portfolio";
 import patentService, { Patent } from "../../utils/patentService";
 import { Theme } from "../../theme/Themes";
-import "./Projects.css";
+import "./Patents.css";
 
 interface ProjectsProps {
   theme?: Theme;
@@ -60,6 +60,18 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
               >
                 {patentsHeader.description}
               </p>
+              {patentsHeader.caption && (
+                <p
+                  className="patents-sync-notice"
+                  style={{
+                    color: theme?.secondaryText || "#666",
+                    fontSize: "0.85rem",
+                    marginTop: "0.5rem",
+                  }}
+                >
+                  {patentsHeader.caption}
+                </p>
+              )}
               {patentsError && (
                 <p
                   className="patents-error-message"
@@ -115,28 +127,6 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
 
       {/* Patents Section */}
       {renderPatentsSection()}
-
-      {/* Publications Section */}
-      <div className="basic-projects">
-        <Fade top duration={2000}>
-          <div className="publications-heading-div">
-            <div className="publications-heading-text-div">
-              <h1
-                className="publications-heading-text"
-                style={{ color: theme.text || "#000" }}
-              >
-                {publicationsHeader.title}
-              </h1>
-              <p
-                className="projects-header-detail-text subTitle"
-                style={{ color: theme.secondaryText || "#666" }}
-              >
-                {publicationsHeader.description}
-              </p>
-            </div>
-          </div>
-        </Fade>
-      </div>
 
       {React.createElement(Footer as any)}
       {React.createElement(TopButton as any)}

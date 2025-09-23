@@ -68,13 +68,14 @@
 
 /* Patents Section Styles */
 .patents-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 4rem;
   padding: 0 2rem;
+  justify-items: center;
+  align-items: stretch;
 }
 
 .patents-loading,
@@ -103,12 +104,13 @@
 }
 
 .patents-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
   margin: 2rem 0;
   padding: 0 20px;
+  justify-items: center;
+  align-items: stretch;
 }
 
 .patents-loading,
@@ -153,10 +155,10 @@
   }
 
   .patents-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 0 1rem;
+    grid-template-columns: 1fr;
     gap: 1rem;
+    padding: 0 1rem;
+    justify-items: stretch;
   }
 
   .patents-loading,

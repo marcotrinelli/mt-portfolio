@@ -65,7 +65,7 @@ export default function StartupProject(): JSX.Element | null {
                     </p>
                     {project.footerLink ? (
                       <div className="project-card-footer">
-                        {project.footerLink.map((link, i: number) => {
+                        {project.footerLink?.map((link, i: number) => {
                           return (
                             <span
                               key={i}
@@ -87,7 +87,7 @@ export default function StartupProject(): JSX.Element | null {
         </div>
       </div>
       <div style={{ textAlign: "center", paddingTop: "20px" }}>
-        <Button text="See more" to="/projects" theme={theme} />
+        <Button text="See more" to="/patents" theme={theme} />
       </div>
     </Fade>
   );

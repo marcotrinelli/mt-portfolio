@@ -21,9 +21,9 @@ export default function Education(): JSX.Element | null {
           {educationInfo.schools.map((school, index: number) => (
             <EducationCard key={index} school={school} />
           ))}
-          <div style={{ textAlign: "center", paddingTop: "20px" }}>
+          {/* <div style={{ textAlign: "center", paddingTop: "20px" }}>
             <Button text="See more" to="/education" theme={theme} />
-          </div>
+          </div> */}
         </div>
       </div>
     );

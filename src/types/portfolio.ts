@@ -84,7 +84,7 @@ export interface Project {
   image: any; // For require() statements
   projectName: string;
   projectDesc: string;
-  footerLink: FooterLink[];
+  footerLink?: FooterLink[];
 }
 
 export interface FooterLink {
@@ -222,5 +222,6 @@ export interface PublicationsHeader {
 export interface PatentsHeader {
   title: string;
   description: string;
+  caption?: string;
   avatar_image_path: string;
 }

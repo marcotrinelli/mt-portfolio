@@ -4,11 +4,15 @@ import Home from "../pages/home/HomeComponent";
 // import EducationComponent from "../pages/education/EducationComponent";
 // import Experience from "../pages/experience/Experience";
 // import Contact from "../pages/contact/ContactComponent";
-import Projects from "../pages/projects/Projects";
+import Patents from "../pages/patents/Patents";
 import Error from "../pages/error/Error";
 import GoToTop from "../components/goToTop/goToTop";
-import { RouteConfig } from "../types/components";
 
+export interface RouteConfig {
+  title: string;
+  subtitle: string;
+  description: string;
+}
 const wip: RouteConfig = {
   title: "Work in progress",
   subtitle: "",
@@ -29,24 +33,24 @@ export default function Main(): JSX.Element {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route
+            {/* <Route
               path="/experience"
               element={<Error {...wip} />}
-              // element={<Experience theme={this.props.theme} />}
+              element={<Experience theme={this.props.theme} />}
             />
             <Route
               path="/education"
               element={<Error {...wip} />}
-              // element={<EducationComponent theme={this.props.theme} />}
-            />
+              element={<EducationComponent theme={this.props.theme} />}
+            /> */}
             <Route
               path="/contact"
               element={<Error {...wip} />}
               // element={<Contact theme={this.props.theme} />}
             />
             <Route
-              path="/projects"
-              element={<Projects />}
+              path="/patents"
+              element={<Patents />}
               // element={<Projects theme={this.props.theme} />}
             />
             <Route

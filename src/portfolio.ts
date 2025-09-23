@@ -252,7 +252,7 @@ const workExperiences: WorkExperiences = {
 // Some big projects you have worked on
 
 const bigProjects: BigProjects = {
-  title: "Projects",
+  title: "Projects and Patents",
   // subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
   projects: [
     {
@@ -269,18 +269,6 @@ const bigProjects: BigProjects = {
       ],
     },
     {
-      image: require("./assets/images/studiolegaleLogo.png"),
-      projectName: "Studio Legale Motta",
-      projectDesc:
-        "Joomla-based CMS to support a law firm with their activities and news",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "https://mottastudiolegale.com/",
-        },
-      ],
-    },
-    {
       image: require("./assets/images/near.png"),
       projectName: "NEAR",
       projectDesc:
@@ -289,6 +277,18 @@ const bigProjects: BigProjects = {
         {
           name: "See Paper",
           url: "https://dl.acm.org/doi/10.1145/3301418.3313942",
+        },
+      ],
+    },
+    {
+      image: require("./assets/patents/12368768.png"),
+      projectName: "US Patent 12,368,768",
+      projectDesc:
+        "High Scalability and End-to-End Consistency for Web Applications in Distributed Environments",
+      footerLink: [
+        {
+          name: "See Patent",
+          url: "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12368768",
         },
       ],
     },
@@ -580,7 +580,9 @@ const publicationsHeader: PublicationsHeader = {
 
 const patentsHeader: PatentsHeader = {
   title: "Patents",
-  description: "Patented inventions and pending applications",
+  description: "Patented and patent pending inventions*",
+  caption:
+    "*Automatically synchronized with the US Patent Office by means of USPTO Open Data Portal APIs.",
   avatar_image_path: "projects_image.svg",
 };
 
