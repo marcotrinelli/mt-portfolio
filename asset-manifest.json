@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "./static/css/main.4be9a26e.css",
-    "main.js": "./static/js/main.b4a05fad.js",
+    "main.css": "./static/css/main.1db03ea6.css",
+    "main.js": "./static/js/main.c05758fb.js",
+    "static/media/12368768.png": "./static/media/12368768.49ab98ae612fe23b5d37.png",
     "static/media/marcoProfile.png": "./static/media/marcoProfile.fd840fc9b446a323b888.png",
     "static/media/Montserrat-Regular.ttf": "./static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/minotourLogo.png": "./static/media/minotourLogo.ca241a4a44a48d878255.png",
-    "static/media/studiolegaleLogo.png": "./static/media/studiolegaleLogo.a308aa3a6ec3ec063bfa.png",
     "static/media/GoogleSans-Italic.ttf": "./static/media/GoogleSans-Italic.40bb50bd202405745006.ttf",
     "static/media/GoogleSans-MediumItalic.ttf": "./static/media/GoogleSans-MediumItalic.56d4f777a7997e5a10b3.ttf",
     "static/media/GoogleSans-BoldItalic.ttf": "./static/media/GoogleSans-BoldItalic.d282e9c31d0f894a7f06.ttf",
@@ -19,11 +19,11 @@
     "static/media/nokiabelllabsLogo.svg": "./static/media/nokiabelllabsLogo.5340a9708d043385a7442c36738d69b1.svg",
     "index.html": "./index.html",
     "static/media/ciscoLogo.svg": "./static/media/ciscoLogo.675f158409a4df77cba6a88ba338a3c1.svg",
-    "main.4be9a26e.css.map": "./static/css/main.4be9a26e.css.map",
-    "main.b4a05fad.js.map": "./static/js/main.b4a05fad.js.map"
+    "main.1db03ea6.css.map": "./static/css/main.1db03ea6.css.map",
+    "main.c05758fb.js.map": "./static/js/main.c05758fb.js.map"
   },
   "entrypoints": [
-    "static/css/main.4be9a26e.css",
-    "static/js/main.b4a05fad.js"
+    "static/css/main.1db03ea6.css",
+    "static/js/main.c05758fb.js"
   ]
 }
