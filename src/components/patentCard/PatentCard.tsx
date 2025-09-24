@@ -80,11 +80,14 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
 
   // FontAwesome icons for the flip button
   const PlaqueIcon = () => (
-    <i className="fas fa-award" style={{ fontSize: "18px" }}></i>
+    <i className="fas fa-turn-up fa-rotate-90" style={{ fontSize: "18px" }}></i>
   );
 
   const DetailsIcon = () => (
-    <i className="fas fa-file-alt" style={{ fontSize: "18px" }}></i>
+    <i
+      className="fas fa-turn-down fa-rotate-90"
+      style={{ fontSize: "18px" }}
+    ></i>
   );
 
   // 12368768 to 12,368,768
