@@ -114,15 +114,21 @@ const socialMediaLinks: SocialMediaLink[] = [
 const skillsSection: SkillsSection = {
   title: "Who I am",
   subTitle:
-    "As a software engineer, I've always been working on innovative projects and cutting-edge technology.",
+    "As a senior software engineer, I have consistently worked on innovative projects using cutting-edge technology.",
   skills: [
-    "My multi-disciplinary background in ",
-    emoji("computer networks 🌐"),
-    emoji("security 🛡️"),
-    emoji("artificial intelligence 🤖"),
-    emoji("cloud computing ☁️"),
-    emoji("full-stack development 👨‍💻"),
-    "allows me to understand today's needs, and use the appropriate set of technologies to build patentable prototypes and write industry-ready code 🚀",
+    "I bring a multi-disciplinary background in:",
+    emoji("- computer networks 🌐"),
+    emoji("- security 🛡️"),
+    emoji("- artificial intelligence 🤖"),
+    emoji("- cloud computing ☁️"),
+    emoji("- full-stack development 👨‍💻"),
+    "Throughout my professional experience, I have developed the ability to:",
+    emoji(
+      "- deliver production-ready and innovative solutions, from conception to deployment 🚀"
+    ),
+    emoji(
+      "- take responsibility in projects, lead young talented engineers, and collaborate effectively with cross-functional teams 🤝"
+    ),
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -218,18 +224,25 @@ const workExperiences: WorkExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
     {
-      role: "Software Engineer, Inventor",
+      role: "Senior Software Engineer, Inventor",
       company: "Cisco",
       location: "San Jose (CA) – Lausanne (CH)",
       companylogo: CiscoLogo,
       date: "May 2019 – Present",
-      desc: "I'm currently part of the innovation-centric Emerging Technology and Incubation (ETI) organization. \nDepending on the projects which I'm involved in, I daily do:",
+      desc: "As a Full-Stack, DevOps, and IT engineer in the Outshift organization, I drive innovative projects in Generative AI and Edge Computing, leading key initiatives and securing Intellectual Property through patents",
       descBullets: [
         {
-          desc: "Design and code proof of concepts, eventually protected by Intellectual Property (patents)",
+          desc: "Responsible for leading projects while collaborating with other teams (UX, Product)",
         },
-        { desc: "Write production-ready code for ETI-internal ventures" },
-        { desc: "Maintain Cisco Switzerland (Rolle) data center" },
+        {
+          desc: "Pioneered a Generative AI-based project leveraging LLM Agents for automated Root Cause Analysis and online retrieval, laying the foundation for a new venture in Outshift – Python, LangChain",
+        },
+        {
+          desc: "Designed, implemented and deployed microservices at the cloud/edge - Go, React/TS, Docker, K8s, Jenkins, ArgoCD",
+        },
+        {
+          desc: "Setting up and maintaining Corporate Lab (DMZ, vSphere/ESXi, Routing and Switching)",
+        },
       ],
     },
     {
