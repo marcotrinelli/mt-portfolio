@@ -29,7 +29,7 @@ import type {
 const seo: SEO = {
   title: "Marco Trinelli",
   description:
-    "A passionate software engineer driving innovation to the next level.",
+    "A passionate senior software engineer driving innovation to the next level.",
   og: {
     title: "Marco Trinelli",
     type: "website",
