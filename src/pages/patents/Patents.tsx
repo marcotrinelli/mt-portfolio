@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import TopButton from "../../components/topButton/TopButton";
 import PatentCard from "../../components/patentCard/PatentCard";
+import Loading from "../../containers/loading/Loading";
 import { Fade } from "react-awesome-reveal";
 import { publicationsHeader, patentsHeader } from "../../portfolio";
 import patentService, { Patent } from "../../utils/patentService";
@@ -93,9 +94,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
             className="patents-loading"
             style={{ textAlign: "center", padding: "2rem" }}
           >
-            <p style={{ color: theme?.secondaryText || "#666" }}>
-              Loading patents...
-            </p>
+            <Loading />
           </div>
         ) : (
           <Fade top duration={2000}>
