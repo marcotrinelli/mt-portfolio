@@ -38,9 +38,9 @@ export default function WorkExperience(): JSX.Element | null {
               </div>
             </div>
           </div>
-          <div style={{ textAlign: "center", paddingTop: "20px" }}>
+          {/* <div style={{ textAlign: "center", paddingTop: "20px" }}>
             <Button text="See more" to="/experience" theme={theme} />
-          </div>
+          </div> */}
         </Fade>
       </div>
     );
