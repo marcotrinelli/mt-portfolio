@@ -1,6 +1,6 @@
 import React from "react";
 import "./StartupProjects.scss";
-import { bigProjects } from "../../portfolio";
+import { bigProjects, greeting } from "../../portfolio";
 import { Fade } from "react-awesome-reveal";
 import Button from "../../components/button/Button";
 import { useTheme } from "styled-components";
@@ -87,7 +87,21 @@ export default function StartupProject(): JSX.Element | null {
         </div>
       </div>
       <div style={{ textAlign: "center", paddingTop: "20px" }}>
-        <Button text="See more" to="/patents" theme={theme} />
+        <div
+          className="resume-btn-div"
+          style={{ display: "flex", gap: "64px", flexDirection: "column" }} // change to show buttons one under the other
+        >
+          <Button text="See more" to="/patents" theme={theme} />
+          {greeting.resumeLink && (
+            <div>
+              <Button
+                text="See my Curriculum Vitae"
+                to={greeting.resumeLink}
+                theme={theme}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </Fade>
   );

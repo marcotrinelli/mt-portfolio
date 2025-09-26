@@ -49,7 +49,8 @@ const greeting: Greeting = {
   subTitle: emoji(
     "A passionate software engineer driving innovation to the next level."
   ),
-  resumeLink: "", // Set to empty to hide the button
+  // resumeLink: "https://www.linkedin.com/in/marco-trinelli/", // Set to empty to hide the button
+  resumeLink: "",
   githubProfile: "",
   displayGreeting: true, // Set false to hide this section, defaults to true
 };
@@ -71,12 +72,12 @@ const socialMediaLinks: SocialMediaLink[] = [
   //   fontAwesomeIcon: "fa-github", // Reference https://fontawesome.com/icons/github?style=brands
   //   backgroundColor: "#181717", // Reference https://simpleicons.org/?q=github
   // },
-  // {
-  //   name: "LinkedIn",
-  //   link: "https://www.linkedin.com/in/marco-trinelli/",
-  //   fontAwesomeIcon: "fa-linkedin-in", // Reference https://fontawesome.com/icons/linkedin-in?style=brands
-  //   backgroundColor: "#0077B5", // Reference https://simpleicons.org/?q=linkedin
-  // },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/marco-trinelli/",
+    fontAwesomeIcon: "fa-linkedin-in", // Reference https://fontawesome.com/icons/linkedin-in?style=brands
+    backgroundColor: "#0077B5", // Reference https://simpleicons.org/?q=linkedin
+  },
   // {
   //   name: "YouTube",
   //   link: "https://www.youtube.com/channel/UC_amoXmmxSY9KusoDczDTXQ",
@@ -122,12 +123,12 @@ const skillsSection: SkillsSection = {
     emoji("- artificial intelligence 🤖"),
     emoji("- cloud computing ☁️"),
     emoji("- full-stack development 👨‍💻"),
-    "Throughout my professional experience, I have developed the ability to:",
+    "Throughout my professional experience, I have:",
     emoji(
-      "- deliver production-ready and innovative solutions, from conception to deployment 🚀"
+      "- delivered production-ready and innovative solutions, from conception to deployment 🚀"
     ),
     emoji(
-      "- take responsibility in projects, lead young talented engineers, and collaborate effectively with cross-functional teams 🤝"
+      "- taken responsibility in projects, led young talented engineers, and collaborated effectively with cross-functional teams 🤝"
     ),
   ],
 

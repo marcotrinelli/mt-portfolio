@@ -3,7 +3,7 @@ import { Route, Routes, HashRouter } from "react-router-dom";
 import Home from "../pages/home/HomeComponent";
 // import EducationComponent from "../pages/education/EducationComponent";
 // import Experience from "../pages/experience/Experience";
-// import Contact from "../pages/contact/ContactComponent";
+import ContactComponent from "../pages/contact/ContactComponent";
 import Patents from "../pages/patents/Patents";
 import Error from "../pages/error/Error";
 import GoToTop from "../components/goToTop/goToTop";
@@ -43,11 +43,7 @@ export default function Main(): JSX.Element {
               element={<Error {...wip} />}
               element={<EducationComponent theme={this.props.theme} />}
             /> */}
-            <Route
-              path="/contact"
-              element={<Error {...wip} />}
-              // element={<Contact theme={this.props.theme} />}
-            />
+            <Route path="/contact" element={<ContactComponent />} />
             <Route
               path="/patents"
               element={<Patents />}

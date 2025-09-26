@@ -113,8 +113,8 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
     <div
       className="patent-card"
       style={{
-        backgroundColor: "#fff",
-        border: `1px solid "#e0e0e0"}`,
+        backgroundColor: theme.paperbg,
+        border: `1px solid ${theme.isDark ? theme.boxShadowColor : "#e0e0e0"}`,
       }}
     >
       <div className="patent-card-header">
@@ -147,14 +147,14 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
         </div>
       </div>
       <div className="patent-card-body">
-        <h3 className="patent-title" style={{ color: theme.text || "#000" }}>
+        <h3 className="patent-title" style={{ color: theme.text }}>
           {patent.title}
         </h3>
 
         {(patent.patentNumber || patent.applicationNumber) && (
           <div
             className="patent-number-subtitle"
-            style={{ color: theme.secondaryText || "#666" }}
+            style={{ color: theme.secondaryText }}
           >
             {patent.patentNumber
               ? `(US Patent ${formatPatentNumber(patent.patentNumber)})`
@@ -170,14 +170,11 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
           <div className="patent-inventors">
             <span
               className="inventors-label"
-              style={{ color: theme.secondaryText || "#666" }}
+              style={{ color: theme.secondaryText }}
             >
               Inventors:
             </span>
-            <span
-              className="inventors-list"
-              style={{ color: theme.text || "#000" }}
-            >
+            <span className="inventors-list" style={{ color: theme.text }}>
               {patent.inventors
                 .map((inv) => {
                   // Use inventorNameText if available, otherwise construct from firstName/lastName
@@ -199,14 +196,11 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
           <div className="patent-applicant">
             <span
               className="applicant-label"
-              style={{ color: theme.secondaryText || "#666" }}
+              style={{ color: theme.secondaryText }}
             >
               Applicant:
             </span>
-            <span
-              className="applicant-name"
-              style={{ color: theme.text || "#000" }}
-            >
+            <span className="applicant-name" style={{ color: theme.text }}>
               {(() => {
                 const applicant = patent.applicants[0];
                 if (applicant.applicantNameText) {
@@ -224,16 +218,10 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
 
         <div className="patent-dates">
           <div className="patent-date-item">
-            <span
-              className="date-label"
-              style={{ color: theme.secondaryText || "#666" }}
-            >
+            <span className="date-label" style={{ color: theme.secondaryText }}>
               Filed:
             </span>
-            <span
-              className="date-value"
-              style={{ color: theme.text || "#000" }}
-            >
+            <span className="date-value" style={{ color: theme.text }}>
               {formatDate(patent.filingDate)}
             </span>
           </div>
@@ -241,14 +229,11 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
             <div className="patent-date-item">
               <span
                 className="date-label"
-                style={{ color: theme.secondaryText || "#666" }}
+                style={{ color: theme.secondaryText }}
               >
                 Issued:
               </span>
-              <span
-                className="date-value"
-                style={{ color: theme.text || "#000" }}
-              >
+              <span className="date-value" style={{ color: theme.text }}>
                 {formatDate(patent.grantDate)}
               </span>
             </div>
@@ -263,9 +248,9 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
               className="patent-action-button"
               onClick={handleViewDetails}
               style={{
-                backgroundColor: "#f0f0f0",
-                color: theme.text || "#000",
-                border: `1px solid ${theme.highlight || "#ccc"}`,
+                backgroundColor: theme.isDark ? theme.bodyDarker : "#f0f0f0",
+                color: theme.text,
+                border: `1px solid ${theme.highlight}`,
               }}
             >
               View PDF
@@ -294,8 +279,10 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
               <div
                 className="patent-card patent-plaque-side"
                 style={{
-                  backgroundColor: "#fff",
-                  border: `1px solid "#e0e0e0"}`,
+                  backgroundColor: theme.paperbg,
+                  border: `1px solid ${
+                    theme.isDark ? theme.boxShadowColor : "#e0e0e0"
+                  }`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

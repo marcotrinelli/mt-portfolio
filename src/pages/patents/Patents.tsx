@@ -9,15 +9,14 @@ import { publicationsHeader, patentsHeader } from "../../portfolio";
 import patentService, { Patent } from "../../utils/patentService";
 import { Theme } from "../../theme/Themes";
 import "./Patents.css";
+import { useTheme } from "styled-components";
 
-interface ProjectsProps {
-  theme?: Theme;
-}
-
-const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
+const Projects: React.FC = () => {
   const [patents, setPatents] = useState<Patent[]>([]);
   const [patentsLoading, setPatentsLoading] = useState<boolean>(true);
   const [patentsError, setPatentsError] = useState<string | null>(null);
+
+  const theme = useTheme();
 
   const fetchPatents = async (): Promise<void> => {
     try {
@@ -51,13 +50,13 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
             <div className="projects-heading-text-div">
               <h1
                 className="projects-heading-text"
-                style={{ color: theme?.text || "#000" }}
+                style={{ color: theme.text }}
               >
                 {patentsHeader.title}
               </h1>
               <p
                 className="projects-header-detail-text subTitle"
-                style={{ color: theme?.secondaryText || "#666" }}
+                style={{ color: theme.secondaryText }}
               >
                 {patentsHeader.description}
               </p>
@@ -65,7 +64,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
                 <p
                   className="patents-sync-notice"
                   style={{
-                    color: theme?.secondaryText || "#666",
+                    color: theme.secondaryText,
                     fontSize: "0.85rem",
                     marginTop: "0.5rem",
                   }}
@@ -80,6 +79,14 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
                     color: "#FF9800",
                     fontStyle: "italic",
                     marginTop: "0.5rem",
+                    backgroundColor: theme.isDark
+                      ? "rgba(255, 152, 0, 0.15)"
+                      : "rgba(255, 152, 0, 0.1)",
+                    border: `1px solid ${
+                      theme.isDark
+                        ? "rgba(255, 152, 0, 0.4)"
+                        : "rgba(255, 152, 0, 0.3)"
+                    }`,
                   }}
                 >
                   {patentsError}
@@ -108,7 +115,7 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
                   className="no-patents-message"
                   style={{ textAlign: "center", padding: "2rem" }}
                 >
-                  <p style={{ color: theme?.secondaryText || "#666" }}>
+                  <p style={{ color: theme.secondaryText }}>
                     No patents found.
                   </p>
                 </div>
@@ -122,13 +129,13 @@ const Projects: React.FC<ProjectsProps> = ({ theme = {} as Theme }) => {
 
   return (
     <div className="projects-main">
-      {React.createElement(Header as any, { theme })}
+      <Header />
 
       {/* Patents Section */}
       {renderPatentsSection()}
 
-      {React.createElement(Footer as any)}
-      {React.createElement(TopButton as any)}
+      <Footer />
+      <TopButton />
     </div>
   );
 };

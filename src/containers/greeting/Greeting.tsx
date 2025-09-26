@@ -52,7 +52,7 @@ export default function Greeting(): JSX.Element {
                   border: `0.5rem solid ${theme.text}`,
                 }}
               />
-              <SocialMedia />
+              {/* <SocialMedia /> */}
             </div>
           </div>
         </div>

@@ -1,0 +1,66 @@
+/* FormTextarea.css */
+.form-textarea-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-textarea-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.form-textarea {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.form-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(160, 102, 251, 0.1);
+}
+
+.form-textarea::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.form-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  resize: none;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .form-textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.6rem 0.8rem;
+    min-height: 100px;
+  }
+  
+  .form-textarea-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-textarea-container {
+    margin-bottom: 1.2rem;
+  }
+  
+  .form-textarea {
+    min-height: 80px;
+  }
+}
