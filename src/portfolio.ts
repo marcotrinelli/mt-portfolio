@@ -321,7 +321,7 @@ const hobbieSection: HobbieSection = {
     {
       title: "✈️ Traveling & Cultural Exploration",
       subtitle:
-        "I've lived in France 🇫🇷, California (US) 🇺🇸, and now Switzerland 🇨🇭. Each country has enriched my perspective and taught me to appreciate diverse cultures, cuisines, and ways of life. I love exploring new places and connecting with locals.",
+        "I was born in Italy 🇮🇹, but then moved to France 🇫🇷, California (US) 🇺🇸, and now Switzerland 🇨🇭. Each country has enriched my perspective and taught me to appreciate diverse cultures, cuisines, and ways of life. I love exploring new places and connecting with locals.",
       image: require("./assets/lottie/travel.json"),
       footerLink: [
         {

@@ -175,11 +175,24 @@
     display: none;
   }
 }
-@media (max-width: 1040px) and (min-width: 780px) {
-  .header {
-    font-size: 12px;
+
+@media (max-width: 779px) {
+  .header .menu {
+    text-align: center;
+  }
+  .header .menu li {
+    display: block;
+    text-align: center;
+  }
+  .header .menu li a {
+    text-align: center;
   }
 }
+// @media (max-width: 1040px) and (min-width: 780px) {
+//   .header {
+//     font-size: 20px;
+//   }
+// }
 
 @media (max-width: 340px) {
     .header {

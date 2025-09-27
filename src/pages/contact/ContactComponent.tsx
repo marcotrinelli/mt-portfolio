@@ -69,7 +69,7 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} style={{ marginTop: "2rem", width: "100%" }}>
+    <form onSubmit={onSubmit} style={{ width: "100%" }}>
       <FormInput
         id="email"
         name="email"
@@ -96,21 +96,33 @@ function ContactForm() {
         onChange={handleMessageChange}
         theme={theme}
       />
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY || ""}
-        onChange={onChange}
-        theme={theme.isDark ? "dark" : "light"}
-        key={theme.isDark ? "dark" : "light"}
-      />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <FormButton
-        text={state.submitting ? "Sending..." : "Send Message"}
-        type="submit"
-        disabled={state.submitting || !isFormValid}
-        theme={theme}
-        className="contact-form-button"
-      />
+      <div className="captcha-button-container">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY || ""}
+          onChange={onChange}
+          theme={theme.isDark ? "dark" : "light"}
+          key={theme.isDark ? "dark" : "light"}
+        />
+        <FormButton
+          text={
+            <>
+              {state.submitting ? "Sending..." : "Send Message"}
+              {!state.submitting && (
+                <i
+                  className="fas fa-paper-plane"
+                  style={{ marginLeft: "8px" }}
+                ></i>
+              )}
+            </>
+          }
+          type="submit"
+          disabled={state.submitting || !isFormValid}
+          theme={theme}
+          className="contact-form-button"
+        />
+      </div>
     </form>
   );
 }

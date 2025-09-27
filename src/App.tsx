@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Main from "./containers/Main";
 import ToggleSwitch from "./components/toggleSwitch/ToggleSwitch";
+import TopButton from "./components/topButton/TopButton";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./theme/GlobalStyles";
 import { useTheme } from "./theme/useTheme";
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           {mountedComponent && (
             <ToggleSwitch theme={theme} toggleTheme={themeToggler} />
           )}
+          {mountedComponent && <TopButton />}
         </>
       )}
     </>

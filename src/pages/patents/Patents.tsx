@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import TopButton from "../../components/topButton/TopButton";
 import PatentCard from "../../components/patentCard/PatentCard";
 import Loading from "../../containers/loading/Loading";
 import { Fade } from "react-awesome-reveal";
@@ -135,7 +134,6 @@ const Projects: React.FC = () => {
       {renderPatentsSection()}
 
       <Footer />
-      <TopButton />
     </div>
   );
 };

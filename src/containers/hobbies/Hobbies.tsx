@@ -11,43 +11,45 @@ export default function Hobbies(): JSX.Element | null {
     return null;
   }
   return (
-    <Fade bottom duration={1000} distance="20px">
-      <div className="main" id="hobbies">
-        <div className="hobbies-main-div">
-          <div className="hobbies-header">
-            <h1
-              className={"heading hobbies-heading"}
-              style={{ color: theme.title }}
-            >
-              {hobbieSection.title}
-            </h1>
-            {hobbieSection.subtitle && (
-              <p
-                className="hobbies-subtitle"
-                style={{ color: theme.secondaryText }}
+    <div className="hobbies-main">
+      <div className="basic-hobbies">
+        <Fade bottom duration={2000} distance="40px">
+          <div className="hobbies-heading-div">
+            <div className="hobbies-heading-text-div">
+              <h1
+                className="hobbies-heading-text"
+                style={{ color: theme.text }}
               >
-                {hobbieSection.subtitle}
-              </p>
-            )}
+                {hobbieSection.title}
+              </h1>
+              {hobbieSection.subtitle && (
+                <p
+                  className="hobbies-header-detail-text subTitle"
+                  style={{ color: theme.secondaryText }}
+                >
+                  {hobbieSection.subtitle}
+                </p>
+              )}
+            </div>
           </div>
-          <div className="hobbies-cards-div">
-            {hobbieSection.hobbiesCards.map((card, i: number) => {
-              return (
-                <HobbyCard
-                  key={i}
-                  cardInfo={{
-                    title: card.title,
-                    description: card.subtitle,
-                    image: card.image,
-                    footer: card.footerLink,
-                    isLottie: true, // All hobby cards will use Lottie animations
-                  }}
-                />
-              );
-            })}
-          </div>
+        </Fade>
+        <div className="hobbies-cards-div">
+          {hobbieSection.hobbiesCards.map((card, i: number) => {
+            return (
+              <HobbyCard
+                key={i}
+                cardInfo={{
+                  title: card.title,
+                  description: card.subtitle,
+                  image: card.image,
+                  footer: card.footerLink,
+                  isLottie: true, // All hobby cards will use Lottie animations
+                }}
+              />
+            );
+          })}
         </div>
       </div>
-    </Fade>
+    </div>
   );
 }

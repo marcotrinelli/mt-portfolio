@@ -1,5 +1,6 @@
 .toggle-button {
     position: fixed;
-    bottom: 0px;
-    padding: 15px;
+    bottom: 15px;
+    left: 15px;
+    z-index: 1000;
 }

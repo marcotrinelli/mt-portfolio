@@ -1,10 +1,19 @@
 #topButton {
   visibility: hidden;
   position: fixed;
-  bottom: 1.2rem;
-  right: 1.5rem;
+  bottom: 15px;
+  right: 15px;
   cursor: pointer;
   padding: 15px;
   outline: none;
   border-radius: 10px;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  #topButton {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px;
+  }
 }

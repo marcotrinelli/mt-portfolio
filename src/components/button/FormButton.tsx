@@ -4,7 +4,7 @@ import { Theme } from "../../theme/Themes";
 
 // FormButton component props for form submission
 export interface FormButtonProps {
-  text: string;
+  text: React.ReactNode;
   type?: "submit" | "button" | "reset";
   disabled?: boolean;
   theme?: Theme;
