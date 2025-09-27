@@ -44,7 +44,7 @@ const Projects: React.FC = () => {
   const renderPatentsSection = (): JSX.Element => {
     return (
       <div className="basic-projects">
-        <Fade top duration={2000}>
+        <Fade bottom duration={1000} distance="40px">
           <div className="projects-heading-div">
             <div className="projects-heading-text-div">
               <h1
@@ -103,7 +103,7 @@ const Projects: React.FC = () => {
             <Loading />
           </div>
         ) : (
-          <Fade top duration={2000}>
+          <Fade bottom duration={1000} distance="40px">
             <div className="patents-container">
               {patents.length > 0 ? (
                 patents.map((patent, index) => (
