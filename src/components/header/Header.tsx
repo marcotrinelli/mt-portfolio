@@ -87,7 +87,7 @@ function handleClickLink(event: React.MouseEvent<HTMLAnchorElement>): void {
 const Header: React.FC = () => {
   const theme = useTheme();
   const [headerStyle, setHeaderStyle] = useState({
-    boxShadow: `0px 10px 30px -15px ${theme.boxShadowColor}`,
+    boxShadow: `0px 0px 10px 0px ${theme.boxShadowColor}`,
   });
 
   function handleUnpin(): void {
