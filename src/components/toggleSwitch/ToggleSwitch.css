@@ -1,6 +1,38 @@
 .toggle-button {
-    position: fixed;
-    bottom: 15px;
-    left: 15px;
-    z-index: 1000;
+    position: fixed !important;
+    bottom: 15px !important;
+    left: 15px !important;
+    z-index: 1000 !important;
+    /* Prevent layout shifts */
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* iOS Safari specific fixes */
+@media screen and (max-width: 768px) {
+    .toggle-button {
+        /* Use safe-area-inset for devices with notches */
+        bottom: calc(15px + env(safe-area-inset-bottom)) !important;
+        left: calc(15px + env(safe-area-inset-left)) !important;
+        
+        /* Fallback for older iOS versions */
+        bottom: calc(15px + constant(safe-area-inset-bottom)) !important;
+        left: calc(15px + constant(safe-area-inset-left)) !important;
+    }
+}
+
+/* Ensure the DarkModeToggle component doesn't interfere with positioning */
+.toggle-button > * {
+    position: relative !important;
+    display: block !important;
+}
+
+/* Additional fix for iPhone Safari's dynamic viewport */
+@supports (-webkit-touch-callout: none) {
+    .toggle-button {
+        /* Ensure proper positioning when Safari UI changes */
+        position: fixed !important;
+        transform: translateZ(0) !important; /* Force hardware acceleration */
+    }
 }

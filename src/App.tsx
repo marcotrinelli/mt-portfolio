@@ -21,9 +21,7 @@ const App: React.FC = () => {
         <>
           {React.createElement(GlobalStyles as any)}
           {mountedComponent && <Main />}
-          {mountedComponent && (
-            <ToggleSwitch theme={theme} toggleTheme={themeToggler} />
-          )}
+          <ToggleSwitch theme={theme} toggleTheme={themeToggler} />
           {mountedComponent && <TopButton />}
         </>
       )}
