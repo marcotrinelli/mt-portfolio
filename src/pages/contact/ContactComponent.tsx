@@ -54,16 +54,23 @@ function ContactForm() {
     return (
       <div
         style={{
-          padding: "2rem",
-          textAlign: "center",
-          color: theme.text,
-          backgroundColor: theme.highlight,
-          borderRadius: "6px",
+          color: "#4CAF50",
+          fontSize: "0.9rem",
           marginTop: "1rem",
+          padding: "0.75rem",
+          backgroundColor: theme.isDark
+            ? "rgba(76, 175, 80, 0.15)"
+            : "rgba(76, 175, 80, 0.1)",
+          border: `1px solid ${
+            theme.isDark ? "rgba(76, 175, 80, 0.4)" : "rgba(76, 175, 80, 0.3)"
+          }`,
+          borderRadius: "6px",
+          textAlign: "center",
         }}
       >
-        <h3>Thanks for your message!</h3>
-        <p>I'll get back to you as soon as possible.</p>
+        <strong>Thanks for your message!</strong>
+        <br />
+        I'll get back to you as soon as possible.
       </div>
     );
   }
@@ -135,16 +142,19 @@ export default function ContactComponent(): JSX.Element {
       <Header />
       <div className="basic-contact">
         <Fade bottom duration={1000} distance="40px">
-          <div className="contact-heading-div" style={{ textAlign: "center" }}>
-            <div className="contact-heading-text-div">
+          <div className="contact-heading-div">
+            <div className="contact-title-and-social">
               <h1
                 className="contact-heading-text"
                 style={{ color: theme.text }}
               >
                 {ContactData.title}
               </h1>
-              <SocialMedia />
-
+              <div className="contact-social-media">
+                <SocialMedia />
+              </div>
+            </div>
+            <div className="contact-heading-text-div">
               {greeting.resumeLink && (
                 <div className="resume-btn-div">
                   <Button

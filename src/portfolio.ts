@@ -391,7 +391,7 @@ const hobbieSection: HobbieSection = {
       ],
     },
   ],
-  display: true,
+  display: false,
 };
 
 const certifications: Certifications = {
