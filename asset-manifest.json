@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.6a8c7854.css",
-    "main.js": "./static/js/main.1ee2c0d4.js",
+    "main.css": "./static/css/main.6f68858d.css",
+    "main.js": "./static/js/main.160ed401.js",
     "static/media/12368768.png": "./static/media/12368768.49ab98ae612fe23b5d37.png",
     "static/media/marcoProfile.png": "./static/media/marcoProfile.fd840fc9b446a323b888.png",
     "static/media/Montserrat-Regular.ttf": "./static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
@@ -41,11 +41,11 @@
     "static/media/ciscoLogo.svg": "./static/media/ciscoLogo.675f158409a4df77cba6a88ba338a3c1.svg",
     "static/media/talksCardBackAlt.svg": "./static/media/talksCardBackAlt.018d87225926eee9ccc3.svg",
     "static/media/talksCardBack.svg": "./static/media/talksCardBack.7dc8695e60efbc2baab8.svg",
-    "main.6a8c7854.css.map": "./static/css/main.6a8c7854.css.map",
-    "main.1ee2c0d4.js.map": "./static/js/main.1ee2c0d4.js.map"
+    "main.6f68858d.css.map": "./static/css/main.6f68858d.css.map",
+    "main.160ed401.js.map": "./static/js/main.160ed401.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a8c7854.css",
-    "static/js/main.1ee2c0d4.js"
+    "static/css/main.6f68858d.css",
+    "static/js/main.160ed401.js"
   ]
 }
