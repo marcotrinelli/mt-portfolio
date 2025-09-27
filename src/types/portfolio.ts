@@ -98,7 +98,7 @@ export interface BigProjects {
   display: boolean;
 }
 
-export interface AchievementCard {
+export interface HobbyCard {
   title: string;
   subtitle: string;
   image: any;
@@ -107,7 +107,8 @@ export interface AchievementCard {
 
 export interface HobbieSection {
   title: string | React.ReactElement;
-  achievementsCards: AchievementCard[];
+  subtitle?: string;
+  hobbiesCards: HobbyCard[];
   display: boolean;
 }
 

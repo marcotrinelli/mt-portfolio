@@ -1,37 +1,46 @@
 import React from "react";
-import "./Achievement.scss";
-import AchievementCard from "../../components/achievementCard/AchievementCard";
+import "./Hobbies.scss";
+import HobbyCard from "../../components/hobbyCard/HobbyCard";
 import { hobbieSection } from "../../portfolio";
 import { Fade } from "react-awesome-reveal";
 import { useTheme } from "styled-components";
 
-export default function Achievement(): JSX.Element | null {
+export default function Hobbies(): JSX.Element | null {
   const theme = useTheme();
   if (!hobbieSection.display) {
     return null;
   }
   return (
     <Fade bottom duration={1000} distance="20px">
-      <div className="main" id="achievements">
-        <div className="achievement-main-div">
-          <div className="achievement-header">
+      <div className="main" id="hobbies">
+        <div className="hobbies-main-div">
+          <div className="hobbies-header">
             <h1
-              className={"heading achievement-heading"}
+              className={"heading hobbies-heading"}
               style={{ color: theme.title }}
             >
               {hobbieSection.title}
             </h1>
+            {hobbieSection.subtitle && (
+              <p
+                className="hobbies-subtitle"
+                style={{ color: theme.secondaryText }}
+              >
+                {hobbieSection.subtitle}
+              </p>
+            )}
           </div>
-          <div className="achievement-cards-div">
-            {hobbieSection.achievementsCards.map((card, i: number) => {
+          <div className="hobbies-cards-div">
+            {hobbieSection.hobbiesCards.map((card, i: number) => {
               return (
-                <AchievementCard
+                <HobbyCard
                   key={i}
                   cardInfo={{
                     title: card.title,
                     description: card.subtitle,
                     image: card.image,
                     footer: card.footerLink,
+                    isLottie: true, // All hobby cards will use Lottie animations
                   }}
                 />
               );

@@ -1,0 +1,163 @@
+@import "../../_globalColor";
+
+.achievement-heading,
+.hobbies-heading {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0px;
+}
+
+.achievement-subtitle,
+.hobbies-subtitle {
+  text-transform: none;
+  margin: 10px 0 50px 0;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subTitle {
+  color: $subTitle;
+}
+
+.hobbies-main-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: 60px 0;
+}
+
+.hobbies-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.hobbies-cards-div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.certificate-card.hobby-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.certificate-card.hobby-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hobby-animation-div {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.hobby-lottie-container {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hobby-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.hobby-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.hobby-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
+.hobby-link {
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  margin: 0;
+  text-decoration: none;
+}
+
+.hobby-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Media Query */
+@media (max-width: 1380px) {
+  .achievement-heading,
+  .hobbies-heading {
+    font-size: 40px;
+  }
+  .hobbies-cards-div {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .achievement-heading,
+  .hobbies-heading {
+    font-size: 30px;
+    text-align: center;
+  }
+  .achievement-subtitle,
+  .hobbies-subtitle {
+    font-size: 16px;
+    line-height: normal;
+    text-align: center;
+  }
+  .hobbies-cards-div {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+  .certificate-card.hobby-card {
+    min-height: 350px;
+    padding: 25px;
+  }
+  .hobby-title {
+    font-size: 20px;
+  }
+  .hobby-description {
+    font-size: 15px;
+  }
+}

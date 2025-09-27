@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Headroom from "react-headroom";
 import { useTheme } from "styled-components";
-import { greeting } from "../../portfolio";
+import {
+  greeting,
+  hobbieSection,
+  educationInfo,
+  bigProjects,
+  workExperiences,
+} from "../../portfolio";
 import NoTranslate from "../notranslate/notranslate";
 import SeoHeader from "../seoHeader/SeoHeader";
 import "./Header.scss";
@@ -12,14 +18,51 @@ interface MenuHeaderItem {
   text: string;
 }
 
-const MENU_HEADER_LIST: MenuHeaderItem[] = [
-  { path: "/home", text: "Home" },
-  // { path: "/education", text: "Education" },
-  // { path: "/experience", text: "Experience" },
-  { path: "/patents", text: "Patents" },
-  { path: "/hobbies", text: "Hobbies" },
-  { path: "/contact", text: "Contact" },
-];
+interface ConditionalMenuItem {
+  path: string;
+  text: string;
+  displayCondition: boolean;
+}
+
+const getMenuHeaderList = (): MenuHeaderItem[] => {
+  const baseMenuItems: MenuHeaderItem[] = [{ path: "/home", text: "Home" }];
+
+  // Define conditional menu items with their display conditions
+  const conditionalItems: ConditionalMenuItem[] = [
+    // {
+    //   path: "/education",
+    //   text: "Education",
+    //   displayCondition: educationInfo.display,
+    // },
+    // {
+    //   path: "/experience",
+    //   text: "Experience",
+    //   displayCondition: workExperiences.display,
+    // },
+    {
+      path: "/patents",
+      text: "Patents",
+      displayCondition: bigProjects.display, // Always show patents
+    },
+    {
+      path: "/hobbies",
+      text: "Hobbies",
+      displayCondition: hobbieSection.display,
+    },
+  ];
+
+  // Add conditional items that should be displayed
+  conditionalItems.forEach((item) => {
+    if (item.displayCondition) {
+      baseMenuItems.push({ path: item.path, text: item.text });
+    }
+  });
+
+  // Always add contact at the end
+  baseMenuItems.push({ path: "/contact", text: "Contact" });
+
+  return baseMenuItems;
+};
 
 const onMouseEnter = (
   event: React.MouseEvent<HTMLAnchorElement>,
@@ -58,7 +101,7 @@ const Header: React.FC = () => {
   }
 
   function createMenuItems(): JSX.Element[] {
-    return MENU_HEADER_LIST.map((item, index) => {
+    return getMenuHeaderList().map((item, index) => {
       return (
         <li key={index}>
           <NavLink

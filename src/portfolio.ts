@@ -310,35 +310,88 @@ const bigProjects: BigProjects = {
   display: true, // Set false to hide this section, defaults to true
 };
 
-// Hobbie Section
+// Hobbies Section
 
 const hobbieSection: HobbieSection = {
-  title: emoji("Hobbies"),
-  // subtitle: "Achievements, Certifications, Award Letters and Some Cool Stuff that I have done !",
+  title: "Hobbies and Passions",
+  subtitle:
+    "When I'm not coding, you'll find me exploring these exciting activities that keep me balanced and inspired!",
 
-  achievementsCards: [
-    // {
-    //     title: "Google Code-In Finalist",
-    //     subtitle:
-    //         "First Pakistani to be selected as Google Code-in Finalist from 4000 students from 77 different countries.",
-    //     image: require("./assets/images/codeInLogo.webp"),
-    //     footerLink: [
-    //         {
-    //             name: "Certification",
-    //             url: "https://drive.google.com/file/d/0B7kazrtMwm5dYkVvNjdNWjNybWJrbndFSHpNY2NFV1p4YmU0/view?usp=sharing"
-    //         },
-    //         {
-    //             name: "Award Letter",
-    //             url: "https://drive.google.com/file/d/0B7kazrtMwm5dekxBTW5hQkg2WXUyR3QzQmR0VERiLXlGRVdF/view?usp=sharing"
-    //         },
-    //         {
-    //             name: "Google Code-in Blog",
-    //             url: "https://opensource.googleblog.com/2019/01/google-code-in-2018-winners.html"
-    //         }
-    //     ]
-    // }
+  hobbiesCards: [
+    {
+      title: "✈️ Traveling & Cultural Exploration",
+      subtitle:
+        "I've lived in France 🇫🇷, California (US) 🇺🇸, and now Switzerland 🇨🇭. Each country has enriched my perspective and taught me to appreciate diverse cultures, cuisines, and ways of life. I love exploring new places and connecting with locals.",
+      image: require("./assets/lottie/travel.json"),
+      footerLink: [
+        {
+          name: "My Travel Stories",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "🌱 Gardening & Nature",
+      subtitle:
+        "There's something deeply satisfying about nurturing plants and watching them grow. From herbs for my cooking to beautiful flowers, gardening connects me with nature and provides a peaceful escape from the digital world.",
+      image: require("./assets/lottie/gardening.json"),
+      footerLink: [
+        {
+          name: "Garden Gallery",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "🍝 Italian Cooking & Culinary Adventures",
+      subtitle:
+        "Born and raised in Italy, I have a deep passion for traditional Italian cuisine. I love making fresh pasta, risotto, and exploring regional specialties. I also enjoy discovering international flavors and fusion cooking techniques.",
+      image: require("./assets/lottie/cooking.json"),
+      footerLink: [
+        {
+          name: "My Recipes",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "💪 Fitness & Gym Workouts",
+      subtitle:
+        "Staying physically active is essential for my well-being. I enjoy strength training, cardio workouts, and functional fitness. The gym is my place to challenge myself, build discipline, and maintain a healthy work-life balance.",
+      image: require("./assets/lottie/fitness.json"),
+      footerLink: [
+        {
+          name: "Workout Tips",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "🎿 Skiing Adventures",
+      subtitle:
+        "Living in Switzerland has introduced me to the exhilarating world of skiing. As a newbie on the slopes, I'm constantly learning and improving my technique while enjoying the breathtaking Alpine scenery.",
+      image: require("./assets/lottie/skiing.json"),
+      footerLink: [
+        {
+          name: "Ski Adventures",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "🏎️ Motors & Automotive Passion",
+      subtitle:
+        "I have a deep fascination with both cars and motorcycles. From appreciating Italian automotive engineering to understanding the mechanics and enjoying weekend rides, motors represent freedom, precision, and Italian craftsmanship.",
+      image: require("./assets/lottie/motors.json"),
+      footerLink: [
+        {
+          name: "Motor Collection",
+          url: "#",
+        },
+      ],
+    },
   ],
-  display: false, // Set false to hide this section, defaults to true
+  display: true,
 };
 
 const certifications: Certifications = {
@@ -596,7 +649,7 @@ const patentsHeader: PatentsHeader = {
   title: "Patents",
   description: "Patented and patent pending inventions*",
   caption:
-    "*Automatically synchronized with the US Patent Office by means of USPTO Open Data Portal APIs.",
+    "*Showing live results from the US Patent Office by means of the USPTO Open Data Portal APIs.",
   avatar_image_path: "projects_image.svg",
 };
 
