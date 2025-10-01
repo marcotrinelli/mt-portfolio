@@ -230,16 +230,16 @@ const workExperiences: WorkExperiences = {
       location: "San Jose (CA) – Lausanne (CH)",
       companylogo: CiscoLogo,
       date: "May 2019 – Present",
-      desc: "As a Full-Stack, DevOps, and IT engineer in the Outshift organization, I drive innovative projects in Generative AI and Edge Computing, leading key initiatives and securing Intellectual Property through patents",
+      desc: "As a Full-Stack, DevOps, and IT engineer in the Outshift organization, I drive innovative projects in Generative AI and Cloud/Edge Computing, leading key initiatives and securing Intellectual Property through patents",
       descBullets: [
         {
-          desc: "Responsible for leading projects while collaborating with other teams (UX, Product)",
+          desc: "Responsible for different project components, from User Interface to Backend and GenAI-powered solutions, serving as team motivator and unblocking technical challenges while collaborating cross-functionally with UX and Product teams",
         },
         {
-          desc: "Pioneered a Generative AI-based project leveraging LLM Agents for automated Root Cause Analysis and online retrieval, laying the foundation for a new venture in Outshift – Python, LangChain",
+          desc: "Pioneered a Generative AI-based solution leveraging LLM Agents for automated Root Cause Analysis and online retrieval, laying the foundation for a new venture in Outshift – Python, React/TypeScript, LangChain",
         },
         {
-          desc: "Designed, implemented and deployed microservices at the cloud/edge - Go, React/TS, Docker, K8s, Jenkins, ArgoCD",
+          desc: "Designed, implemented and deployed microservices at the cloud – Go, React, Docker, K8s, Jenkins, ArgoCD",
         },
         {
           desc: "Setting up and maintaining Corporate Lab (DMZ, vSphere/ESXi, Routing and Switching)",
@@ -254,6 +254,9 @@ const workExperiences: WorkExperiences = {
       date: "July 2018 – Jan. 2019",
       desc: "At Bell Labs, I designed, implemented and validated a modular, transparent and programmable network framework that allows legacy hardware to run AR/VR services at the Edge infrastructure using Machine Learning techniques",
       descBullets: [
+        {
+          desc: `Developed new components (SOCKS 5 proxy, ffmpeg-based Video Encoder/Decoder), boosting performance by 20x in FPS compared to existing technologies – C++`
+        },
         {
           desc: "Publication: Transparent AR Processing Acceleration at the Edge, Marco Trinelli et al., EdgeSys ’19",
           url: "https://dl.acm.org/doi/10.1145/3301418.3313942",
