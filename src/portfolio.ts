@@ -298,7 +298,7 @@ const bigProjects: BigProjects = {
       ],
     },
     {
-      image: require("./assets/patents/12368768.png"),
+      image: "",
       projectName: "US Patent 12,368,768",
       projectDesc:
         "High Scalability and End-to-End Consistency for Web Applications in Distributed Environments",
