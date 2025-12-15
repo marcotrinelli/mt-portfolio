@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Marco Trinelli - Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive portfolio website built with React and TypeScript, showcasing professional experience, projects, skills, education, and hobbies.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Responsive Design**: Fully responsive layout that works seamlessly across all devices
+- **Dark/Light Mode**: Toggle between dark and light themes with persistent user preferences
+- **Interactive Animations**: Engaging Lottie animations throughout the site
+- **Dynamic Sections**:
+  - Professional work experience
+  - Education and certifications
+  - Technical skills with software proficiency
+  - Project showcases with GitHub integration
+  - Blog posts and publications
+  - Patents portfolio
+  - Personal hobbies with animated cards
+  - Contact form with Formspree integration
+- **SEO Optimized**: Includes meta tags and structured data for better search engine visibility
+- **Type-Safe**: Built with TypeScript for enhanced code quality and maintainability
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v14 or higher)
+- npm or yarn
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+```bash
+git clone https://github.com/marcotrinelli/mt-portfolio.git
+cd mt-portfolio
+```
 
-### `npm run build`
+2. Install dependencies:
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Create environment configuration (if needed):
+```bash
+cp env.example .env
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run the development server:
+```bash
+npm start
+```
 
-### `npm run eject`
+The app will open at [http://localhost:3000](http://localhost:3000) with hot-reload enabled.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Building for Production
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create an optimized production build:
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The build artifacts will be stored in the `build/` directory.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deployment
 
-## Learn More
+Deploy to GitHub Pages:
+```bash
+npm run deploy
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This will build the project and push it to the `gh-pages` branch.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tech Stack
 
-### Code Splitting
+- **Framework**: React 17
+- **Language**: TypeScript
+- **Styling**: SCSS + Styled Components
+- **Animations**: Lottie Web
+- **Routing**: React Router v6
+- **Forms**: Formspree React
+- **Icons**: React Icons
+- **Build Tool**: Create React App
+- **Deployment**: GitHub Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Project Structure
 
-### Analyzing the Bundle Size
+```
+src/
+├── components/     # Reusable UI components
+├── containers/     # Page-level container components
+├── contexts/       # React context providers
+├── hooks/          # Custom React hooks
+├── pages/          # Route pages
+├── theme/          # Theme configuration and styling
+├── types/          # TypeScript type definitions
+├── utils/          # Utility functions
+└── assets/         # Static assets (images, fonts, animations)
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Testing
 
-### Making a Progressive Web App
+Run the test suite:
+```bash
+npm test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Customization
 
-### Advanced Configuration
+1. Update portfolio data in `src/portfolio.ts`
+2. Modify theme colors in `src/_globalColor.scss` and `src/theme/Themes.ts`
+3. Replace assets in `src/assets/` with your own images and animations
+4. Configure personal information and social links in the portfolio configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Scripts
 
-### Deployment
+- `npm start` - Start development server
+- `npm build` - Create production build
+- `npm test` - Run tests
+- `npm run deploy` - Deploy to GitHub Pages
+- `npm run format` - Format code with Prettier
+- `npm run check-format` - Check code formatting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
