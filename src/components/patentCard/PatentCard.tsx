@@ -136,11 +136,22 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
               <span
                 className="patent-status-badge"
                 style={{
-                  backgroundColor: "#9C27B0", // Purple color for continuation
+                  backgroundColor: "#9C27B0",
                   color: "#fff",
                 }}
               >
                 Continuation
+              </span>
+            )}
+            {patent.applicationType === "Provisional" && (
+              <span
+                className="patent-status-badge"
+                style={{
+                  backgroundColor: "#808080ff",
+                  color: "#fff",
+                }}
+              >
+                Provisional
               </span>
             )}
           </div>
@@ -235,6 +246,19 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
               </span>
               <span className="date-value" style={{ color: theme.text }}>
                 {formatDate(patent.grantDate)}
+              </span>
+            </div>
+          )}
+          {patent.publicationDate && (
+            <div className="patent-date-item">
+              <span
+                className="date-label"
+                style={{ color: theme.secondaryText }}
+              >
+                Published:
+              </span>
+              <span className="date-value" style={{ color: theme.text }}>
+                {formatDate(patent.publicationDate)}
               </span>
             </div>
           )}

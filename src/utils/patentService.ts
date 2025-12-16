@@ -31,6 +31,8 @@ export interface Patent {
   isIssued: boolean;
   isPending: boolean;
   isContinuation?: boolean;
+  applicationType?: string;
+  publicationDate?: string;
 }
 
 export interface PatentApiResponse {
