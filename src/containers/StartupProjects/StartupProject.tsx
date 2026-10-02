@@ -5,6 +5,7 @@ import { Fade } from "react-awesome-reveal";
 import Button from "../../components/button/Button";
 import { useTheme } from "styled-components";
 import NoTranslate from "../../components/notranslate/notranslate";
+import ReactGA from "react-ga4";
 
 export default function StartupProject(): JSX.Element | null {
   const theme = useTheme();
@@ -71,7 +72,14 @@ export default function StartupProject(): JSX.Element | null {
                               key={i}
                               className={"project-tag"}
                               style={{ color: theme.text }}
-                              onClick={() => openUrlInNewTab(link.url)}
+                              onClick={() => {
+                                ReactGA.event("project_click", {
+                                  project_name: project.projectName,
+                                  link_text: link.name,
+                                  link_url: link.url,
+                                });
+                                openUrlInNewTab(link.url);
+                              }}
                             >
                               {link.name}
                             </span>

@@ -71,6 +71,18 @@ npm run deploy
 
 This will build the project and push it to the `gh-pages` branch.
 
+## Analytics
+
+Google Analytics 4 is wired through [`react-ga4`](https://github.com/codler/react-ga4), initialized in `src/index.tsx`. Hits are sent only from production builds (`NODE_ENV=production`, i.e. `npm run build` / `npm run deploy`); `npm start` and tests run it in `testMode` and send nothing. Page views are sent per route by `PageViewTracker` in `src/containers/Main.tsx` (with `page_location` built from the hash route, e.g. `/education`). Custom events, sent via `ReactGA.event`:
+
+| Event | Parameters | Source |
+| --- | --- | --- |
+| `page_view` | `page_location`, `page_title` | Route change |
+| `social_click` | `social_network`, `link_url` | `SocialMedia` icons |
+| `patent_click` | `patent_number`, `patent_title`, `link_url` | "View PDF" on `PatentCard` |
+| `project_click` | `project_name`, `link_text`, `link_url` | Project/patent links on Home |
+| `generate_lead` | `form_name` | Contact form submitted successfully |
+
 ## Tech Stack
 
 - **Framework**: React 17

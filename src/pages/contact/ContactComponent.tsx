@@ -14,6 +14,7 @@ import { greeting, contactPageData } from "../../portfolio";
 import { useTheme } from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
+import ReactGA from "react-ga4";
 
 const ContactData = contactPageData.contactSection;
 
@@ -26,6 +27,12 @@ function ContactForm() {
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [captchaToken, setCaptchaToken] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (state.succeeded) {
+      ReactGA.event("generate_lead", { form_name: "contact" });
+    }
+  }, [state.succeeded]);
 
   const onChange = (token: string | null) => {
     setCaptchaToken(token);

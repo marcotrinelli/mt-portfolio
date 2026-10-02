@@ -4,6 +4,7 @@ import { Theme } from "../../theme/Themes";
 import { Patent } from "../../utils/patentService";
 import { Flippy, FrontSide, BackSide } from "../flippyCard";
 import { Modal } from "react-bootstrap";
+import ReactGA from "react-ga4";
 
 // Patent card props
 export interface PatentCardProps {
@@ -62,6 +63,11 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
 
   const handleViewDetails = (): void => {
     if (patent.detailsUrl && patent.detailsUrl !== "#") {
+      ReactGA.event("patent_click", {
+        patent_number: patent.patentNumber ?? patent.applicationNumber,
+        patent_title: patent.title,
+        link_url: patent.detailsUrl,
+      });
       window.open(patent.detailsUrl, "_blank", "noopener,noreferrer");
     }
   };
