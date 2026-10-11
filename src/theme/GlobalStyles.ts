@@ -28,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     font: 19px / 23px "Google Sans Regular", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: all 0.50s linear;
+    /* Only the theme colours: with "all", the dev server's late CSS animates the default 8px margin away, so a refresh restores the scroll 8px low */
+    transition: background-color 0.5s linear, color 0.5s linear;
   }
 `

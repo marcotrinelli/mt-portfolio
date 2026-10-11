@@ -1,8 +1,16 @@
+// Fades in late, so a quick route load swaps pages without a spinner flash
 .sk-circle {
   margin: 100px auto;
   width: 40px;
   height: 40px;
   position: relative;
+  animation: loading-in 0.2s ease-out 0.3s both;
+}
+
+@keyframes loading-in {
+  from {
+    opacity: 0;
+  }
 }
 .sk-circle .sk-child {
   width: 100%;

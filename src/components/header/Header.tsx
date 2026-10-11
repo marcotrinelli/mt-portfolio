@@ -1,9 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useLayoutEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import Headroom from "react-headroom";
 import { greeting } from "../../portfolio";
 import NoTranslate from "../notranslate/notranslate";
-import SeoHeader from "../seoHeader/SeoHeader";
 import "./Header.scss";
 
 const MENU_ITEMS = [
@@ -24,13 +23,46 @@ function handleClickLink(): void {
   }
 }
 
-interface HeaderProps {
-  pageTitle?: string;
+// One dot under the menu that slides to the current page, instead of one per link
+function useActiveIndicator(menuRef: React.RefObject<HTMLUListElement>) {
+  const { pathname } = useLocation();
+  const [x, setX] = useState<number | null>(null);
+
+  useLayoutEffect(() => {
+    const menu = menuRef.current;
+    if (!menu) {
+      return;
+    }
+    const place = () => {
+      const active = menu.querySelector<HTMLElement>("a.active");
+      if (!active) {
+        setX(null);
+        return;
+      }
+      const link = active.getBoundingClientRect();
+      setX(link.left - menu.getBoundingClientRect().left + link.width / 2);
+    };
+    place();
+    // Link widths change once Google Sans loads
+    const observer = new ResizeObserver(place);
+    observer.observe(menu);
+    return () => observer.disconnect();
+  }, [menuRef, pathname]);
+
+  // The dot only exists with a current page, so it appears in place instead of sliding in
+  return x === null
+    ? { className: "menu" }
+    : {
+        className: "menu menu-has-indicator",
+        style: { "--indicator-x": `${x}px` } as React.CSSProperties,
+      };
 }
 
-const Header: React.FC<HeaderProps> = ({ pageTitle }) => (
-  <>
-    <SeoHeader pageTitle={pageTitle} />
+const Header: React.FC = () => {
+  const menuRef = useRef<HTMLUListElement>(null);
+  const indicator = useActiveIndicator(menuRef);
+
+  return (
     <Headroom style={{ zIndex: HEADER_Z_INDEX }}>
       <NoTranslate>
         <header className="header">
@@ -49,7 +81,11 @@ const Header: React.FC<HeaderProps> = ({ pageTitle }) => (
             <label className="menu-icon" htmlFor="menu-btn">
               <span className="navicon" />
             </label>
-            <ul className="menu">
+            <ul
+              ref={menuRef}
+              className={indicator.className}
+              style={indicator.style}
+            >
               {MENU_ITEMS.map((item) => (
                 <li key={item.path}>
                   <NavLink to={item.path} onClick={handleClickLink}>
@@ -62,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({ pageTitle }) => (
         </header>
       </NoTranslate>
     </Headroom>
-  </>
-);
+  );
+};
 
 export default Header;

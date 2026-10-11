@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
-import Header from "../../components/header/Header";
+import SeoHeader from "../../components/seoHeader/SeoHeader";
 import Footer from "../../components/footer/Footer";
 import PageHero from "../../components/pageHero/PageHero";
 import FormButton from "../../components/button/FormButton";
@@ -143,7 +143,7 @@ export default function ContactComponent(): JSX.Element {
 
   return (
     <div>
-      <Header pageTitle={contactPageData.title} />
+      <SeoHeader pageTitle={contactPageData.title} />
       <PageHero
         eyebrow={contactPageData.title}
         title={contactPageData.headline}

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useLocation } from "react-router";
 
 interface GoToTopProps {
@@ -7,7 +7,8 @@ interface GoToTopProps {
 
 const GoToTop: React.FC<GoToTopProps> = ({ children }) => {
   const location = useLocation();
-  useEffect(() => {
+  useLayoutEffect(() => {
+    // Before paint, so the new page never shows a frame at the old scroll position
     // Instant, or the root's smooth scroll-behavior animates every page change up from the old position
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location]);

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/header/Header";
+import SeoHeader from "../../components/seoHeader/SeoHeader";
 import Footer from "../../components/footer/Footer";
 import PageHero from "../../components/pageHero/PageHero";
 import Button from "../../components/button/Button";
@@ -14,7 +14,7 @@ export default function Error({
 }: RouteConfig): JSX.Element {
   return (
     <div className="error-page">
-      <Header pageTitle="Page not found" />
+      <SeoHeader pageTitle="Page not found" />
       <PageHero
         eyebrow={`Error ${code}`}
         title={title}

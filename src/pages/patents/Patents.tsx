@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import Header from "../../components/header/Header";
+import SeoHeader from "../../components/seoHeader/SeoHeader";
 import Footer from "../../components/footer/Footer";
 import PageHero from "../../components/pageHero/PageHero";
 import PatentCard from "../../components/patentCard/PatentCard";
@@ -214,7 +214,7 @@ const Patents: React.FC = () => {
 
   return (
     <div>
-      <Header pageTitle={patentsHeader.title} />
+      <SeoHeader pageTitle={patentsHeader.title} />
       <PageHero
         eyebrow={patentsHeader.title}
         title={patentsHeader.headline}

@@ -58,6 +58,7 @@
 /* Menu */
 
 .menu {
+  position: relative;
   display: flex;
   gap: 0.25rem;
   margin: 0;
@@ -89,20 +90,23 @@
     &.active {
       color: var(--color-text);
     }
-
-    // Accent dot under the current page
-    &.active::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0.1rem;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: linear-gradient(var(--color-accent-1), var(--color-accent-2));
-      transform: translateX(-50%);
-    }
   }
+}
+
+// Accent dot under the current page, slid there from the last one (x set from Header.tsx)
+.menu-has-indicator::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.1rem;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: linear-gradient(var(--color-accent-1), var(--color-accent-2));
+  transform: translateX(var(--indicator-x));
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
 }
 
 /* Phone menu, toggled by the checkbox */
@@ -181,11 +185,11 @@
       &:hover {
         background: none;
       }
-
-      &.active::after {
-        display: none;
-      }
     }
+  }
+
+  .menu-has-indicator::after {
+    display: none;
   }
 
   .menu-btn:checked ~ .menu {
@@ -203,6 +207,7 @@
 @media (prefers-reduced-motion: reduce) {
   .menu,
   .menu a,
+  .menu-has-indicator::after,
   .navicon,
   .navicon::before,
   .navicon::after {

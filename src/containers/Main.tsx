@@ -6,18 +6,24 @@ import {
   HashRouter,
   useLocation,
 } from "react-router-dom";
+import Header from "../components/header/Header";
 import Home from "../pages/home/HomeComponent";
 import Error from "../pages/error/Error";
 import GoToTop from "../components/goToTop/goToTop";
 import Loading from "./loading/Loading";
 import ReactGA from "react-ga4";
 
-// Split per route so the home page does not ship reCAPTCHA, Formspree and Bootstrap
+// Split per route so the home page does not ship reCAPTCHA, Formspree and Bootstrap;
+// prefetched once the browser is idle, so the first visit doesn't wait on the network
 const ContactComponent = lazy(
-  () => import("../pages/contact/ContactComponent")
+  () => import(/* webpackPrefetch: true */ "../pages/contact/ContactComponent")
 );
-const AboutComponent = lazy(() => import("../pages/about/AboutComponent"));
-const Patents = lazy(() => import("../pages/patents/Patents"));
+const AboutComponent = lazy(
+  () => import(/* webpackPrefetch: true */ "../pages/about/AboutComponent")
+);
+const Patents = lazy(
+  () => import(/* webpackPrefetch: true */ "../pages/patents/Patents")
+);
 
 export interface RouteConfig {
   code: string;
@@ -59,6 +65,8 @@ export default function Main(): JSX.Element {
     <>
       <HashRouter>
         <PageViewTracker />
+        {/* Outside the routes and Suspense, so the bar stays put while pages swap and load */}
+        <Header />
         <GoToTop>
           <Suspense fallback={<Loading />}>
             <Routes>

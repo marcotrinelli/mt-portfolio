@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactGA from "react-ga4";
 
-import Header from "../../components/header/Header";
+import SeoHeader from "../../components/seoHeader/SeoHeader";
 import Button from "../../components/button/Button";
 import PageHero from "../../components/pageHero/PageHero";
 import Portrait from "../../components/portrait/Portrait";
@@ -53,7 +53,7 @@ const Hobbies = (): JSX.Element => {
 const AboutComponent = (): JSX.Element => {
   return (
     <div>
-      <Header pageTitle={aboutHeader.title} />
+      <SeoHeader pageTitle={aboutHeader.title} />
       <PageHero
         eyebrow={aboutHeader.title}
         title={aboutHeader.headline}
