@@ -1,0 +1,81 @@
+.page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  width: min(1100px, 90%);
+  margin: clamp(2.5rem, 8vh, 5rem) auto 0;
+}
+
+// The media column takes its own width (portrait size, form width)
+.page-hero-split {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+// The copy starts at the same height on every page, even beside taller media (the contact form)
+.page-hero-copy {
+  align-self: start;
+}
+
+.page-hero-copy > :last-child {
+  margin-bottom: 0;
+}
+
+// The eyebrow sits tight under the title and leaves the title's gap before the lede
+.page-hero-eyebrow-below {
+  .page-title {
+    margin-bottom: 1rem;
+  }
+
+  .page-eyebrow {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// Staggered entrance on load
+.page-hero-copy > *,
+.page-hero-media {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.page-hero-copy > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.page-hero-copy > :nth-child(3),
+.page-hero-media {
+  animation-delay: 0.16s;
+}
+
+.page-hero-copy > :nth-child(n + 4) {
+  animation-delay: 0.24s;
+}
+
+@media (max-width: 768px) {
+  .page-hero-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-hero {
+    justify-items: center;
+    gap: 1.75rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  // Full column width, so wide media (the contact form) shrinks to the phone instead of overflowing it
+  .page-hero-media {
+    justify-self: stretch;
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .page-hero-media-first .page-hero-media {
+    order: -1;
+  }
+
+  .page-hero .page-lede {
+    margin-inline: auto;
+  }
+}

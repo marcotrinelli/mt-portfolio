@@ -1,13 +1,12 @@
 # Marco Trinelli - Portfolio
 
-Personal portfolio website showcasing professional experience, projects, patents, skills, education, and hobbies.
+Personal portfolio website: who I am, selected work, my journey, patents and a contact form.
 
 ## Features
 
 - Responsive layout for desktop and mobile
-- Dark/light mode
-- Lottie animations
-- Sections for experience, education, skills, projects, blogs, patents, and hobbies
+- Dark/light mode (follows the OS setting until toggled)
+- Pages: home (skills and projects), about (journey and hobbies), patents and contact
 - Contact form
 
 ## Getting Started
@@ -19,12 +18,20 @@ npm run build    # production build
 npm run deploy   # deploy to GitHub Pages
 ```
 
+## Content
+
+All copy lives in `src/portfolio.ts`.
+
+- **Projects**: `projectSections` renders in order on the home page. Add a section (e.g. "Open source", "Early work") or a project there; `year` and `tags` are optional.
+- **Patents**: the patents page reads live from `api.marcotrinelli.com` and falls back to `src/data/patents.json`, which also feeds the home page counts. Refresh it with `npm run fetch-patents` when a patent issues or a new application publishes.
+- **CV**: put the PDF in `public/` and set `greeting.resumeLink` (e.g. `"./cv.pdf"`) to show the Download CV button on the About page.
+
 ## Tech Stack
 
 - **Framework**: React 17
 - **Language**: TypeScript
 - **Styling**: SCSS + Styled Components
-- **Animations**: Lottie Web
+- **Carousel**: Embla Carousel
 - **Routing**: React Router v6
 - **Forms**: Formspree React
 - **Icons**: React Icons

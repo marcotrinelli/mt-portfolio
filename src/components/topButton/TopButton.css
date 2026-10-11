@@ -1,19 +1,52 @@
-#topButton {
-  visibility: hidden;
+/* Round control paired with the theme toggle: surface fill, rule border */
+.top-button {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
-  cursor: pointer;
-  padding: 15px;
-  outline: none;
-  border-radius: 10px;
+  right: calc(15px + env(safe-area-inset-right, 0px));
+  bottom: calc(15px + env(safe-area-inset-bottom, 0px));
   z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-rule);
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  box-shadow: 0 8px 24px -12px var(--color-shadow);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s,
+    border-color 0.2s ease;
+}
+
+.top-button.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.top-button:hover,
+.top-button:focus-visible {
+  border-color: var(--color-text);
+}
+
+.top-button.is-visible:hover {
+  transform: translateY(-2px);
+}
+
+.top-button:focus-visible {
+  outline: 2px solid var(--color-accent-1);
+  outline-offset: 3px;
 }
 
 @media (max-width: 768px) {
-  #topButton {
-    bottom: 20px;
-    right: 20px;
-    padding: 12px;
+  .top-button {
+    width: 40px;
+    height: 40px;
   }
 }

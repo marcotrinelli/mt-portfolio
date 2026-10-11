@@ -1,45 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./PatentCard.css";
-import { Theme } from "../../theme/Themes";
-import { Patent } from "../../utils/patentService";
-import { Flippy, FrontSide, BackSide } from "../flippyCard";
-import { Modal } from "react-bootstrap";
+import { PatentEntry } from "../../utils/patentService";
 import ReactGA from "react-ga4";
+import { FaArrowRight } from "react-icons/fa6";
 
 // Patent card props
 export interface PatentCardProps {
-  patent: Patent;
-  theme: Theme;
-  className?: string;
+  entry: PatentEntry;
 }
 
-const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
-  const [hasPlaqueImage, setHasPlaqueImage] = useState<boolean>(false);
-  const [isFlipped, setIsFlipped] = useState<boolean>(false);
-  const [showImageModal, setShowImageModal] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (patent.patentNumber) {
-      // Check if plaque image exists for this patent
-      const img = new Image();
-      img.onload = () => setHasPlaqueImage(true);
-      img.onerror = () => setHasPlaqueImage(false);
-      // Use import.meta.url or require context for bundled assets
-      // try {
-      //   img.src = require(`../../assets/patents/${patent.patentNumber}.png`);
-      // } catch (error) {
-      //   setHasPlaqueImage(false);
-      // }
-    }
-  }, [patent.patentNumber]);
+const PatentCard: React.FC<PatentCardProps> = ({ entry }) => {
+  const { primary: patent, provisionals, title } = entry;
 
   const formatDate = (dateString?: string): string => {
     if (!dateString) return "N/A";
     try {
+      // Dates come as "YYYY-MM-DD", which parses as UTC midnight (so it's
+      // formatted in UTC, or visitors west of UTC see the day before)
       return new Date(dateString).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
+        timeZone: "UTC",
       });
     } catch (error) {
       return dateString;
@@ -51,7 +33,7 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
     isPending?: boolean
   ): string => {
     if (isIssued) return "#4CAF50"; // Green for issued
-    if (isPending) return "#FF9800"; // Orange for pending
+    if (isPending) return "#78909C"; // Blue-grey for pending
     return "#757575"; // Gray for unknown
   };
 
@@ -62,324 +44,137 @@ const PatentCard: React.FC<PatentCardProps> = ({ patent, theme }) => {
   };
 
   const handleViewDetails = (): void => {
-    if (patent.detailsUrl && patent.detailsUrl !== "#") {
-      ReactGA.event("patent_click", {
-        patent_number: patent.patentNumber ?? patent.applicationNumber,
-        patent_title: patent.title,
-        link_url: patent.detailsUrl,
-      });
-      window.open(patent.detailsUrl, "_blank", "noopener,noreferrer");
-    }
+    ReactGA.event("patent_click", {
+      patent_number: patent.patentNumber ?? patent.applicationNumber,
+      patent_title: patent.title,
+      link_url: patent.detailsUrl,
+    });
   };
-
-  const handleFlipToggle = (): void => {
-    setIsFlipped(!isFlipped);
-  };
-
-  const handleImageZoom = (): void => {
-    setShowImageModal(true);
-  };
-
-  const handleCloseImageModal = (): void => {
-    setShowImageModal(false);
-  };
-
-  // FontAwesome icons for the flip button
-  const PlaqueIcon = () => (
-    <i className="fas fa-turn-up fa-rotate-90" style={{ fontSize: "18px" }}></i>
-  );
-
-  const DetailsIcon = () => (
-    <i
-      className="fas fa-turn-down fa-rotate-90"
-      style={{ fontSize: "18px" }}
-    ></i>
-  );
 
   // 12368768 to 12,368,768
   const formatPatentNumber = (number: string): string => {
     return number.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  // 19221048 to 19/221,408
-  const formatApplicationNumber = (number: string): string => {
-    const match = number.match(/^(\d{2})(\d{3})(\d{3})$/);
-    return match ? `${match[1]}/${match[2]},${match[3]}` : number;
-  };
-
   // 20250294072 to 2025/0294072 (or whatever after date/*)
   const formatPublicationNumber = (number: string): string => {
-    // const match = number.match(/^(\d{4})(\d{3})(\d{4})$/);// no, this assumes only 7 digits after year, could be more
     const match = number.match(/^(\d{4})(\d+)/);
     return match ? `${match[1]}/${match[2]}` : number;
   };
 
-  // Shared patent card content component
-  const PatentCardContent = () => (
-    <div
-      className="patent-card"
-      style={{
-        backgroundColor: theme.paperbg,
-        border: `1px solid ${theme.isDark ? theme.boxShadowColor : "#e0e0e0"}`,
-      }}
-    >
-      <div className="patent-card-header">
-        <div className="patent-status-container">
-          <div className="patent-badges-row">
-            <span
-              className="patent-status-badge"
-              style={{
-                backgroundColor: getStatusBadgeColor(
-                  patent.isIssued,
-                  patent.isPending
-                ),
-                color: "#fff",
-              }}
-            >
-              {getStatusText(patent)}
-            </span>
-            {patent.isContinuation && (
-              <span
-                className="patent-status-badge"
-                style={{
-                  backgroundColor: "#9C27B0",
-                  color: "#fff",
-                }}
-              >
-                Continuation
-              </span>
-            )}
-            {patent.applicationType === "Provisional" && (
-              <span
-                className="patent-status-badge"
-                style={{
-                  backgroundColor: "#808080ff",
-                  color: "#fff",
-                }}
-              >
-                Provisional
-              </span>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="patent-card-body">
-        <h3 className="patent-title" style={{ color: theme.text }}>
-          {patent.title}
-        </h3>
+  const inventorNames = (patent.inventors ?? [])
+    .map((inv) => {
+      // Use inventorNameText if available, otherwise construct from firstName/lastName
+      if (inv.inventorNameText) {
+        return inv.inventorNameText;
+      } else if (inv.firstName || inv.lastName) {
+        return `${inv.firstName || ""} ${inv.lastName || ""}`.trim();
+      }
+      return "Unknown Inventor";
+    })
+    .join(", ");
 
-        {(patent.patentNumber || patent.applicationNumber) && (
-          <div
-            className="patent-number-subtitle"
-            style={{ color: theme.secondaryText }}
-          >
-            {patent.patentNumber
-              ? `(US Patent ${formatPatentNumber(patent.patentNumber)})`
-              : patent.publicationNumber
-              ? `(Pub. No. ${formatPublicationNumber(
-                  patent.publicationNumber
-                )})`
-              : null}
-          </div>
-        )}
+  const applicantName = (() => {
+    const applicant = patent.applicants?.[0];
+    if (!applicant) {
+      return "";
+    }
+    if (applicant.applicantNameText) {
+      return applicant.applicantNameText;
+    } else if (applicant.firstName || applicant.lastName) {
+      return `${applicant.firstName || ""} ${applicant.lastName || ""}`.trim();
+    }
+    return "Unknown Applicant";
+  })();
 
-        {patent.inventors && patent.inventors.length > 0 && (
-          <div className="patent-inventors">
-            <span
-              className="inventors-label"
-              style={{ color: theme.secondaryText }}
-            >
-              Inventors:
-            </span>
-            <span className="inventors-list" style={{ color: theme.text }}>
-              {patent.inventors
-                .map((inv) => {
-                  // Use inventorNameText if available, otherwise construct from firstName/lastName
-                  if (inv.inventorNameText) {
-                    return inv.inventorNameText;
-                  } else if (inv.firstName || inv.lastName) {
-                    return `${inv.firstName || ""} ${
-                      inv.lastName || ""
-                    }`.trim();
-                  }
-                  return "Unknown Inventor";
-                })
-                .join(", ")}
-            </span>
-          </div>
-        )}
+  const number = patent.patentNumber
+    ? `US Patent ${formatPatentNumber(patent.patentNumber)}`
+    : patent.publicationNumber
+    ? `Pub. No. ${formatPublicationNumber(patent.publicationNumber)}`
+    : null;
 
-        {patent.applicants && patent.applicants.length > 0 && (
-          <div className="patent-applicant">
-            <span
-              className="applicant-label"
-              style={{ color: theme.secondaryText }}
-            >
-              Applicant:
-            </span>
-            <span className="applicant-name" style={{ color: theme.text }}>
-              {(() => {
-                const applicant = patent.applicants[0];
-                if (applicant.applicantNameText) {
-                  return applicant.applicantNameText;
-                } else if (applicant.firstName || applicant.lastName) {
-                  return `${applicant.firstName || ""} ${
-                    applicant.lastName || ""
-                  }`.trim();
-                }
-                return "Unknown Applicant";
-              })()}
-            </span>
-          </div>
-        )}
-
-        <div className="patent-dates">
-          <div className="patent-date-item">
-            <span className="date-label" style={{ color: theme.secondaryText }}>
-              Filed:
-            </span>
-            <span className="date-value" style={{ color: theme.text }}>
-              {formatDate(patent.filingDate)}
-            </span>
-          </div>
-          {patent.grantDate && (
-            <div className="patent-date-item">
-              <span
-                className="date-label"
-                style={{ color: theme.secondaryText }}
-              >
-                Issued:
-              </span>
-              <span className="date-value" style={{ color: theme.text }}>
-                {formatDate(patent.grantDate)}
-              </span>
-            </div>
-          )}
-          {patent.publicationDate && (
-            <div className="patent-date-item">
-              <span
-                className="date-label"
-                style={{ color: theme.secondaryText }}
-              >
-                Published:
-              </span>
-              <span className="date-value" style={{ color: theme.text }}>
-                {formatDate(patent.publicationDate)}
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="patent-card-footer">
-        <div className="patent-actions">
-          {patent.detailsUrl && patent.detailsUrl !== "#" && (
-            <button
-              className="patent-action-button"
-              onClick={handleViewDetails}
-              style={{
-                backgroundColor: theme.isDark ? theme.bodyDarker : "#f0f0f0",
-                color: theme.text,
-                border: `1px solid ${theme.highlight}`,
-              }}
-            >
-              View PDF
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  const dates = [
+    { label: "Filed", value: patent.filingDate },
+    { label: "Issued", value: patent.grantDate },
+    { label: "Published", value: patent.publicationDate },
+  ].filter((d) => d.value);
 
   return (
     <div className="patent-card-container">
-      {hasPlaqueImage && patent.patentNumber ? (
-        <div style={{ position: "relative" }}>
-          <Flippy
-            flipOnClick={false} // Disable click on card itself
-            flipDirection="horizontal"
-            style={{ width: "100%", height: "100%" }}
-            isFlipped={isFlipped}
+      <div className="patent-card surface-card">
+        <div className="patent-badges-row">
+          <span
+            className="patent-status-badge"
+            style={{
+              backgroundColor: getStatusBadgeColor(
+                patent.isIssued,
+                patent.isPending
+              ),
+            }}
           >
-            <FrontSide>
-              <PatentCardContent />
-            </FrontSide>
-
-            <BackSide>
-              <div
-                className="patent-card patent-plaque-side"
-                style={{
-                  backgroundColor: theme.paperbg,
-                  border: `1px solid ${
-                    theme.isDark ? theme.boxShadowColor : "#e0e0e0"
-                  }`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "100%",
-                  padding: "20px",
-                }}
-              >
-                <img
-                  src={require(`../../assets/patents/${patent.patentNumber}.png`)}
-                  alt={`Patent ${patent.patentNumber} Plaque`}
-                  className="patent-plaque-image"
-                  style={{
-                    maxWidth: "100%",
-                    maxHeight: "100%",
-                    objectFit: "contain",
-                  }}
-                  onClick={handleImageZoom}
-                  onError={(e) => {
-                    console.error(
-                      `Failed to load plaque image for patent ${patent.patentNumber}`
-                    );
-                  }}
-                />
-              </div>
-            </BackSide>
-          </Flippy>
-
-          {/* Flip button */}
-          <button
-            className="patent-card-flip-button"
-            onClick={handleFlipToggle}
-            title={isFlipped ? "View patent details" : "View patent plaque"}
-          >
-            {isFlipped ? <DetailsIcon /> : <PlaqueIcon />}
-          </button>
+            {getStatusText(patent)}
+          </span>
+          {patent.isContinuation && (
+            <span
+              className="patent-status-badge"
+              style={{ backgroundColor: "#9C27B0" }}
+            >
+              Continuation
+            </span>
+          )}
+          {patent.applicationType === "Provisional" && (
+            <span
+              className="patent-status-badge"
+              style={{ backgroundColor: "#808080" }}
+            >
+              Provisional
+            </span>
+          )}
         </div>
-      ) : (
-        // Regular card without flip functionality when plaque doesn't exist
-        <PatentCardContent />
-      )}
-
-      {/* Image Zoom Modal */}
-      {hasPlaqueImage && patent.patentNumber && (
-        <Modal
-          show={showImageModal}
-          onHide={handleCloseImageModal}
-          centered
-          size="xl"
-          className="patent-image-modal"
-          backdrop="static"
-        >
-          <Modal.Body>
-            <button
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-              onClick={handleCloseImageModal}
-            ></button>
-            <img
-              src={require(`../../assets/patents/${patent.patentNumber}.png`)}
-              alt={`Patent ${patent.patentNumber} Plaque - Enlarged View`}
-              style={{ cursor: "zoom-out" }}
-              onClick={handleCloseImageModal}
-            />
-          </Modal.Body>
-        </Modal>
-      )}
+        <div className="patent-card-body">
+          <h3 className="patent-title">{title}</h3>
+          {number && <p className="patent-number caps-label">{number}</p>}
+          {inventorNames && (
+            <div className="patent-field patent-inventors">
+              <span className="patent-field-label">Inventors</span>
+              <span className="patent-field-value">{inventorNames}</span>
+            </div>
+          )}
+          {applicantName && (
+            <div className="patent-field">
+              <span className="patent-field-label">Applicant</span>
+              <span className="patent-field-value">{applicantName}</span>
+            </div>
+          )}
+          {provisionals.map((filing) => (
+            <p key={filing.applicationNumber} className="patent-provisional">
+              Provisional application filed {formatDate(filing.filingDate)}
+            </p>
+          ))}
+          <dl className="patent-dates">
+            {dates.map(({ label, value }) => (
+              <div key={label} className="patent-date-item">
+                <dt>{label}</dt>
+                <dd>{formatDate(value)}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        {patent.detailsUrl && patent.detailsUrl !== "#" && (
+          <div className="patent-card-footer">
+            <a
+              className="text-link"
+              href={patent.detailsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleViewDetails}
+            >
+              View PDF
+              <FaArrowRight aria-hidden="true" />
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ declare module "react-helmet" {
 
   interface HelmetProps {
     children?: React.ReactNode;
+    defer?: boolean;
   }
 
   class Helmet extends Component<HelmetProps> {}

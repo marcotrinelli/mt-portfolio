@@ -1,10 +1,38 @@
-@import "../../_globalColor";
-
-.footer-text {
-  text-align: center;
+.footer {
+  margin-top: clamp(5rem, 13vh, 8.5rem);
+  border-top: 1px solid var(--color-rule);
 }
 
-.footer-div {
-  margin-top: 2rem;
-  padding-bottom: 1rem;
+// Same column as the page sections
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(1100px, 90%);
+  margin-inline: auto;
+  padding-block: 1.75rem;
+}
+
+.footer-text {
+  margin: 0;
+  font-family: "Google Sans Regular";
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+// Google Sans draws © as a superscript (272–732 of 1000 units); scale it to digit height and drop it onto the baseline
+.footer-copyright {
+  font-size: 1.4em;
+  line-height: 0;
+  vertical-align: -0.27em;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    // Room for the fixed theme and back-to-top buttons
+    padding-bottom: 5.5rem;
+  }
 }

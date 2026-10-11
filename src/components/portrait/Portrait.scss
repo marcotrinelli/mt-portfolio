@@ -1,0 +1,104 @@
+// Registered so the conic gradient angle can be animated
+@property --portrait-ring-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.portrait {
+  position: relative;
+  width: 300px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.2s ease-out;
+}
+
+@media (hover: hover) {
+  .portrait:hover {
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg))
+      rotateY(var(--tilt-y, 0deg)) scale(1.03);
+  }
+
+  .portrait:hover .portrait-frame::after {
+    opacity: 1;
+  }
+}
+
+.portrait-glow,
+.portrait-frame {
+  background: conic-gradient(
+    from var(--portrait-ring-angle),
+    var(--color-accent-1),
+    var(--color-accent-2),
+    var(--color-accent-3),
+    var(--color-accent-1)
+  );
+  animation: portrait-ring-spin 8s linear infinite;
+}
+
+.portrait-glow {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.55;
+}
+
+.portrait-frame {
+  position: relative;
+  height: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  // Glare follows the pointer, shown on hover only
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at var(--glare-x, 50%) var(--glare-y, 0%),
+      rgba(255, 255, 255, 0.3),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+}
+
+.portrait-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@keyframes portrait-ring-spin {
+  to {
+    --portrait-ring-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait,
+  .portrait:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .portrait {
+    width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portrait {
+    width: 168px;
+  }
+}

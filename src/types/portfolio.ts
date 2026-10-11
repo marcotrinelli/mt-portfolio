@@ -1,5 +1,5 @@
 // Type definitions for portfolio configuration
-import React from "react";
+import { IconType } from "react-icons";
 
 export interface SEO {
   title: string;
@@ -11,218 +11,142 @@ export interface SEO {
   };
 }
 
-export interface Illustration {
-  animated: boolean;
-}
-
 export interface Greeting {
   username: string;
-  title: string;
-  subTitle: string | React.ReactElement;
+  title: string; // the username follows it in the accent gradient
+  role: string;
+  pitch: string;
   resumeLink: string;
-  githubProfile: string;
-  displayGreeting: boolean;
+}
+
+// One proof point in the hero
+export interface HeroFact {
+  value: string;
+  label: string;
+}
+
+export interface ExternalLink {
+  name: string;
+  url: string;
 }
 
 export interface SocialMediaLink {
   name: string;
   link: string;
-  fontAwesomeIcon: string;
-  backgroundColor: string;
+  icon: IconType;
+}
+
+export interface Pillar {
+  title: string;
+  icon: IconType;
+  desc: string;
+}
+
+export interface SpokenLanguage {
+  name: string;
+  level: string;
 }
 
 export interface SkillsSection {
   title: string;
   subTitle: string;
-  skills: (string | React.ReactElement)[];
-  softwareSkills: SoftwareSkill[];
-  display: boolean;
-}
-
-export interface SoftwareSkill {
-  skillName: string;
-  fontAwesomeClassname: string;
-}
-
-export interface School {
-  schoolName: string;
-  logo: any; // For require() statements
-  subHeader: string;
-  duration: string;
-  desc: string;
-  descBullets?: string[];
-}
-
-export interface EducationInfo {
-  display: boolean;
-  title: string;
-  subtitle: string;
-  schools: School[];
-}
-
-export interface WorkExperience {
-  role: string;
-  company: string;
-  location: string;
-  companylogo: any; // For imported logos
-  date: string;
-  desc: string;
-  descBullets: DescBullet[];
-}
-
-export interface DescBullet {
-  desc: string;
-  url?: string;
-}
-
-export interface WorkExperiences {
-  display: boolean;
-  experience: WorkExperience[];
+  pillars: Pillar[];
+  stack: string[];
+  languages: SpokenLanguage[];
 }
 
 export interface Project {
-  image: any; // For require() statements
-  projectName: string;
-  projectDesc: string;
-  footerLink?: FooterLink[];
-}
-
-export interface FooterLink {
   name: string;
-  url: string;
+  desc: string;
+  image?: any; // For require() statements
+  imageFit?: "cover" | "contain"; // "contain" for logos and diagrams, defaults to full-bleed "cover"
+  year?: string; // e.g. "2008" for early work
+  tags?: string[];
+  links?: ExternalLink[];
 }
 
-export interface BigProjects {
+// Rendered in order on the home page (e.g. "Projects", "Open source", "Early work")
+export interface ProjectsSection {
   title: string;
+  subtitle?: string;
+  subtitleUrl?: string; // rendered as a link icon after the subtitle
   projects: Project[];
-  display: boolean;
 }
 
+// One hobby chip on the About page
 export interface HobbyCard {
-  title: string;
-  subtitle: string;
-  image: any;
-  footerLink: FooterLink[];
+  label: string;
+  icon: IconType;
+  subtitle: string; // shown when the chip is selected
 }
 
 export interface HobbieSection {
-  title: string | React.ReactElement;
-  subtitle?: string;
+  title: string;
   hobbiesCards: HobbyCard[];
-  display: boolean;
 }
 
-export interface Certification {
-  title: string;
-  subtitle: string;
-  logo_path: string;
-  certificate_link: string;
-  alt_name: string;
-  color_code: string;
-}
-
-export interface Certifications {
-  certifications: Certification[];
-}
-
-export interface Degree {
-  title: string;
-  subtitle: string;
-  logo_path: string;
-  alt_name: string;
-  duration: string;
-  descriptions: string[];
-  website_link: string;
-}
-
-export interface Degrees {
-  degrees: Degree[];
-}
-
-export interface ContactSection {
-  title: string;
-  profile_image_path: string;
-  description: string;
-}
-
-export interface BlogSection {
-  title: string;
-  subtitle: string;
-  link: string;
-  avatar_image_path: string;
-}
-
-export interface AddressSection {
-  title: string;
-  subtitle: string;
-  avatar_image_path: string;
-  location_map_link: string;
-}
-
-export interface PhoneSection {
-  title: string;
-  subtitle: string;
+// A second way to reach me, for visitors who'd rather not use the form
+export interface ContactAlternative {
+  lead: string; // e.g. "Prefer LinkedIn?", the link follows it
+  link: ExternalLink;
+  icon: IconType; // leads the line, ahead of the lead text
 }
 
 export interface ContactPageData {
-  contactSection: ContactSection;
-  blogSection: BlogSection;
-  addressSection: AddressSection;
-  phoneSection: PhoneSection;
-}
-
-export interface CompetitiveSite {
-  siteName: string;
-  iconifyClassname: string;
-  style: {
-    color: string;
-  };
-  profileLink: string;
-}
-
-export interface CompetitiveSites {
-  competitiveSites: CompetitiveSite[];
-}
-
-export interface ExperienceItem {
   title: string;
-  company: string;
-  company_url: string;
-  logo_path: string;
-  duration: string;
-  location: string;
-  description: string;
-  color: string;
+  headline: string;
+  headlineAccent: string; // end of the headline, rendered in the accent gradient
+  subtitle: string;
+  alternative?: ContactAlternative; // under the subtitle, remove to hide it
 }
 
-export interface ExperienceSection {
+export interface AboutHeader {
   title: string;
-  experiences: ExperienceItem[];
+  headline: string;
+  headlineAccent: string; // end of the headline, rendered in the accent gradient
+  lede: string;
+  statement: string; // lit up word by word as it scrolls through the viewport
+  principles: string[];
 }
 
-export interface Experience {
+export interface JourneyMetric {
+  value: string; // e.g. "~20x"
+  label: string;
+}
+
+// One step of the About page journey
+export interface JourneyStep {
+  year: string;
+  place: string;
+  title: string;
+  subtitle?: string;
+  desc: string;
+  metric?: JourneyMetric;
+  tags?: string[];
+  link?: ExternalLink; // a url starting with "/" is a site page, opened in the same tab
+}
+
+export interface Journey {
   title: string;
   subtitle: string;
-  description: string;
-  header_image_path: string;
-  sections: ExperienceSection[];
-}
-
-export interface ProjectsHeader {
-  title: string;
-  description: string;
-  avatar_image_path: string;
-}
-
-export interface PublicationsHeader {
-  title: string;
-  description: string;
-  avatar_image_path: string;
+  steps: JourneyStep[]; // oldest first, so it reads as a story and ends on the present
 }
 
 export interface PatentsHeader {
   title: string;
-  description: string;
-  caption?: string;
-  avatar_image_path: string;
+  headline: string;
+  headlineAccent: string; // end of the headline, rendered in the accent gradient
+  caption?: string; // where the data comes from, shown under the headline
+  googlePatentsLink?: string; // Set to empty to hide the button
+}
+
+export interface PatentTopic {
+  name: string;
+  cpcPrefixes: string[]; // Matched against the CPC codes USPTO assigns, e.g. "H04L67"
+}
+
+export interface PatentTopics {
+  topics: PatentTopic[]; // In display order
+  overrides: Record<string, string>; // Lowercased title to topic name, for filings whose CPC codes miss how I present them
+  fallback: string; // Topic for filings no prefix matches (or not classified yet)
 }

@@ -1,38 +1,112 @@
+/* Pill track outlined like the chips and the back-to-top button, thumb filled with the text colour */
 .toggle-button {
-    position: fixed !important;
-    bottom: 15px !important;
-    left: 15px !important;
-    z-index: 1000 !important;
-    /* Prevent layout shifts */
-    transform: translateZ(0);
-    will-change: transform;
-    backface-visibility: hidden;
+  --toggle-fg: var(--color-text);
+  --toggle-bg: var(--color-surface);
+  --toggle-width: 76px;
+  --toggle-height: 44px;
+  --toggle-pad: 4px;
+  --toggle-thumb: calc(var(--toggle-height) - 2 * var(--toggle-pad) - 2px);
+  --toggle-travel: calc(var(--toggle-width) - var(--toggle-thumb) - 2 * var(--toggle-pad) - 2px);
+  --toggle-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  position: fixed;
+  bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+  left: calc(15px + env(safe-area-inset-left, 0px));
+  z-index: 1000;
+  box-sizing: border-box;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  padding: var(--toggle-pad);
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background-color: var(--toggle-bg);
+  box-shadow: 0 8px 24px -12px var(--color-shadow);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  /* Keeps the fixed button steady while iOS Safari resizes its toolbars */
+  transform: translateZ(0);
+  transition: background-color 0.5s linear, border-color 0.5s linear;
 }
 
-/* iOS Safari specific fixes */
-@media screen and (max-width: 768px) {
-    .toggle-button {
-        /* Use safe-area-inset for devices with notches */
-        bottom: calc(15px + env(safe-area-inset-bottom)) !important;
-        left: calc(15px + env(safe-area-inset-left)) !important;
-        
-        /* Fallback for older iOS versions */
-        bottom: calc(15px + constant(safe-area-inset-bottom)) !important;
-        left: calc(15px + constant(safe-area-inset-left)) !important;
-    }
+.toggle-button:focus-visible {
+  outline: 2px solid var(--color-accent-1);
+  outline-offset: 3px;
 }
 
-/* Ensure the DarkModeToggle component doesn't interfere with positioning */
-.toggle-button > * {
-    position: relative !important;
-    display: block !important;
+.toggle-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--toggle-thumb);
+  height: var(--toggle-thumb);
+  border-radius: 50%;
+  color: var(--toggle-bg);
+  background-color: var(--toggle-fg);
+  transition: transform 0.5s var(--toggle-spring), color 0.5s linear,
+    background-color 0.5s linear, box-shadow 0.2s ease;
 }
 
-/* Additional fix for iPhone Safari's dynamic viewport */
-@supports (-webkit-touch-callout: none) {
-    .toggle-button {
-        /* Ensure proper positioning when Safari UI changes */
-        position: fixed !important;
-        transform: translateZ(0) !important; /* Force hardware acceleration */
-    }
+.toggle-button-dark .toggle-thumb {
+  transform: translateX(var(--toggle-travel));
+}
+
+.toggle-button:hover .toggle-thumb {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--toggle-fg) 15%, transparent);
+}
+
+.toggle-icon {
+  width: 60%;
+  height: 60%;
+  overflow: visible;
+}
+
+.toggle-core {
+  fill: currentColor;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.5s var(--toggle-spring);
+}
+
+.toggle-moon-cut {
+  fill: black;
+  transition: transform 0.5s ease;
+}
+
+.toggle-rays {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.toggle-button-dark .toggle-core {
+  transform: scale(1.75);
+}
+
+.toggle-button-dark .toggle-moon-cut {
+  transform: translateX(-17px);
+}
+
+.toggle-button-dark .toggle-rays {
+  transform: rotate(90deg) scale(0);
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .toggle-button {
+    --toggle-width: 68px;
+    --toggle-height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle-button,
+  .toggle-thumb,
+  .toggle-core,
+  .toggle-moon-cut,
+  .toggle-rays {
+    transition: none;
+  }
 }

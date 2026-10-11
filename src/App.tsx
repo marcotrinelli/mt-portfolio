@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Main from "./containers/Main";
 import ToggleSwitch from "./components/toggleSwitch/ToggleSwitch";
 import TopButton from "./components/topButton/TopButton";
@@ -10,7 +9,7 @@ import { useTheme } from "./theme/useTheme";
 import { darkTheme, lightTheme } from "./theme/Themes";
 
 const App: React.FC = () => {
-  const [theme, themeToggler, mountedComponent] = useTheme();
+  const [theme, themeToggler] = useTheme();
   const selectedTheme = theme === "light" ? lightTheme : darkTheme;
 
   return (
@@ -20,9 +19,9 @@ const App: React.FC = () => {
         { theme: selectedTheme },
         <>
           {React.createElement(GlobalStyles as any)}
-          {mountedComponent && <Main />}
+          <Main />
           <ToggleSwitch theme={theme} toggleTheme={themeToggler} />
-          {mountedComponent && <TopButton />}
+          <TopButton />
         </>
       )}
     </>

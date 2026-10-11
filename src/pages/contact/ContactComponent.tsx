@@ -2,25 +2,20 @@ import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import TopButton from "../../components/topButton/TopButton";
-import Button from "../../components/button/Button";
+import PageHero from "../../components/pageHero/PageHero";
 import FormButton from "../../components/button/FormButton";
 import FormInput from "../../components/button/FormInput";
 import FormTextarea from "../../components/button/FormTextarea";
-import AddressImg from "./AddressImg";
-import { Fade } from "react-awesome-reveal";
 import "./ContactComponent.css";
-import { greeting, contactPageData } from "../../portfolio";
+import { contactPageData } from "../../portfolio";
 import { useTheme } from "styled-components";
 import ReCAPTCHA from "react-google-recaptcha";
-import SocialMedia from "../../components/socialMedia/SocialMedia";
 import ReactGA from "react-ga4";
-
-const ContactData = contactPageData.contactSection;
+import { FaArrowRight, FaPaperPlane } from "react-icons/fa6";
 
 function ContactForm() {
   const [state, handleSubmit] = useForm("xgvnvyev");
-  const recaptchaRef = React.useRef<any>(null);
+  const recaptchaRef = React.useRef<ReCAPTCHA>(null);
   const theme = useTheme();
 
   // Form field states
@@ -33,6 +28,14 @@ function ContactForm() {
       ReactGA.event("generate_lead", { form_name: "contact" });
     }
   }, [state.succeeded]);
+
+  // A reCAPTCHA token is single-use, so a failed send needs a fresh one
+  React.useEffect(() => {
+    if (state.errors) {
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
+    }
+  }, [state.errors]);
 
   const onChange = (token: string | null) => {
     setCaptchaToken(token);
@@ -52,6 +55,9 @@ function ContactForm() {
   const isFormValid =
     email.trim() !== "" && message.trim() !== "" && captchaToken !== null;
 
+  // Errors not tied to a field (network, captcha, rate limit), shown as one message the visitor can act on
+  const hasFormError = (state.errors?.getFormErrors().length ?? 0) > 0;
+
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await handleSubmit(event);
@@ -59,31 +65,15 @@ function ContactForm() {
 
   if (state.succeeded) {
     return (
-      <div
-        style={{
-          color: "#4CAF50",
-          fontSize: "0.9rem",
-          marginTop: "1rem",
-          padding: "0.75rem",
-          backgroundColor: theme.isDark
-            ? "rgba(76, 175, 80, 0.15)"
-            : "rgba(76, 175, 80, 0.1)",
-          border: `1px solid ${
-            theme.isDark ? "rgba(76, 175, 80, 0.4)" : "rgba(76, 175, 80, 0.3)"
-          }`,
-          borderRadius: "6px",
-          textAlign: "center",
-        }}
-      >
+      <div className="contact-success" role="status">
         <strong>Thanks for your message!</strong>
-        <br />
-        I'll get back to you as soon as possible.
+        <span>I'll get back to you as soon as possible.</span>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} style={{ width: "100%" }}>
+    <form onSubmit={onSubmit} className="contact-form">
       <FormInput
         id="email"
         name="email"
@@ -94,24 +84,32 @@ function ContactForm() {
         showRequired={false}
         value={email}
         onChange={handleEmailChange}
-        theme={theme}
       />
-      <ValidationError prefix="Email" field="email" errors={state.errors} />
+      <ValidationError
+        prefix="Email"
+        field="email"
+        errors={state.errors}
+        className="contact-field-error"
+      />
 
       <FormTextarea
         id="message"
         name="message"
         label="Message"
-        placeholder="Hi Marco, My name is ... I'm writing to you regarding..."
+        placeholder="A few lines on who you are and what you have in mind."
         required
         showRequired={false}
         rows={6}
         value={message}
         onChange={handleMessageChange}
-        theme={theme}
       />
-      <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <div className="captcha-button-container">
+      <ValidationError
+        prefix="Message"
+        field="message"
+        errors={state.errors}
+        className="contact-field-error"
+      />
+      <div className="contact-submit-row">
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY || ""}
@@ -123,70 +121,66 @@ function ContactForm() {
           text={
             <>
               {state.submitting ? "Sending..." : "Send Message"}
-              {!state.submitting && (
-                <i
-                  className="fas fa-paper-plane"
-                  style={{ marginLeft: "8px" }}
-                ></i>
-              )}
+              {!state.submitting && <FaPaperPlane aria-hidden="true" />}
             </>
           }
           type="submit"
           disabled={state.submitting || !isFormValid}
-          theme={theme}
-          className="contact-form-button"
+          className="contact-submit"
         />
+        {hasFormError && (
+          <p className="contact-form-error" role="alert">
+            The message didn't go through. Please try again in a moment.
+          </p>
+        )}
       </div>
     </form>
   );
 }
 
 export default function ContactComponent(): JSX.Element {
-  const theme = useTheme();
+  const { alternative } = contactPageData;
 
   return (
-    <div className="contact-main">
-      <Header />
-      <div className="basic-contact">
-        <Fade bottom duration={1000} distance="40px">
-          <div className="contact-heading-div">
-            <div className="contact-title-and-social">
-              <h1
-                className="contact-heading-text"
-                style={{ color: theme.text }}
-              >
-                {ContactData.title}
-              </h1>
-              <div className="contact-social-media">
-                <SocialMedia />
-              </div>
-            </div>
-            <div className="contact-heading-text-div">
-              {greeting.resumeLink && (
-                <div className="resume-btn-div">
-                  <Button
-                    text="See my Curriculum Vitae"
-                    to={greeting.resumeLink}
-                    theme={theme}
-                  />
-                </div>
-              )}
-            </div>
+    <div>
+      <Header pageTitle={contactPageData.title} />
+      <PageHero
+        eyebrow={contactPageData.title}
+        title={contactPageData.headline}
+        titleAccent={contactPageData.headlineAccent}
+        lede={contactPageData.subtitle}
+        media={
+          <div className="contact-card surface-card">
+            <ContactForm />
           </div>
-        </Fade>
-        <Fade bottom duration={1000} distance="40px">
-          <div className="address-heading-div">
-            <div className="address-heading-text-div">
-              <ContactForm />
-            </div>
-            <div className="contact-heading-img-div">
-              <AddressImg />
-            </div>
-          </div>
-        </Fade>
-      </div>
+        }
+      >
+        {alternative && (
+          <p className="contact-alternative">
+            <alternative.icon
+              className="contact-alternative-icon"
+              aria-hidden="true"
+            />
+            {alternative.lead}{" "}
+            <a
+              className="text-link"
+              href={alternative.link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                ReactGA.event("contact_alternative_click", {
+                  link_text: alternative.link.name,
+                  link_url: alternative.link.url,
+                })
+              }
+            >
+              {alternative.link.name}
+              <FaArrowRight aria-hidden="true" />
+            </a>
+          </p>
+        )}
+      </PageHero>
       <Footer />
-      <TopButton />
     </div>
   );
 }

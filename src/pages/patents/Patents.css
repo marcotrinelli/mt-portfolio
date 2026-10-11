@@ -1,194 +1,35 @@
-.projects-main {
-  width: 100%;
-  text-align: center;
-}
-
-.basic-projects {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-.projects-heading-div {
-  display: flex;
-}
-
-.projects-heading-div > * {
-  flex: 1;
-}
-
-.projects-heading-img-div {
-  align-items: center;
-  justify-content: center;
-}
-
-.projects-heading-text-div {
-  text-align: center;
-}
-
-.projects-heading-img-div > * {
-  max-width: 100%;
-  height: auto;
-}
-
-.projects-heading-text {
-  font-size: 56px;
-  font-weight: 400;
-  font-family: "Google Sans Medium";
-  line-height: 1.1;
-  text-align: center;
-  margin-top: 80px;
-}
-
-.projects-heading-sub-text {
-  font-size: 30px;
-  font-family: "Google Sans Regular";
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.projects-header-detail-text {
-  font-size: 20px;
-  line-height: 30px;
-  margin-top: 0px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font-family: "Google Sans Medium";
-}
-
-.publications-heading-text-div {
-  text-align: center;
-  font-family: "Google Sans Regular";
-  margin-top: 70px;
-}
-
-.publications-heading-text {
-  font-size: 56px;
-  font-weight: 600;
-}
-
-/* Patents info tooltip */
-.patents-info-icon {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 0.4rem;
-  font-size: 0.8em;
-  vertical-align: middle;
-  opacity: 0.6;
-  cursor: default;
-  transition: opacity 0.2s ease;
-}
-
-.patents-info-icon:hover,
-.patents-info-icon:focus-visible {
-  opacity: 1;
-  outline: none;
-}
-
-/* Bootstrap CSS is not loaded, so the react-bootstrap tooltip is styled here */
-#patents-source-tooltip {
-  z-index: 1080;
-  padding: 0.5rem 0;
-  font-family: "Google Sans Regular";
-  pointer-events: none;
-}
-
-#patents-source-tooltip.fade {
-  opacity: 0;
-  transition: opacity 0.18s ease;
-}
-
-#patents-source-tooltip.show {
-  opacity: 1;
-}
-
-#patents-source-tooltip .tooltip-inner,
-#patents-source-tooltip .tooltip-arrow::before {
-  transform: translateY(-4px);
-  transition: transform 0.18s ease;
-}
-
-#patents-source-tooltip.show .tooltip-inner,
-#patents-source-tooltip.show .tooltip-arrow::before {
-  transform: translateY(0);
-}
-
-#patents-source-tooltip .tooltip-inner {
-  max-width: 280px;
-  padding: 0.6rem 0.85rem;
-  font-size: 0.8rem;
-  line-height: 1.45;
-  text-align: left;
-  color: #fff;
-  background-color: #1f2937;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-}
-
-#patents-source-tooltip .tooltip-arrow {
-  position: absolute;
-  top: 0;
-  width: 0.8rem;
-  height: 0.5rem;
-}
-
-#patents-source-tooltip .tooltip-arrow::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  border-style: solid;
-  border-color: transparent transparent #1f2937;
-  border-width: 0 0.4rem 0.5rem;
-}
-
-/* Patents stats */
+/* Stats in the hero, same metric look as the home facts */
 .patents-stats {
   display: inline-flex;
   flex-direction: column;
-  gap: 0.75rem;
-  min-width: 280px;
-  margin-top: 1.5rem;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  gap: 1rem;
+  max-width: 100%;
 }
 
-.patents-stats-total {
+.patents-stats-figures {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.patents-stats-total-value {
-  font-family: "Google Sans Bold";
-  font-size: 2rem;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-
-.patents-stats-label {
-  font-family: "Google Sans Medium";
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.patents-stats-bar {
-  display: flex;
-  height: 4px;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.patents-stats-breakdown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.25rem 2.5rem;
 }
 
 .patents-stats-item {
   display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.patents-stats-value {
+  font-family: "Google Sans Bold";
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+
+.patents-stats-item .caps-label {
+  display: inline-flex;
   align-items: center;
   gap: 0.4rem;
 }
@@ -199,110 +40,148 @@
   border-radius: 50%;
 }
 
-.patents-stats-item-value {
-  font-family: "Google Sans Bold";
-  font-size: 1rem;
+.patents-stats-bar {
+  display: flex;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: var(--color-tag-bg);
+}
+
+.patents-error-message {
+  max-width: 34em;
+  margin: 1.5rem 0 0;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(255, 152, 0, 0.4);
+  border-radius: 12px;
+  font-family: "Google Sans Regular";
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #e68a00;
+  background-color: rgba(255, 152, 0, 0.12);
+}
+
+/* Filter and grid */
+
+/* Closer to the hero than the usual section rhythm, the grid is the hero's content */
+.patents-section {
+  margin-top: clamp(3rem, 8vh, 4.5rem);
+}
+
+.patents-topic-chip-count {
   font-variant-numeric: tabular-nums;
+  opacity: 0.6;
 }
 
-.patents-stats-divider {
-  width: 1px;
-  height: 16px;
-}
-
-/* Patents Section Styles */
 .patents-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  /* The rule bridge below spans exactly this gap */
   gap: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-  padding: 0 2rem;
-  justify-items: center;
-  align-items: stretch;
+  margin-top: 2.5rem;
 }
 
-.patents-loading,
-.no-patents-message {
-  text-align: center;
-  padding: 3rem 2rem;
-  font-size: 1.1rem;
+.patents-grid-item {
+  display: flex;
+  flex-direction: column;
 }
 
-.patents-error-message {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+/* The card fills what the rule leaves (its own 100% height would overflow) */
+.patents-grid-item > .patent-card-container {
+  flex: 1;
+  height: auto;
 }
 
-.repo-cards-div-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1rem 1rem;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 60px;
+/* Topic rule above each card, labelled where the topic starts and on each row it wraps to */
+.patents-topic-rule {
+  /* Dashed run at either end of the line, set where a topic wraps to the next row */
+  --rule-lead: 0px;
+  --rule-trail: 0px;
+  position: relative;
+  min-height: 1.6rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  /* Solid line, then the leading and trailing dashes, all along the bottom edge */
+  background: linear-gradient(var(--color-rule), var(--color-rule)) no-repeat,
+    repeating-linear-gradient(
+        to right,
+        var(--color-rule) 0 4px,
+        transparent 4px 12px
+      )
+      no-repeat,
+    repeating-linear-gradient(
+        to right,
+        transparent 0 8px,
+        var(--color-rule) 8px 12px
+      )
+      no-repeat;
+  background-size: calc(100% - var(--rule-lead) - var(--rule-trail)) 1px,
+    var(--rule-lead) 1px, var(--rule-trail) 1px;
+  background-position: var(--rule-lead) 100%, 0 100%, 100% 100%;
+  font-size: 0.7rem;
 }
 
-.patents-loading,
-.no-patents-message,
-.patents-error-message {
-  text-align: center;
-  padding: 2rem;
-  margin: 1rem 0;
+.patents-topic-rule-label {
+  visibility: hidden;
 }
 
-@media (max-width: 1380px) {
-  .projects-heading-text {
-    font-size: 50px;
-    margin-top: 80px;
-  }
-  .projects-heading-sub-text {
-    font-size: 25px;
-  }
+.patents-topic-rule-start .patents-topic-rule-label,
+.patents-grid-item[data-row-start] .patents-topic-rule-label {
+  visibility: visible;
+}
+
+/* Bridges the grid gap, so cards of one topic share a continuous line */
+.patents-topic-rule::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  bottom: 0;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-rule);
+}
+
+.patents-topic-rule-end::after,
+.patents-grid-item[data-row-end] .patents-topic-rule::after {
+  display: none;
+}
+
+/* A topic wrapping to the next row trails off in dashes and picks up with dashes */
+.patents-grid-item[data-row-end]
+  .patents-topic-rule:not(.patents-topic-rule-end) {
+  --rule-trail: 2.25rem;
+}
+
+.patents-grid-item[data-row-start]
+  .patents-topic-rule:not(.patents-topic-rule-start) {
+  --rule-lead: 2.25rem;
+}
+
+/* One card per row: a single rule where the topic starts */
+.patents-container[data-single-column]
+  .patents-topic-rule:not(.patents-topic-rule-start) {
+  display: none;
+}
+
+.patents-container[data-single-column] .patents-grid-item .patents-topic-rule {
+  --rule-trail: 0px;
+}
+
+.patents-actions {
+  margin-top: 3rem;
 }
 
 @media (max-width: 768px) {
-  .projects-heading-text,
-  .publications-heading-text {
-    font-size: 30px;
-    margin-top: 20px;
+  .patents-stats {
+    display: flex;
+    width: 100%;
   }
 
-  .projects-heading-sub-text {
-    font-size: 20px;
-  }
-
-  .projects-heading-div {
-    flex-direction: column;
-  }
-
-  .projects-header-detail-text {
-    font-size: 16px;
-    margin-right: 0px;
-    margin-left: 0px;
-    line-height: normal;
-    text-align: center;
+  .patents-stats-figures {
+    justify-content: center;
   }
 
   .patents-container {
-    grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 0 1rem;
-    justify-items: stretch;
-  }
-
-  .patents-loading,
-  .no-patents-message {
-    padding: 2rem 1rem;
-    font-size: 1rem;
-  }
-
-  .repo-cards-div-main {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 30px;
   }
 }

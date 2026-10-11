@@ -1,0 +1,497 @@
+{
+  "fetchedAt": "2026-10-09",
+  "patents": [
+    {
+      "title": "High Scalability and End-to-End Consistency for Web Applications in Distributed Environments",
+      "applicationNumber": "19221048",
+      "publicationNumber": "20250294072",
+      "status": "Response to Non-Final Office Action Entered and Forwarded to Examiner",
+      "filingDate": "2025-05-28",
+      "publicationDate": "2025-09-18",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20250294072",
+      "isIssued": false,
+      "isPending": true,
+      "isContinuation": true,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "H04L67/02",
+        "G06F16/278"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Tamás Galló"
+        },
+        {
+          "inventorNameText": "Rafael Machado da Silva"
+        },
+        {
+          "inventorNameText": "Trevor George Smith"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "UNSUPERVISED RELEVANCY SIEVE FOR LOG DATA",
+      "applicationNumber": "19091074",
+      "publicationNumber": "20250371376",
+      "status": "Docketed New Case - Ready for Examination",
+      "filingDate": "2025-03-26",
+      "publicationDate": "2025-12-04",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20250371376",
+      "isIssued": false,
+      "isPending": true,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "G06N5/01",
+        "G06N20/00"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Timo Köhler"
+        },
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Shaja Arul Selvamani"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "ROOT-CAUSE DETECTION BASED ON AUTOMATED RESOLUTION OF DEPENDENCIES BETWEEN HETEROGENEOUS ISSUES",
+      "applicationNumber": "19091039",
+      "publicationNumber": "20250370848",
+      "status": "Response to Non-Final Office Action Entered and Forwarded to Examiner",
+      "filingDate": "2025-03-26",
+      "publicationDate": "2025-12-04",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20250370848",
+      "isIssued": false,
+      "isPending": true,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "G06F11/079",
+        "G06F11/0709"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Trevor Adam Whinmill"
+        },
+        {
+          "inventorNameText": "Pablo García del Valle"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "UNJOINING AND REJOINING CLUSTERS IN COMPUTING NETWORKS",
+      "applicationNumber": "18883589",
+      "patentNumber": "12732414",
+      "publicationNumber": "20250055751",
+      "status": "Patented Case",
+      "filingDate": "2024-09-12",
+      "grantDate": "2026-09-08",
+      "publicationDate": "2025-02-13",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12732414",
+      "isIssued": true,
+      "isPending": false,
+      "isContinuation": true,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "H04L41/0654",
+        "H04L67/10",
+        "H04L43/0811",
+        "H04L43/10"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Trevor George Smith"
+        },
+        {
+          "inventorNameText": "Sándor Szilárd Magyari"
+        },
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Tal Maoz"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "SELECTIVE AUTHORIZATION CONTROL IN MULTI-TENANT APPLICATIONS",
+      "applicationNumber": "18791249",
+      "patentNumber": "12695744",
+      "publicationNumber": "20260039647",
+      "status": "Patented Case",
+      "filingDate": "2024-07-31",
+      "grantDate": "2026-07-28",
+      "publicationDate": "2026-02-05",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12695744",
+      "isIssued": true,
+      "isPending": false,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "H04L63/083",
+        "H04L63/0807"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Jean Andrei Diaconu"
+        },
+        {
+          "inventorNameText": "Marcelo Yannuzzi"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "UNSUPERVISED RELEVANCY SIEVE FOR LOG DATA",
+      "applicationNumber": "63654378",
+      "status": "Provisional Application Expired",
+      "filingDate": "2024-05-31",
+      "isIssued": false,
+      "isPending": true,
+      "isContinuation": false,
+      "applicationType": "Provisional",
+      "cpcCodes": [],
+      "inventors": [
+        {
+          "inventorNameText": "Timo Köhler"
+        },
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Shaja Arul Selvamani"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "ROOT-CAUSE DETECTION BASED ON AUTOMATED RESOLUTION OF DEPENDENCIES BETWEEN HETEROGENEOUS ISSUES",
+      "applicationNumber": "63652880",
+      "status": "Provisional Application Expired",
+      "filingDate": "2024-05-29",
+      "isIssued": false,
+      "isPending": true,
+      "isContinuation": false,
+      "applicationType": "Provisional",
+      "cpcCodes": [],
+      "inventors": [
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Trevor Adam Whinmill"
+        },
+        {
+          "inventorNameText": "Pablo García del Valle"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "High Scalability and End-to-End Consistency for Web Applications in Distributed Environments",
+      "applicationNumber": "18417461",
+      "patentNumber": "12368768",
+      "publicationNumber": "20250240340",
+      "status": "Patented Case",
+      "filingDate": "2024-01-19",
+      "grantDate": "2025-07-22",
+      "publicationDate": "2025-07-24",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12368768",
+      "isIssued": true,
+      "isPending": false,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "H04L67/02",
+        "G06F16/278"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Tamás Galló"
+        },
+        {
+          "inventorNameText": "Rafael Machado da Silva"
+        },
+        {
+          "inventorNameText": "Trevor George Smith"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "STATUS REPORTING IN DISTRIBUTED SYSTEMS",
+      "applicationNumber": "18411145",
+      "publicationNumber": "20250231848",
+      "status": "Response to Non-Final Office Action Entered and Forwarded to Examiner",
+      "filingDate": "2024-01-12",
+      "publicationDate": "2025-07-17",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20250231848",
+      "isIssued": false,
+      "isPending": true,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "G06F11/3006",
+        "G06F11/3055",
+        "G06F11/324"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Trevor George Smith"
+        },
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Andre Jean Marie Surcouf"
+        },
+        {
+          "inventorNameText": "János Sarusi-Kis"
+        },
+        {
+          "inventorNameText": "László Puskás"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "Multi-Tenanted Authentication for Applications",
+      "applicationNumber": "18459093",
+      "patentNumber": "12425404",
+      "publicationNumber": "20250080530",
+      "status": "Patented Case",
+      "filingDate": "2023-08-31",
+      "grantDate": "2025-09-23",
+      "publicationDate": "2025-03-06",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12425404",
+      "isIssued": true,
+      "isPending": false,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "H04L63/0884",
+        "H04L63/083"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Mohamed Tahar Kedjour"
+        },
+        {
+          "inventorNameText": "Jean Diaconu"
+        },
+        {
+          "inventorNameText": "Márk Sági-Kazár"
+        },
+        {
+          "inventorNameText": "Sándor Szilárd Magyari"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "UNJOINING AND REJOINING CLUSTERS IN COMPUTING NETWORKS",
+      "applicationNumber": "18446272",
+      "patentNumber": "12113663",
+      "status": "Patented Case",
+      "filingDate": "2023-08-08",
+      "grantDate": "2024-10-08",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12113663",
+      "isIssued": true,
+      "isPending": false,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "H04L41/0654",
+        "H04L67/10",
+        "H04L43/0811",
+        "H04L43/10"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Frank Brockners"
+        },
+        {
+          "inventorNameText": "Trevor George Smith"
+        },
+        {
+          "inventorNameText": "Sándor Szilárd Magyari"
+        },
+        {
+          "inventorNameText": "Marco Trinelli"
+        },
+        {
+          "inventorNameText": "Tal Maoz"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "CROSS-ORGANIZATION TRACKING IDENTIFIER SPACE ALLOCATION FOR SUPPLY CHAINS",
+      "applicationNumber": "17582432",
+      "publicationNumber": "20230237422",
+      "status": "Abandoned  --  Failure to Respond to an Office Action",
+      "filingDate": "2022-01-24",
+      "publicationDate": "2023-07-27",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20230237422",
+      "isIssued": false,
+      "isPending": true,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "G06Q10/0833",
+        "G06Q10/0877",
+        "G06Q10/08744"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Marco TRINELLI"
+        },
+        {
+          "inventorNameText": "Marcelo YANNUZZI"
+        },
+        {
+          "inventorNameText": "Bart BRINCKMAN"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    },
+    {
+      "title": "DYNAMIC EXCHANGE OF METADATA",
+      "applicationNumber": "17248366",
+      "patentNumber": "11689919",
+      "publicationNumber": "20220232375",
+      "status": "Patented Case",
+      "filingDate": "2021-01-21",
+      "grantDate": "2023-06-27",
+      "publicationDate": "2022-07-21",
+      "detailsUrl": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11689919",
+      "isIssued": true,
+      "isPending": false,
+      "isContinuation": false,
+      "applicationType": "Utility",
+      "cpcCodes": [
+        "H04W12/06",
+        "H04W76/11",
+        "H04W12/69",
+        "H04W8/20"
+      ],
+      "inventors": [
+        {
+          "inventorNameText": "Marcelo YANNUZZI"
+        },
+        {
+          "inventorNameText": "Herve MUYAL"
+        },
+        {
+          "inventorNameText": "Benjamin W. RYDER"
+        },
+        {
+          "inventorNameText": "Marco TRINELLI"
+        },
+        {
+          "inventorNameText": "Bart A. BRINCKMAN"
+        }
+      ],
+      "applicants": [
+        {
+          "applicantNameText": "Cisco Technology, Inc."
+        }
+      ]
+    }
+  ]
+}

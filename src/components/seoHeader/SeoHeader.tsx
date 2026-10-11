@@ -2,14 +2,21 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { seo } from "../../portfolio";
 
-const SeoHeader: React.FC = () => {
+interface SeoHeaderProps {
+  pageTitle?: string;
+}
+
+const SeoHeader: React.FC<SeoHeaderProps> = ({ pageTitle }) => {
+  const title = pageTitle ? `${pageTitle} | Marco Trinelli` : seo.title;
+
+  // defer={false} sets the title synchronously, before the GA4 pageview effect reads it
   return (
-    <Helmet>
-      <title>{seo.title}</title>
+    <Helmet defer={false}>
+      <title>{title}</title>
       <meta name="description" content={seo.description} />
-      <meta property="og:title" content={seo?.og?.title} />
-      <meta property="og:type" content={seo?.og?.type} />
-      <meta property="og:url" content={seo?.og?.url} />
+      <meta property="og:title" content={title} />
+      <meta property="og:type" content={seo.og.type} />
+      <meta property="og:url" content={seo.og.url} />
     </Helmet>
   );
 };

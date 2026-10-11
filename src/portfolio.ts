@@ -1,113 +1,110 @@
-/* Change this file to get your personal Portfolio */
+// All site copy and data. Colours live in src/theme/Themes.ts
 
-// To change portfolio colors globally go to the  _globalColor.scss file
-
-import emoji from "react-easy-emoji";
-import CiscoLogo from "./assets/images/ciscoLogo.svg";
-import NokiaLogo from "./assets/images/nokiabelllabsLogo.svg";
+import {
+  FaBrain,
+  FaCloud,
+  FaDumbbell,
+  FaEarthEurope,
+  FaGithub,
+  FaLightbulb,
+  FaLinkedinIn,
+  FaMotorcycle,
+  FaNetworkWired,
+  FaPeopleGroup,
+  FaPizzaSlice,
+  FaRecordVinyl,
+  FaSeedling,
+} from "react-icons/fa6";
+import patentsSnapshot from "./data/patents.json";
+import { Patent, summarizePatents } from "./utils/patentService";
 import type {
   SEO,
-  Illustration,
   Greeting,
+  HeroFact,
   SocialMediaLink,
   SkillsSection,
-  EducationInfo,
-  WorkExperiences,
-  BigProjects,
+  ProjectsSection,
   HobbieSection,
-  Certifications,
-  Degrees,
   ContactPageData,
-  CompetitiveSites,
-  Experience,
-  ProjectsHeader,
-  PublicationsHeader,
+  AboutHeader,
+  Journey,
   PatentsHeader,
+  PatentTopics,
 } from "./types/portfolio";
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/marco-trinelli/";
+const GITHUB_URL = "https://github.com/marcotrinelli";
+const EDGESYS_PAPER_URL = "https://dl.acm.org/doi/10.1145/3301418.3313942";
+const NOTIFICATION_PATENT_URL =
+  "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12368768";
+const RCA_PATENT_URL =
+  "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20250370848";
+const AGNTCY_RUNTIME_URL = "https://github.com/agntcy/workflow-srv";
+const GOOGLE_PATENTS_URL =
+  "https://patents.google.com/?inventor=Marco+Trinelli";
+const DEATHRUN_VIDEOS_URL =
+  "https://www.youtube.com/results?search_query=Deathrun+V2+urban+terror";
+const CISCO_START = new Date("2019-05-01");
+const BIRTH_YEAR = 1994;
 
 //SEO Related settings
 const seo: SEO = {
-  title: "Marco Trinelli",
+  title: "Marco Trinelli | Senior Software Engineer & Inventor",
   description:
-    "A passionate senior software engineer driving innovation to the next level.",
+    "Senior software engineer and inventor at Cisco, focused on distributed systems, cloud-native software and Generative AI, with a strong foundation in networking and systems programming.",
   og: {
-    title: "Marco Trinelli",
+    title: "Marco Trinelli | Senior Software Engineer & Inventor",
     type: "website",
-    url: "http://marcotrinelli.com/",
+    url: "https://marcotrinelli.com/",
   },
 };
 
 // Summary And Greeting Section
 
-const illustration: Illustration = {
-  animated: true, // Set to false to use static SVG
-};
-
 const greeting: Greeting = {
   username: "Marco Trinelli",
-  title: "Hi! I'm Marco :)",
-  subTitle: emoji(
-    "A passionate software engineer driving innovation to the next level."
-  ),
-  // resumeLink: "https://www.linkedin.com/in/marco-trinelli/", // Set to empty to hide the button
-  resumeLink: "",
-  githubProfile: "",
-  displayGreeting: true, // Set false to hide this section, defaults to true
+  title: "Hi, I'm",
+  role: "Senior Software Engineer & Inventor at Cisco",
+  pitch:
+    "I build distributed systems, cloud-native software and Generative AI on a strong networking and systems programming foundation. From programmable switches and edge computing to LLMs and AI agents.\nI like being early and turning new ideas into production systems and patenting what's novel.",
+  resumeLink: "./marco-trinelli-cv.pdf", // Download CV button on the About page, set to empty to hide it
 };
+
+// Counted from the bundled snapshot (`npm run fetch-patents` refreshes it)
+const patentSummary = summarizePatents(patentsSnapshot.patents as Patent[]);
+const patentCount = patentSummary.issued + patentSummary.pending;
+const firstGrantYear = Math.min(
+  ...(patentsSnapshot.patents as Patent[])
+    .filter((p) => p.grantDate)
+    .map((p) => new Date(p.grantDate as string).getFullYear()),
+);
+const yearsAtCisco = Math.floor(
+  (Date.now() - CISCO_START.getTime()) / (365.25 * 24 * 3600 * 1000),
+);
+
+const heroFacts: HeroFact[] = [
+  {
+    value: `${patentCount}`,
+    label: "US patents",
+  },
+  { value: `${yearsAtCisco}+`, label: "Years at Cisco" },
+  { value: "EdgeSys '19", label: "ACM paper, first author" },
+  { value: "2", label: "Master's degrees" },
+];
 
 // Social Media Links
 
 const socialMediaLinks: SocialMediaLink[] = [
-  /* Your Social Media Link */
-  // github: "https://github.com/ 1919",
-  // linkedin: "https://www.linkedin.com/in/marco-trinelli/",
-  // gmail: "  98@gmail.com",
-  // gitlab: "https://gitlab.com/  98",
-  // facebook: "https://www.facebook.com/l .19/",
-  // twitter: "https://twitter.com/ _1919",
-  // instagram: "https://www.instagram.com/ /"
-  // {
-  //   name: "Github",
-  //   link: "https://github.com/ 1919",
-  //   fontAwesomeIcon: "fa-github", // Reference https://fontawesome.com/icons/github?style=brands
-  //   backgroundColor: "#181717", // Reference https://simpleicons.org/?q=github
-  // },
   {
     name: "LinkedIn",
-    link: "https://www.linkedin.com/in/marco-trinelli/",
-    fontAwesomeIcon: "fa-linkedin-in", // Reference https://fontawesome.com/icons/linkedin-in?style=brands
-    backgroundColor: "#0077B5", // Reference https://simpleicons.org/?q=linkedin
+    link: LINKEDIN_URL,
+    icon: FaLinkedinIn,
   },
-  // {
-  //   name: "YouTube",
-  //   link: "https://www.youtube.com/channel/UC_amoXmmxSY9KusoDczDTXQ",
-  //   fontAwesomeIcon: "fa-youtube", // Reference https://fontawesome.com/icons/youtube?style=brands
-  //   backgroundColor: "#FF0000", // Reference https://simpleicons.org/?q=youtube
-  // },
-  // {
-  //   name: "Gmail",
-  //   link: "mailto:  98@gmail.com",
-  //   fontAwesomeIcon: "fa-google", // Reference https://fontawesome.com/icons/google?style=brands
-  //   backgroundColor: "#D14836", // Reference https://simpleicons.org/?q=gmail
-  // },
-  // {
-  //   name: "Twitter",
-  //   link: "https://twitter.com/ _1919",
-  //   fontAwesomeIcon: "fa-twitter", // Reference https://fontawesome.com/icons/twitter?style=brands
-  //   backgroundColor: "#1DA1F2", // Reference https://simpleicons.org/?q=twitter
-  // },
-  // {
-  //   name: "Facebook",
-  //   link: "https://www.facebook.com/l .19/",
-  //   fontAwesomeIcon: "fa-facebook-f", // Reference https://fontawesome.com/icons/facebook-f?style=brands
-  //   backgroundColor: "#1877F2", // Reference https://simpleicons.org/?q=facebook
-  // },
-  // {
-  //   name: "Instagram",
-  //   link: "https://www.instagram.com/ /",
-  //   fontAwesomeIcon: "fa-instagram", // Reference https://fontawesome.com/icons/instagram?style=brands
-  //   backgroundColor: "#E4405F", // Reference https://simpleicons.org/?q=instagram
-  // },
+  {
+    name: "GitHub",
+    link: GITHUB_URL,
+    icon: FaGithub,
+  },
 ];
 
 // Skills Section
@@ -115,563 +112,406 @@ const socialMediaLinks: SocialMediaLink[] = [
 const skillsSection: SkillsSection = {
   title: "Who I am",
   subTitle:
-    "As a senior software engineer, I have consistently worked on innovative projects using cutting-edge technology.",
-  skills: [
-    "I bring a multi-disciplinary background in:",
-    emoji("- computer networks 🌐"),
-    emoji("- security 🛡️"),
-    emoji("- artificial intelligence 🤖"),
-    emoji("- cloud computing ☁️"),
-    emoji("- full-stack development 👨‍💻"),
-    "Throughout my professional experience, I have:",
-    emoji(
-      "- delivered production-ready and innovative solutions, from conception to deployment 🚀"
-    ),
-    emoji(
-      "- taken responsibility in projects, led young talented engineers, and collaborated effectively with cross-functional teams 🤝"
-    ),
-  ],
-
-  /* Make Sure to include correct Font Awesome Classname to view your icon
-  https://fontawesome.com/icons?d=gallery */
-  softwareSkills: [],
-  //   softwareSkills: [
-  //     {
-  //       skillName: "html-5",
-  //       fontAwesomeClassname: "fab fa-html5"
-  //     },
-  //     {
-  //       skillName: "css3",
-  //       fontAwesomeClassname: "fab fa-css3-alt"
-  //     },
-  //     {
-  //       skillName: "sass",
-  //       fontAwesomeClassname: "fab fa-sass"
-  //     },
-  //     {
-  //       skillName: "JavaScript",
-  //       fontAwesomeClassname: "fab fa-js"
-  //     },
-  //     {
-  //       skillName: "reactjs",
-  //       fontAwesomeClassname: "fab fa-react"
-  //     },
-  //     {
-  //       skillName: "nodejs",
-  //       fontAwesomeClassname: "fab fa-node"
-  //     },
-  //     {
-  //       skillName: "swift",
-  //       fontAwesomeClassname: "fab fa-swift"
-  //     },
-  //     {
-  //       skillName: "npm",
-  //       fontAwesomeClassname: "fab fa-npm"
-  //     },
-  //     {
-  //       skillName: "sql-database",
-  //       fontAwesomeClassname: "fas fa-database"
-  //     },
-  //     {
-  //       skillName: "aws",
-  //       fontAwesomeClassname: "fab fa-aws"
-  //     },
-  //     {
-  //       skillName: "firebase",
-  //       fontAwesomeClassname: "fas fa-fire"
-  //     },
-  //     {
-  //       skillName: "python",
-  //       fontAwesomeClassname: "fab fa-python"
-  //     },
-  //     {
-  //       skillName: "docker",
-  //       fontAwesomeClassname: "fab fa-docker"
-  //     }
-  //   ],
-  display: true, // Set false to hide this section, defaults to true
-};
-
-// Education Section
-
-const educationInfo: EducationInfo = {
-  display: true, // Set false to hide this section, defaults to true
-  title: "Education",
-  subtitle:
-    "I hold two Master's degrees from the following top European universities",
-  schools: [
+    "An engineer who enjoys being early: I pick up new technology, find where it beats the status quo, and take it to production.",
+  pillars: [
     {
-      schoolName: "Polytechnic University of Turin",
-      logo: require("./assets/images/politoLogo.png"),
-      subHeader: "Master's Degree in Computer Engineering - Networks",
-      duration: "Sept. 2016 - Apr. 2019",
-      desc: "Focus on Computer Networks and Data Centers, Cloud Computing, System Programming",
-      descBullets: ["Grade: Summa cum laude"],
+      title: "Computer networks",
+      icon: FaNetworkWired,
+      desc: "Data-plane programming on Cisco Nexus switches (P4, Intel Tofino), edge computing research at Nokia Bell Labs, Master's degrees in networks and network security.",
     },
     {
-      schoolName: "Eurecom - Telecom ParisTech",
-      logo: require("./assets/images/telecomparisLogo.png"),
-      subHeader:
-        "Master of Science in Engineering (M.S.E.) in Communication System Security",
-      duration: "Sept. 2017 - Jan. 2019",
-      desc: "Focus on Security (Communication, System and Network), Big Data & Cloud Computing, Network Softwarization",
-      // descBullets: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit"]
+      title: "Full-stack and cloud",
+      icon: FaCloud,
+      desc: "Cloud-native microservices on AWS and Kubernetes, REST/gRPC APIs, custom IAM with OPA, React/TypeScript frontends.",
+    },
+    {
+      title: "GenAI and LLMs",
+      icon: FaBrain,
+      desc: "AI agents, RAG and GraphRAG in production, multi-agent runtimes with MCP, LLM serving with vLLM on multi-GPU clusters.",
+    },
+    {
+      title: "Invention",
+      icon: FaLightbulb,
+      desc: "Patents in distributed systems, cloud computing and Generative AI, filed with Cisco.",
+    },
+    {
+      title: "Leadership",
+      icon: FaPeopleGroup,
+      desc: "Leading full-stack architecture end to end and unblocking critical technical challenges with Product and UX.",
     },
   ],
-};
-// Work experience section
-
-const workExperiences: WorkExperiences = {
-  display: true, //Set it to true to show workExperiences Section
-  experience: [
-    {
-      role: "Senior Software Engineer, Inventor",
-      company: "Cisco",
-      location: "San Jose (CA) – Lausanne (CH)",
-      companylogo: CiscoLogo,
-      date: "May 2019 – Present",
-      desc: "As a Full-Stack, DevOps, and IT engineer in the Outshift organization, I drive innovative projects in Generative AI and Cloud/Edge Computing, leading key initiatives and securing Intellectual Property through patents",
-      descBullets: [
-        {
-          desc: "Responsible for different project components, from User Interface to Backend and GenAI-powered solutions, serving as team motivator and unblocking technical challenges while collaborating cross-functionally with UX and Product teams",
-        },
-        {
-          desc: "Pioneered a Generative AI-based solution leveraging LLM Agents for automated Root Cause Analysis and online retrieval, laying the foundation for a new venture in Outshift – Python, React/TypeScript, LangChain",
-        },
-        {
-          desc: "Designed, implemented and deployed microservices at the cloud – Go, React, Docker, K8s, Jenkins, ArgoCD",
-        },
-        {
-          desc: "Setting up and maintaining Corporate Lab (DMZ, vSphere/ESXi, Routing and Switching)",
-        },
-      ],
-    },
-    {
-      role: "Software Engineer - Intern",
-      company: "Nokia Bell Labs",
-      location: "Paris (FR)",
-      companylogo: NokiaLogo,
-      date: "July 2018 – Jan. 2019",
-      desc: "At Bell Labs, I designed, implemented and validated a modular, transparent and programmable network framework that allows legacy hardware to run AR/VR services at the Edge infrastructure using Machine Learning techniques",
-      descBullets: [
-        {
-          desc: `Developed new components (SOCKS 5 proxy, ffmpeg-based Video Encoder/Decoder), boosting performance by 20x in FPS compared to existing technologies – C++`
-        },
-        {
-          desc: "Publication: Transparent AR Processing Acceleration at the Edge, Marco Trinelli et al., EdgeSys ’19",
-          url: "https://dl.acm.org/doi/10.1145/3301418.3313942",
-        },
-      ],
-    },
+  stack: [
+    "Python",
+    "Go",
+    "C/C++",
+    "TypeScript",
+    "React",
+    "Kubernetes",
+    "Docker",
+    "AWS",
+    "gRPC",
+    "P4",
+    "LangGraph",
+    "MCP",
+    "vLLM",
+  ],
+  languages: [
+    { name: "Italian", level: "native" },
+    { name: "English", level: "fluent" },
+    { name: "French", level: "fluent" },
+    { name: "Portuguese", level: "fluent" },
   ],
 };
 
-// Some big projects you have worked on
+// About page: a short intro up top, the long story told by the journey below it
 
-const bigProjects: BigProjects = {
-  title: "Projects and Patents",
-  // subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
-  projects: [
+const aboutHeader: AboutHeader = {
+  title: "About",
+  headline: "I take new ideas",
+  headlineAccent: "from prototype to production.",
+  lede: "I'm a Senior Software Engineer in Cisco's innovation group in Switzerland. I work across the stack, from backend to frontend, and I'm the main inventor of several patents in distributed systems, cloud computing and Generative AI.",
+  statement:
+    "I'm curious by default: vLLM, GraphRAG and AI agents didn't exist when I graduated, and today they're what I build with.",
+  principles: [
+    "I care about the details that decide whether something holds up in production, from the API contract to the last edge case.",
+    "I do my best work in a team, with Product and UX in the room, where the win is what we ship together.",
+  ],
+};
+
+const journey: Journey = {
+  title: "Journey",
+  subtitle: "From Italy to Switzerland, through France and California.",
+  steps: [
     {
-      image: require("./assets/images/minotourLogo.png"),
-      projectName: "Minotour",
-      projectDesc:
-        "Conversational agent for tourism exploiting the Semantic Web as a knowledge base",
-      footerLink: [
-        {
-          name: "Visit Website",
-          url: "https://minotour.eurecom.fr/",
-        },
-        //  you can add extra buttons here.
-      ],
+      year: `${BIRTH_YEAR + 12}`,
+      place: "Enna, Italy",
+      title: "First lines of code",
+      subtitle: "Visual Basic 6 (VB6)",
+      desc: "I started coding in Visual Basic 6 at the age of 12.",
     },
     {
-      image: require("./assets/images/near.png"),
-      projectName: "NEAR",
-      projectDesc:
-        "A modular and programmable network proxy used to speed up AI applications at the edge",
-      footerLink: [
-        {
-          name: "See Paper",
-          url: "https://dl.acm.org/doi/10.1145/3301418.3313942",
-        },
-      ],
+      year: `${BIRTH_YEAR + 14}`,
+      place: "Enna, Italy",
+      title: "Early innovation",
+      subtitle: "New game modes and levels",
+      desc: "I started inventing at the age of 14, creating new game modes and levels in GtkRadiant. I pioneered the deathrun game mode in Urban Terror, a Quake III-based FPS, and it became an established game type in the community.",
+      tags: ["Game design", "Level design", "GtkRadiant", "Quake III"],
+      link: { name: "Community videos", url: DEATHRUN_VIDEOS_URL },
     },
     {
-      image: "",
-      projectName: "US Patent 12,368,768",
-      projectDesc:
-        "High Scalability and End-to-End Consistency for Web Applications in Distributed Environments",
-      footerLink: [
-        {
-          name: "See Patent",
-          url: "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12368768",
-        },
-      ],
+      year: "2016",
+      place: "Turin, Italy",
+      title: "Polytechnic University of Turin",
+      subtitle: "M.Sc. Computer Engineering, Computer Networks",
+      desc: "My studies focused on computer networks, data centers, cloud computing and systems programming, and graduated summa cum laude.",
+      tags: ["Networks", "Cloud computing", "Systems programming"],
+    },
+    {
+      year: "2017",
+      place: "Sophia Antipolis, France",
+      title: "EURECOM",
+      subtitle: "M.Sc. Computer Engineering, Communication System Security",
+      desc: "My second Master's degree, in network security, distributed systems, cloud computing and software-defined networking.",
+      tags: ["Security", "Distributed systems", "SDN"],
+    },
+    {
+      year: "2018",
+      place: "Paris, France",
+      title: "Nokia Bell Labs",
+      subtitle: "R&D Intern, Software Engineer",
+      desc: "I built NEAR, a DPDK-based network proxy in C++ that lets legacy devices offload AR processing to the edge, and published it as first author at EdgeSys '19.",
+      metric: { value: "20x", label: "frame rate" },
+      tags: ["C++", "FFmpeg", "Edge computing"],
+      link: { name: "Paper", url: EDGESYS_PAPER_URL },
+    },
+    {
+      year: "2019",
+      place: "San Jose, California",
+      title: "Cisco",
+      subtitle: "Software Engineer Intern",
+      desc: "I programmed data-plane features on Nexus switches in P4 (traffic monitoring and IPv4-to-IPv6 transition) for a major US telecom operator, and wired them into the NX-OS control plane.",
+      tags: ["P4", "Intel Tofino", "C++", "Python"],
+    },
+    {
+      year: "2019",
+      place: "Rolle, Switzerland",
+      title: "Cisco",
+      subtitle: "Senior Software Engineer, Inventor",
+      desc: "In Cisco's innovation group I take new ideas from prototype to production and own them end to end, from React frontends to Go microservices on Kubernetes, shipped with Jenkins, GitHub Actions and ArgoCD. I've built edge and cloud computing solutions for AI use cases, and identity and authorization for cloud-native services. I've also led a team of three junior engineers, and partnered with Product and UX to shape what we ship.",
+      tags: ["Go", "React", "Kubernetes", "AWS", "ArgoCD", "OPA"],
+    },
+    {
+      year: `${firstGrantYear}`,
+      place: "Rolle, Switzerland",
+      title: "First US patent granted",
+      desc: "The first of several patents in distributed systems, cloud computing and Generative AI.",
+      metric: { value: `${patentCount}`, label: "US patents" },
+      link: { name: "See my patents", url: "/patents" },
+    },
+    {
+      year: "2025",
+      place: "Rolle, Switzerland",
+      title: "Notification Service",
+      subtitle: "US Patent 12,368,768",
+      desc: "A config-driven Go service that scales real-time updates from stateless backends to web applications. Reused across Cisco.",
+      metric: { value: "10x", label: "throughput" },
+      tags: ["Go", "Distributed systems", "gRPC"],
+      link: { name: "Patent", url: NOTIFICATION_PATENT_URL },
+    },
+    {
+      year: "2025",
+      place: "Rolle, Switzerland",
+      title: "(AGNTCY) Linux Foundation",
+      subtitle: "Multi-agent runtime for the Internet of Agents (IoA) ",
+      desc: "I architected and contributed to an open-source multi-agent runtime. It's framework-agnostic and handles communication between agents.",
+      tags: ["Python", "AI agents", "LangGraph", "Open source"],
+      link: { name: "GitHub", url: AGNTCY_RUNTIME_URL },
+    },
+    {
+      year: "2025",
+      place: "Rolle, Switzerland",
+      title: "Agentic root-cause analysis",
+      subtitle: "Foundation of a new venture at Cisco",
+      desc: "I prototyped an agent-driven RCA system that is now being integrated into Cisco's main AI platform.",
+      tags: ["AI agents", "GraphRAG", "MCP"],
+      link: { name: "Patent application", url: RCA_PATENT_URL },
+    },
+    {
+      year: "Now",
+      place: "Rolle, Switzerland",
+      title: "Security and cognition of AI agents",
+      subtitle: "Real-time derailment detection",
+      desc: "I'm working on the security and cognitive side of AI agents. I'm building a system that detects agent derailment as it happens and remediates in time.",
+      tags: ["AI agents", "AI security", "vLLM", "Real-time"],
     },
   ],
-  display: true, // Set false to hide this section, defaults to true
 };
+
+// Project sections, rendered in order on the home page
+
+const projectSections: ProjectsSection[] = [
+  {
+    title: "Selected work",
+    projects: [
+      {
+        image: require("./assets/images/myStyleGen.webp"),
+        imageFit: "contain",
+        name: "My Style – Agent Skill",
+        year: "2026",
+        desc: "Agent skill that reads material you authored (repos, specs, decks, notes), works out how you work and write, and installs a personal my-style skill, so every future agent session produces work in your idiom and decodes your shorthand.",
+        tags: ["Agent skills", "Claude Code", "LLMs", "Python"],
+        links: [
+          {
+            name: "GitHub",
+            url: "https://github.com/marcotrinelli/my-style-gen",
+          },
+          {
+            name: "skills.sh",
+            url: "https://www.skills.sh/marcotrinelli/my-style-gen",
+          },
+          {
+            name: "Agensi",
+            url: "https://www.agensi.io/skills/my-style",
+          },
+        ],
+      },
+      {
+        image: require("./assets/images/vllmInspector.webp"),
+        name: "vLLM Inspector",
+        year: "2026",
+        desc: "Live dashboard for a vLLM server, built only from its /metrics: batch and queue, token throughput, KV cache, preemptions, latency percentiles over time, and the deployment layout (data, tensor and pipeline parallel).",
+        tags: ["vLLM", "LLM serving", "Observability", "TypeScript"],
+        links: [
+          {
+            name: "GitHub",
+            url: "https://github.com/marcotrinelli/vllm-inspector",
+          },
+        ],
+      },
+      {
+        image: require("./assets/images/notificationService.webp"),
+        imageFit: "contain",
+        name: "Notification Service",
+        year: "2025",
+        desc: "Distributed microservice that brings real-time updates to web applications from stateless backends (REST, gRPC), improving throughput by ~10x in multi-tenant environments. Reused across products.",
+        tags: ["Go", "Distributed systems", "gRPC"],
+        links: [
+          {
+            name: "US Patent 12,368,768",
+            url: NOTIFICATION_PATENT_URL,
+          },
+        ],
+      },
+      {
+        name: "Agentic Root-Cause Analysis",
+        desc: "Production-grade system using AI agents and RAG for real-time enterprise knowledge retrieval and automated root-cause analysis. Laid the foundation for a new venture at Cisco.",
+        tags: ["AI agents", "RAG", "LangGraph", "Python"],
+        links: [
+          {
+            name: "Patent application",
+            url: RCA_PATENT_URL,
+          },
+        ],
+      },
+      {
+        image: require("./assets/images/near.webp"),
+        imageFit: "contain",
+        name: "NEAR",
+        year: "2018",
+        desc: "A modular, programmable network proxy that lets legacy hardware run AR/VR services at the edge, with ~20x the frame rate. Built at Nokia Bell Labs.",
+        tags: ["Edge computing", "Networking", "C++"],
+        links: [{ name: "Paper", url: EDGESYS_PAPER_URL }],
+      },
+      {
+        image: require("./assets/images/minotourLogo.webp"),
+        imageFit: "contain",
+        name: "Minotour",
+        desc: "Conversational agent for tourism that uses the Semantic Web as its knowledge base.",
+        tags: ["Conversational AI", "Semantic Web"],
+        links: [{ name: "Website", url: "https://minotour.eurecom.fr/" }],
+      },
+      {
+        name: "OS161",
+        year: "2017",
+        desc: "Unix-like teaching operating system: implemented system calls, the file system, virtual memory management and locks.",
+        tags: ["C", "Operating systems"],
+      },
+    ],
+  },
+  {
+    title: "Early innovation",
+    subtitle:
+      "I started inventing at the age of 14, creating new game modes and levels in GtkRadiant.",
+    projects: [
+      {
+        image: require("./assets/images/deathrunMap.webp"),
+        name: "Deathrun for Urban Terror",
+        desc: "I pioneered the deathrun game mode in Urban Terror, a Quake III-based FPS where one team triggers traps while the other runs the obstacle course. My deathrun maps were the first of their kind in the game. Other mappers picked up the format and built their own, and deathrun became an established game type in the community. I followed up in 2012 with Deathrun Space.",
+        tags: ["Game design", "Level design", "GtkRadiant", "Quake III"],
+        links: [
+          {
+            name: "Gameplay videos",
+            url: DEATHRUN_VIDEOS_URL,
+          },
+          {
+            name: "Deathrun Space trailer",
+            url: "https://www.youtube.com/watch?v=YP0IB4PD4Ho",
+          },
+          {
+            name: "Forum thread",
+            url: "https://www.urbanterror.info/forums/topic/28787-ut4-deathrun-space/",
+          },
+        ],
+      },
+      {
+        image: require("./assets/images/museoMap.webp"),
+        name: "Museo",
+        desc: "Urban Terror map set around a city museum, built for competitive play and used in gaming competitions.",
+        tags: ["Level design", "GtkRadiant", "Competitive play"],
+      },
+    ],
+  },
+];
 
 // Hobbies Section
 
 const hobbieSection: HobbieSection = {
-  title: "Hobbies and Passions",
-  subtitle:
-    "When I'm not coding, you'll find me exploring these exciting activities that keep me balanced and inspired!",
-
+  title: "Outside work",
   hobbiesCards: [
     {
-      title: "✈️ Traveling & Cultural Exploration",
+      label: "Traveling",
+      icon: FaEarthEurope,
       subtitle:
-        "I was born in Italy 🇮🇹, but then moved to France 🇫🇷, California (US) 🇺🇸, and now Switzerland 🇨🇭. Each country has enriched my perspective and taught me to appreciate diverse cultures, cuisines, and ways of life. I love exploring new places and connecting with locals.",
-      image: require("./assets/lottie/travel.json"),
-      footerLink: [
-        {
-          name: "My Travel Stories",
-          url: "#",
-        },
-      ],
+        "I grew up in Italy, then lived in France and California before settling in Switzerland. Each move changed how I see things, from the way people work to the way they eat. I still travel whenever I can, and the best part is always the people I meet along the way.",
     },
     {
-      title: "🌱 Gardening & Nature",
+      label: "Gardening",
+      icon: FaSeedling,
       subtitle:
-        "There's something deeply satisfying about nurturing plants and watching them grow. From herbs for my cooking to beautiful flowers, gardening connects me with nature and provides a peaceful escape from the digital world.",
-      image: require("./assets/lottie/gardening.json"),
-      footerLink: [
-        {
-          name: "Garden Gallery",
-          url: "#",
-        },
-      ],
+        "Technically, I have a garden. In practice, it belongs to my cat Felix, who patrols it, naps in the best spots and keeps an eye on every visitor. I've planted a few herbs, and he still lets me pick them. So far, the arrangement works.",
     },
     {
-      title: "🍝 Italian Cooking & Culinary Adventures",
+      label: "Cooking",
+      icon: FaPizzaSlice,
       subtitle:
-        "Born and raised in Italy, I have a deep passion for traditional Italian cuisine. I love making fresh pasta, risotto, and exploring regional specialties. I also enjoy discovering international flavors and fusion cooking techniques.",
-      image: require("./assets/lottie/cooking.json"),
-      footerLink: [
-        {
-          name: "My Recipes",
-          url: "#",
-        },
-      ],
+        "My signature dishes are parmigiana di melanzane, lasagna and homemade pizza. They've won over colleagues and friends, including the most demanding Italians in the group, who are the toughest critics I know.",
     },
     {
-      title: "💪 Fitness & Gym Workouts",
+      label: "Fitness",
+      icon: FaDumbbell,
       subtitle:
-        "Staying physically active is essential for my well-being. I enjoy strength training, cardio workouts, and functional fitness. The gym is my place to challenge myself, build discipline, and maintain a healthy work-life balance.",
-      image: require("./assets/lottie/fitness.json"),
-      footerLink: [
-        {
-          name: "Workout Tips",
-          url: "#",
-        },
-      ],
+        "I train regularly with a mix of strength, cardio and functional work. It keeps me healthy, and it's the best way I know to switch off after a long day at the desk.",
     },
     {
-      title: "🎿 Skiing Adventures",
+      label: "Motors",
+      icon: FaMotorcycle,
       subtitle:
-        "Living in Switzerland has introduced me to the exhilarating world of skiing. As a newbie on the slopes, I'm constantly learning and improving my technique while enjoying the breathtaking Alpine scenery.",
-      image: require("./assets/lottie/skiing.json"),
-      footerLink: [
-        {
-          name: "Ski Adventures",
-          url: "#",
-        },
-      ],
+        "I love cars and motorcycles, both how they're engineered and how they feel on the road. My favorite way to spend a free weekend is a long ride.",
     },
     {
-      title: "🏎️ Motors & Automotive Passion",
+      label: "Music",
+      icon: FaRecordVinyl,
       subtitle:
-        "I have a deep fascination with both cars and motorcycles. From appreciating Italian automotive engineering to understanding the mechanics and enjoying weekend rides, motors represent freedom, precision, and Italian craftsmanship.",
-      image: require("./assets/lottie/motors.json"),
-      footerLink: [
-        {
-          name: "Motor Collection",
-          url: "#",
-        },
-      ],
+        "I have a turntable at home and a soft spot for '80s music. There's a special feeling in pulling out an old LP, dropping the needle and listening while watching the big cover art.",
     },
-  ],
-  display: false,
-};
-
-const certifications: Certifications = {
-  certifications: [
-    // {
-    //     title: "Machine Learning",
-    //     subtitle: "- Andrew Ng",
-    //     logo_path: "stanford_logo.png",
-    //     certificate_link:
-    //         "https://www.coursera.org/account/accomplishments/verify/22MTSSC5WDTM",
-    //     alt_name: "Stanford University",
-    //     color_code: "#8C151599",
-    // }
-  ],
-};
-
-const degrees: Degrees = {
-  degrees: [
-    // {
-    //     title: "Indian Institute of Information Technology Kurnool",
-    //     subtitle: "B.Tech. in Computer Engineering",
-    //     logo_path: "iiitk_logo.png",
-    //     alt_name: "IIITDM Kurnool",
-    //     duration: "2016 - Present",
-    //     descriptions: [
-    //         "⚡ I have studied basic software engineering subjects like DS, Algorithms, DBMS, OS, CA, AI etc.",
-    //         "⚡ Apart from this, I have done courses on Deep Learning, Data Science, Cloud Computing and Full Stack Development.",
-    //         "⚡ I was selected for Merit cum Means Scholarship which is given to top 10% of students in college. I have received award from respected director for consistently best performance in academics.",
-    //     ],
-    //     website_link: "http://iiitk.ac.in",
-    // },
   ],
 };
 
 const contactPageData: ContactPageData = {
-  contactSection: {
-    title: "Contact Me",
-    profile_image_path: "",
-    description: "",
+  title: "Contact",
+  headline: "Get in",
+  headlineAccent: "touch.",
+  subtitle:
+    "Questions about my work, a collaboration or an opportunity? Send me a message and I'll get back to you.",
+  alternative: {
+    lead: "Prefer LinkedIn?",
+    link: { name: "Message me there", url: LINKEDIN_URL },
+    icon: FaLinkedinIn,
   },
-  blogSection: {
-    title: "Blogs",
-    subtitle: "",
-    link: "",
-    avatar_image_path: "blogs_image.svg",
-  },
-  addressSection: {
-    title: "Address",
-    subtitle: "",
-    avatar_image_path: "address_image.svg",
-    location_map_link: "",
-  },
-  phoneSection: {
-    title: "Phone Number",
-    subtitle: "",
-  },
-};
-
-const competitiveSites: CompetitiveSites = {
-  competitiveSites: [
-    // {
-    //     siteName: "HackerRank",
-    //     iconifyClassname: "simple-icons:hackerrank",
-    //     style: {
-    //         color: "#2EC866",
-    //     },
-    //     profileLink: "https://www.hackerrank.com/ ",
-    // },
-    // {
-    //     siteName: "Codechef",
-    //     iconifyClassname: "simple-icons:codechef",
-    //     style: {
-    //         color: "#5B4638",
-    //     },
-    //     profileLink: "https://www.codechef.com/users/ _1919",
-    // },
-    // {
-    //     siteName: "Codeforces",
-    //     iconifyClassname: "simple-icons:codeforces",
-    //     style: {
-    //         color: "#1F8ACB",
-    //     },
-    //     profileLink: "http://codeforces.com/profile/ ",
-    // },
-    // {
-    //     siteName: "Hackerearth",
-    //     iconifyClassname: "simple-icons:hackerearth",
-    //     style: {
-    //         color: "#323754",
-    //     },
-    //     profileLink: "https://www.hackerearth.com/@ 391",
-    // },
-    // {
-    //     siteName: "Kaggle",
-    //     iconifyClassname: "simple-icons:kaggle",
-    //     style: {
-    //         color: "#20BEFF",
-    //     },
-    //     profileLink: "https://www.kaggle.com/l ",
-    // },
-  ],
-};
-
-const experience: Experience = {
-  title: "Experience",
-  subtitle: "Work, Internship and Volunteership",
-  description: "",
-  header_image_path: "experience.svg",
-  sections: [
-    {
-      title: "Work",
-      experiences: [
-        {
-          title: "Associate AI Engineer",
-          company: "Legato Health Technology",
-          company_url: "https://legatohealthtech.com/",
-          logo_path: "legato_logo.png",
-          duration: "June 2020 - PRESENT",
-          location: "Hyderabad, Telangana",
-          description:
-            "I am working on automating healthcare products. The projects involve automation for process improvements and for significantly enhancing the profits. I am currently working on Cancer Survival and Reoccurence Prediction. Our goal is to make AI system which scales and removes doctor dependency as much as possible.",
-          color: "#0879bf",
-        },
-        {
-          title: "Android and ML Developer",
-          company: "Muffito Incorporation",
-          company_url: "https://www.linkedin.com/company/muffito-inc/about/",
-          logo_path: "muffito_logo.png",
-          duration: "May 2018 - Oct 2018",
-          location: "Pune, Maharashtra",
-          description:
-            "I have created complete Android Application for locating Pub, Bar and beverage shops around you. I have also worked on implementation of algorithms for Face Detection, Text extraction from Image. I was involved in a team for creating complete software architecure of mobile and web application as well as admin panel for company.",
-          color: "#9b1578",
-        },
-        {
-          title: "Android Developer",
-          company: "FreeCopy Pvt. Ltd.",
-          company_url: "https://www.linkedin.com/company/freecopy/about/",
-          logo_path: "freecopy_logo.png",
-          duration: "Nov 2017 - Dec 2017",
-          location: "Ahmedabad, Gujarat",
-          description:
-            "FreeCopy is the Start up from Indian Institute of Management, Ahmedabad. I have changed the integration of the whole app from Google to Firebase. I learnt the efﬁcient ways of Data communications like Retroﬁt, Eventbus etc. I experienced the real time start up. I learnt the Design thinking of UI on perspective of People.",
-          color: "#fc1f20",
-        },
-      ],
-    },
-    {
-      title: "Internships",
-      experiences: [
-        {
-          title: "Data Science Research Intern",
-          company: "Delhivery Pvt. Ltd.",
-          company_url: "https://www.delhivery.com/",
-          logo_path: "delhivery_logo.png",
-          duration: "May 2019 - Sept 2019",
-          location: "Gurgaon, Haryana",
-          description:
-            "I have worked on project of predicting freight rates based on previous data. There were two objectives: (1) To build a forecasting engine to predict daily freight rates. (2) To embed feature in the model which can explain the seasonal major changes in freight rate based on regions and locations. I have closely worked with deep learning models in combination with statistical methods to create solution for this. At the end of internship, I had created model deployed on AWS EC2 with the use of Kafka stream jobs, ElasticSearch and PostgreSQL.",
-          color: "#ee3c26",
-        },
-        {
-          title: "Data Science Intern",
-          company: "Intel Indexer LLC",
-          company_url:
-            "https://opencorporates.com/companies/us_dc/EXTUID_4170286",
-          logo_path: "intel_logo.jpg",
-          duration: "Nov 2018 - Dec 2018",
-          location: "Work From Home",
-          description:
-            "This is financial Solution Company. I have made Supervised Learning model for the company which can perform time series analysis on Stock price data for 32 companies. I have built LSTM Neural Networks Model and trained the data of 32 companies for last 2 years. This model is also used for forecasting.",
-          color: "#0071C5",
-        },
-      ],
-    },
-    {
-      title: "Volunteerships",
-      experiences: [
-        {
-          title: "Google Explore ML Facilitator",
-          company: "Google",
-          company_url: "https://about.google/",
-          logo_path: "google_logo.png",
-          duration: "June 2019 - April 2020",
-          location: "Hyderabad, Telangana",
-          description:
-            "Explore Machine Learning (ML) is a Google-sponsored program for university students to get started with Machine Learning. The curriculum offers 3 tracks of ML Content (Beginner, Intermediate, Advanced) and relies on university student facilitators to train other students on campus and to build opensource projects under this program.",
-          color: "#4285F4",
-        },
-        {
-          title: "Microsoft Student Partner",
-          company: "Microsoft",
-          company_url: "https://www.microsoft.com/",
-          logo_path: "microsoft_logo.png",
-          duration: "Aug 2019 - May 2020",
-          location: "Hyderabad, Telangana",
-          description:
-            "Microsoft Student Partner is a program for university students to lead the awareness and use of Cloud especially Azure tools in the development of their projects and startups. Under this program, I have organised hands on workshops and seminars to teach Cloud Computing concepts to students.",
-          color: "#D83B01",
-        },
-        {
-          title: "Mozilla Campus Captain",
-          company: "Mozilla",
-          company_url: "https://www.mozilla.org/",
-          logo_path: "mozilla_logo.png",
-          duration: "Oct 2019 - May 2020",
-          location: "Kurnool, Andhra Pradesh",
-          description:
-            "My responsibility for this program was to create opensource environment in college and in the city. We have organised multiple hackathons on the problems collected by ordinary people from Kurnool city. We have build opensource community of our own college. The community is available at dsc_iiitdmk on github.",
-          color: "#000000",
-        },
-        {
-          title: "Developer Students Club Member",
-          company: "DSC IIITDM Kurnool",
-          company_url:
-            "https://www.linkedin.com/company/developer-students-club-iiitdm-kurnool",
-          logo_path: "dsc_logo.png",
-          duration: "Jan 2018 - May 2020",
-          location: "Kurnool, Andhra Pradesh",
-          description:
-            "We have well established developer club in college which is directly associated with Google Developers. We have developed many interdisciplinary projects under the membership of this club. We have organised workshops and activities on Android Application Development, Flutter and React JS.",
-          color: "#0C9D58",
-        },
-        {
-          title: "Developer Program Member",
-          company: "Github",
-          company_url: "https://github.com/",
-          logo_path: "github_logo.png",
-          duration: "July 2019 - PRESENT",
-          location: "Work From Home",
-          description:
-            "I am actively contributing to many opensource projects. I have contributed to projects of organisations like Tensorflow, Uber, Facebook, Google, Scikit-learn, Kiwix, Sympy, Python, NVLabs, Fossasia, Netrack, Keras etc. These contributions include bug fixes, feature requests and formulating proper documentation for project.",
-          color: "#181717",
-        },
-      ],
-    },
-  ],
-};
-
-// Projects Page
-const projectsHeader: ProjectsHeader = {
-  title: "Projects",
-  description: "",
-  avatar_image_path: "projects_image.svg",
-};
-
-const publicationsHeader: PublicationsHeader = {
-  title: "Publications",
-  description:
-    "I have worked on and published a few research papers and publications of my own.",
-  avatar_image_path: "projects_image.svg",
 };
 
 const patentsHeader: PatentsHeader = {
   title: "Patents",
-  description: "Patented and patent pending inventions",
+  headline: "Patented and patent pending",
+  headlineAccent: "inventions.",
   caption:
-    "Showing live results from the US Patent Office by means of the USPTO Open Data Portal APIs.",
-  avatar_image_path: "projects_image.svg",
+    "Live data from the US Patent and Trademark Office, via the USPTO Open Data Portal APIs.",
+  googlePatentsLink: GOOGLE_PATENTS_URL,
+};
+
+// New filings land in a topic from their USPTO CPC codes, no edit needed
+const patentTopics: PatentTopics = {
+  topics: [
+    { name: "AI / ML", cpcPrefixes: ["G06N"] },
+    {
+      name: "Distributed Systems",
+      cpcPrefixes: ["H04L67", "H04L41", "H04L43", "G06F16/27", "G06F9/50"],
+    },
+    {
+      name: "Security & Identity",
+      cpcPrefixes: ["H04L63", "H04W12", "G06F21"],
+    },
+    { name: "Observability", cpcPrefixes: ["G06F11"] },
+  ],
+  overrides: {
+    // Classified as fault diagnosis (G06F11/079), but the invention is LLM-based
+    "root-cause detection based on automated resolution of dependencies between heterogeneous issues":
+      "AI / ML",
+  },
+  fallback: "Other",
 };
 
 export {
   seo,
-  illustration,
   greeting,
+  heroFacts,
   socialMediaLinks,
   skillsSection,
-  educationInfo,
-  workExperiences,
-  bigProjects,
+  aboutHeader,
+  journey,
+  projectSections,
   hobbieSection,
-  certifications,
-  degrees,
   contactPageData,
-  competitiveSites,
-  experience,
-  projectsHeader,
-  publicationsHeader,
   patentsHeader,
+  patentTopics,
 };

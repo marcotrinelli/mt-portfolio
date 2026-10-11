@@ -1,70 +1,38 @@
-.skills-main-div {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
+.skills-group-label {
+  margin: 0 0 1rem;
+  font-weight: 400;
 }
 
-.skills-text-div {
-    margin-left: 50px;
+.skills-pillars-label {
+  margin-top: clamp(3rem, 8vh, 4.5rem);
 }
 
-.skills-main-div>* {
-    flex: 1;
-    margin-bottom: 30px;
+.skills-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem clamp(2rem, 5vw, 4rem);
+  margin-top: 2.5rem;
 }
 
-.skills-image-div>img {
-    max-width: 100%;
-    height: auto;
+/* Larger than the card tags, these are the content here */
+.skills-tags li {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
 }
 
-.skills-heading {
-    font-size: 56px;
-    font-weight: 400;
+.skills-language-level {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-muted);
 }
 
-.subTitle {
-    color: #868e96;
-}
-
-/* Media Query */
-@media (max-width: 1380px) {
-    .skills-heading {
-        font-size: 40px;
-    }
+.skills-actions {
+  margin-top: 2.5rem;
 }
 
 @media (max-width: 768px) {
-    .skills-heading {
-        font-size: 30px;
-        text-align: center;
-    }
-
-    .greeting-text-p {
-        font-size: 16px;
-        line-height: normal;
-    }
-
-    .skills-main-div {
-        flex-direction: column;
-    }
-
-    .skills-text-div {
-        margin-left: 0px;
-        margin: 20px;
-    }
-
-    .skills-text {
-        font-size: 16px;
-    }
-
-    .skills-text-subtitle {
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .skills-image-div {
-        /* display: none; */
-        order: 2;
-    }
+  .skills-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

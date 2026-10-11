@@ -1,66 +1,59 @@
-/* FormTextarea.css */
+/* FormTextarea.css, same field look as the other form controls */
 .form-textarea-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   width: 100%;
 }
 
 .form-textarea-label {
-  font-weight: 500;
   margin-bottom: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-family: "Google Sans Medium";
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.form-required {
+  color: var(--color-accent-1);
 }
 
 .form-textarea {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  outline: none;
   width: 100%;
   box-sizing: border-box;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 12px;
+  outline: none;
+  font-family: "Google Sans Regular";
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-body);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   resize: vertical;
-  min-height: 120px;
-  font-family: inherit;
+  min-height: 140px;
 }
 
 .form-textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(160, 102, 251, 0.1);
+  border-color: var(--color-accent-1);
+  box-shadow: 0 0 0 1px var(--color-accent-1);
 }
 
 .form-textarea::placeholder {
-  color: #999;
-  opacity: 1;
+  color: var(--color-muted);
+  opacity: 0.7;
 }
 
 .form-textarea:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  resize: none;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
   .form-textarea {
     font-size: 16px; /* Prevents zoom on iOS */
-    padding: 0.6rem 0.8rem;
-    min-height: 100px;
-  }
-  
-  .form-textarea-label {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .form-textarea-container {
-    margin-bottom: 1.2rem;
-  }
-  
-  .form-textarea {
-    min-height: 80px;
+    padding: 0.7rem 0.9rem;
+    min-height: 120px;
   }
 }

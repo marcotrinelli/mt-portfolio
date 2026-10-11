@@ -1,62 +1,41 @@
 import React from "react";
+
 import "./Greeting.scss";
-import SocialMedia from "../../components/socialMedia/SocialMedia";
-import { greeting } from "../../portfolio";
-import { Fade } from "react-awesome-reveal";
-import profilePic from "../../assets/images/marcoProfile.png";
-import Typewriter from "typewriter-effect";
-import { useTheme } from "styled-components";
+import Button from "../../components/button/Button";
 import NoTranslate from "../../components/notranslate/notranslate";
+import PageHero from "../../components/pageHero/PageHero";
+import Portrait from "../../components/portrait/Portrait";
+import { greeting, heroFacts } from "../../portfolio";
 
 export default function Greeting(): JSX.Element {
-  const theme = useTheme();
   return (
-    <Fade bottom duration={2000} distance="40px">
-      <div className="greet-main" id="greeting">
-        <div className="greeting-main">
-          <div className="greeting-text-div">
-            <div>
-              <h1 className="greeting-text" style={{ color: theme.title }}>
-                {" "}
-                {/* {greeting.title}{" "} */}
-                <NoTranslate>
-                  <Typewriter
-                    onInit={(typewriter) => {
-                      typewriter
-                        .changeDelay(75)
-                        .typeString("Hi! ")
-                        .pauseFor(300)
-                        .typeString("I'm Marco :)")
-                        .callFunction((state) => {
-                          // turn off animation
-                          state.elements.cursor.style.animation = "none";
-                          // hide cursor
-                          state.elements.cursor.style.display = "none";
-                        })
-                        .start();
-                    }}
-                  />
-                </NoTranslate>
-              </h1>
-              <p
-                className="greeting-text-p"
-                style={{ color: theme.secondaryText }}
-              >
-                {greeting.subTitle}
-              </p>
-              <img
-                alt="marco-profile"
-                src={profilePic}
-                className="profile-image"
-                style={{
-                  border: `0.5rem solid ${theme.text}`,
-                }}
-              />
-              {/* <SocialMedia /> */}
-            </div>
-          </div>
+    <div id="greeting">
+      <PageHero
+        eyebrow={greeting.role}
+        title={greeting.title}
+        titleAccent={<NoTranslate>{greeting.username}</NoTranslate>}
+        lede={greeting.pitch.split("\n").map((line) => (
+          <span key={line} className="greeting-pitch-line">
+            {line}
+          </span>
+        ))}
+        media={<Portrait />}
+        mediaFirst
+        eyebrowBelow
+      >
+        <ul className="hero-facts">
+          {heroFacts.map((fact) => (
+            <li key={fact.label} className="hero-fact">
+              <span className="metric-value">{fact.value}</span>
+              <span className="caps-label">{fact.label}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="page-actions">
+          <Button text="Get in touch" to="/contact" />
+          <Button text="See my patents" to="/patents" variant="secondary" />
         </div>
-      </div>
-    </Fade>
+      </PageHero>
+    </div>
   );
 }

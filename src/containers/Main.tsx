@@ -1,24 +1,35 @@
-import React, { useEffect } from "react";
-import { Route, Routes, HashRouter, useLocation } from "react-router-dom";
+import React, { Suspense, lazy, useEffect } from "react";
+import {
+  Navigate,
+  Route,
+  Routes,
+  HashRouter,
+  useLocation,
+} from "react-router-dom";
 import Home from "../pages/home/HomeComponent";
-import EducationComponent from "../pages/education/EducationComponent";
-import Experience from "../pages/experience/Experience";
-import ContactComponent from "../pages/contact/ContactComponent";
-import Patents from "../pages/patents/Patents";
-import HobbiesComponent from "../pages/hobbies/HobbiesComponent";
 import Error from "../pages/error/Error";
 import GoToTop from "../components/goToTop/goToTop";
+import Loading from "./loading/Loading";
 import ReactGA from "react-ga4";
 
+// Split per route so the home page does not ship reCAPTCHA, Formspree and Bootstrap
+const ContactComponent = lazy(
+  () => import("../pages/contact/ContactComponent")
+);
+const AboutComponent = lazy(() => import("../pages/about/AboutComponent"));
+const Patents = lazy(() => import("../pages/patents/Patents"));
+
 export interface RouteConfig {
+  code: string;
   title: string;
-  subtitle: string;
+  titleAccent: string; // end of the title, in the accent gradient
   description: string;
 }
 const notfound: RouteConfig = {
-  title: "Woops",
-  subtitle: "404",
-  description: "The requested page is unavailable :(",
+  code: "404",
+  title: "Whoops,",
+  titleAccent: "page not found.",
+  description: "The requested page is unavailable.",
 };
 
 function PageViewTracker(): null {
@@ -27,10 +38,15 @@ function PageViewTracker(): null {
   useEffect(() => {
     const path = `${pathname}${search}`;
     // HashRouter routes live in the fragment, which GA4 drops from the page path
+    const url = new URL(path, window.location.origin);
+    // UTM/gclid params sit before the hash and drive campaign attribution
+    new URLSearchParams(window.location.search).forEach((value, key) =>
+      url.searchParams.set(key, value)
+    );
     ReactGA.send({
       hitType: "pageview",
       page: path,
-      location: `${window.location.origin}${path}`,
+      location: url.href,
       title: document.title,
     });
   }, [pathname, search]);
@@ -44,16 +60,17 @@ export default function Main(): JSX.Element {
       <HashRouter>
         <PageViewTracker />
         <GoToTop>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/education" element={<EducationComponent />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/contact" element={<ContactComponent />} />
-            <Route path="/patents" element={<Patents />} />
-            <Route path="/hobbies" element={<HobbiesComponent />} />
-            <Route path="*" element={<Error {...notfound} />} />
-          </Routes>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              {/* Old links and bookmarks, so home has one address (and its nav link highlights) */}
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="/about" element={<AboutComponent />} />
+              <Route path="/contact" element={<ContactComponent />} />
+              <Route path="/patents" element={<Patents />} />
+              <Route path="*" element={<Error {...notfound} />} />
+            </Routes>
+          </Suspense>
         </GoToTop>
       </HashRouter>
     </>

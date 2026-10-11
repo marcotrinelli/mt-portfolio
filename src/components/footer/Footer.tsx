@@ -1,23 +1,18 @@
 import React from "react";
 import "./Footer.scss";
-import { Fade } from "react-awesome-reveal";
-import { useTheme } from "styled-components";
+import SocialMedia from "../socialMedia/SocialMedia";
+import { greeting } from "../../portfolio";
 
-const Footer: React.FC = () => {
-  const theme = useTheme();
-
-  return (
-    <>
-      <div style={{ paddingTop: "100px" }} />
-      <div className="footer-div">
-        <Fade>
-          <p className="footer-text" style={{ color: theme.text }}>
-            © {new Date().getFullYear()} Marco Trinelli
-          </p>
-        </Fade>
-      </div>
-    </>
-  );
-};
+const Footer: React.FC = () => (
+  <footer className="footer">
+    <div className="footer-inner">
+      <p className="footer-text">
+        <span className="footer-copyright">©</span>{" "}
+        {new Date().getFullYear()} {greeting.username}
+      </p>
+      <SocialMedia />
+    </div>
+  </footer>
+);
 
 export default Footer;

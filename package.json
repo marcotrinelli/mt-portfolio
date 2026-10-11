@@ -5,27 +5,20 @@
   "private": true,
   "dependencies": {
     "@formspree/react": "^3.0.0",
-    "colorthief": "^2.3.0",
-    "gh-pages": "^2.1.1",
-    "jest-canvas-mock": "^2.3.1",
-    "lottie-colorify": "^0.8.0",
-    "lottie-web": "^5.8.1",
+    "embla-carousel-react": "^8.6.0",
+    "embla-carousel-wheel-gestures": "^8.1.0",
     "react": "^17.0.2",
-    "react-awesome-reveal": "^3.8.1",
-    "react-bootstrap": "^2.0.4",
-    "react-dark-mode-toggle": "^0.2.0",
     "react-dom": "^17.0.2",
-    "react-easy-emoji": "^1.6.1",
     "react-ga4": "^3.0.1",
     "react-google-recaptcha": "^3.1.0",
     "react-headroom": "^3.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.3.1",
+    "react-intersection-observer": "^8.32.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
     "sass": "^1.32.8",
-    "styled-components": "^5.3.3",
-    "typewriter-effect": "^2.18.2"
+    "styled-components": "^5.3.3"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -34,6 +27,7 @@
     "deploy": "gh-pages -b gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "fetch-patents": "node scripts/fetch-patents.js",
     "format": "prettier --write \"./**/*.{js,css,json,scss}\"",
     "check-format": "prettier -c \"./**/*.{js,css,json,scss}\""
   },
@@ -64,7 +58,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-google-recaptcha": "^2.1.9",
     "@types/styled-components": "^5.1.34",
-    "dotenv": "^8.6.0",
+    "gh-pages": "^2.1.1",
     "prettier": "^2.3.1",
     "typescript": "^5.9.2"
   }

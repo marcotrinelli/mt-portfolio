@@ -1,0 +1,68 @@
+/* Rows of three then two (an auto-fit grid leaves the fifth card alone on a row) */
+.core-pillars {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.core-pillar {
+  grid-column: span 2;
+  padding: 1.5rem 1.6rem;
+}
+
+.core-pillar:nth-child(n + 4) {
+  grid-column: span 3;
+}
+
+.core-pillar h3 {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0 0 0.6rem;
+  font-family: "Google Sans Medium";
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.core-pillar h3 svg {
+  flex-shrink: 0;
+  font-size: 1.05rem;
+  /* Centres the icon on the first line when the title wraps */
+  margin-top: 0.15em;
+  color: var(--color-accent-1);
+}
+
+.core-pillar p {
+  margin: 0;
+  font-family: "Google Sans Regular";
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+@media (max-width: 960px) {
+  .core-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .core-pillar,
+  .core-pillar:nth-child(n + 4) {
+    grid-column: auto;
+  }
+
+  .core-pillar:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .core-pillars {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+}

@@ -1,30 +1,21 @@
 import React from "react";
 import "./SocialMedia.css";
 import { socialMediaLinks } from "../../portfolio";
-import styled from "styled-components";
 import ReactGA from "react-ga4";
 
-const IconWrapper = styled.span<{ backgroundColor: string }>`
-  i {
-    background-color: ${(props) => props.backgroundColor};
-  }
-  &:hover i {
-    background-color: ${({ theme }) => theme.text};
-    transition: 0.3s ease-in;
-  }
-`;
-
-const SocialMedia: React.FC = () => {
-  return (
-    <div className="social-media-div">
-      {socialMediaLinks.map((media, index) => {
-        return (
+const SocialMedia: React.FC = () => (
+  <ul className="social-media">
+    {socialMediaLinks.map((media) => {
+      const Icon = media.icon;
+      return (
+        <li key={media.name}>
           <a
-            key={index}
             href={media.link}
-            className="icon-button"
+            className="social-link"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={media.name}
+            title={media.name}
             onClick={() =>
               ReactGA.event("social_click", {
                 social_network: media.name,
@@ -32,14 +23,12 @@ const SocialMedia: React.FC = () => {
               })
             }
           >
-            <IconWrapper backgroundColor={media.backgroundColor}>
-              <i className={`fab ${media.fontAwesomeIcon}`}></i>
-            </IconWrapper>
+            <Icon aria-hidden />
           </a>
-        );
-      })}
-    </div>
-  );
-};
+        </li>
+      );
+    })}
+  </ul>
+);
 
 export default SocialMedia;

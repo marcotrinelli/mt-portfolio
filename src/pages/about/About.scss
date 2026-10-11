@@ -1,0 +1,59 @@
+/* Principles under the statement */
+
+.about-principles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  margin-top: clamp(2.5rem, 7vh, 4rem);
+
+  p {
+    margin: 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-rule);
+    font-family: "Google Sans Regular";
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+}
+
+/* Hobbies */
+
+.about-hobby-details {
+  display: grid;
+  max-width: 44em;
+  margin-top: 1.25rem;
+}
+
+.about-hobby-detail {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-family: "Google Sans Regular";
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  visibility: hidden;
+
+  &.is-active {
+    visibility: visible;
+    animation: about-hobby-in 0.35s ease-out;
+  }
+}
+
+@keyframes about-hobby-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-principles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-principles p,
+  .about-hobby-detail {
+    font-size: 1rem;
+  }
+}

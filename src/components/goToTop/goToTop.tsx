@@ -8,7 +8,8 @@ interface GoToTopProps {
 const GoToTop: React.FC<GoToTopProps> = ({ children }) => {
   const location = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Instant, or the root's smooth scroll-behavior animates every page change up from the old position
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location]);
 
   return <>{children}</>;

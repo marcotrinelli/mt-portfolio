@@ -1,6 +1,5 @@
 import React from "react";
 import "./FormTextarea.css";
-import { Theme } from "../../theme/Themes";
 
 // FormTextarea component props
 export interface FormTextareaProps {
@@ -11,7 +10,6 @@ export interface FormTextareaProps {
   showRequired?: boolean;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  theme?: Theme;
   className?: string;
   label?: string;
   rows?: number;
@@ -26,29 +24,18 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
   showRequired = true,
   value,
   onChange,
-  theme,
   className,
   label,
   rows = 5,
   cols,
 }) => {
-  if (!theme) {
-    throw new Error("FormTextarea component requires theme prop");
-  }
-
   return (
     <div className={`form-textarea-container ${className || ""}`}>
       {label && (
-        <label
-          htmlFor={id}
-          className="form-textarea-label"
-          style={{
-            color: theme.text,
-          }}
-        >
+        <label htmlFor={id} className="form-textarea-label">
           {label}
           {required && showRequired && (
-            <span style={{ color: theme.highlight }}> *</span>
+            <span className="form-required"> *</span>
           )}
         </label>
       )}
@@ -62,12 +49,6 @@ const FormTextarea: React.FC<FormTextareaProps> = ({
         rows={rows}
         cols={cols}
         className="form-textarea"
-        style={{
-          color: theme.text,
-          backgroundColor: theme.body,
-          border: `2px solid ${theme.secondaryText}`,
-          borderRadius: "6px",
-        }}
       />
     </div>
   );

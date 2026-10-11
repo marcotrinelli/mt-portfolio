@@ -1,59 +1,49 @@
 import React from "react";
+
+import Button from "../../components/button/Button";
+import CorePillars from "../../components/corePillars/CorePillars";
+import Statement from "../../components/statement/Statement";
+
 import "./Skills.css";
-import { illustration, skillsSection } from "../../portfolio";
-import { Fade } from "react-awesome-reveal";
-import codingPersonDark from "../../assets/lottie/codingPersonDark.json";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-import { useTheme } from "styled-components";
+import { skillsSection } from "../../portfolio";
 
-export default function Skills(): JSX.Element | null {
-  const theme = useTheme();
-
-  if (!skillsSection.display) {
-    return null;
-  }
+export default function Skills(): JSX.Element {
   return (
-    <div className={"main"} id="skills">
-      <div className="skills-main-div">
-        <Fade left duration={1000}>
-          <div className="skills-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={codingPersonDark} />
-            ) : (
-              <img
-                alt="Man Working"
-                src={require("../../assets/images/developerActivity.svg")}
-              ></img>
-            )}
-          </div>
-        </Fade>
-        <Fade right duration={1000}>
-          <div className="skills-text-div">
-            <h1 className={"skills-heading"} style={{ color: theme.title }}>
-              {skillsSection.title}{" "}
-            </h1>
-            <p
-              className={"subTitle skills-text-subtitle"}
-              style={{ color: theme.text }}
-            >
-              {skillsSection.subTitle}
-            </p>
-            <div>
-              {skillsSection.skills.map((skills, i: number) => {
-                return (
-                  <p
-                    key={i}
-                    className={"subTitle skills-text"}
-                    style={{ color: theme.text }}
-                  >
-                    {skills}
-                  </p>
-                );
-              })}
-            </div>
-          </div>
-        </Fade>
+    <section className="page-section" id="skills">
+      <h2 className="page-section-title reveal-on-scroll">
+        {skillsSection.title}
+      </h2>
+      <Statement text={skillsSection.subTitle} />
+      <h3 className="caps-label skills-group-label skills-pillars-label reveal-on-scroll">
+        Core strengths
+      </h3>
+      <div className="reveal-on-scroll">
+        <CorePillars />
       </div>
-    </div>
+      <div className="skills-groups reveal-on-scroll">
+        <div>
+          <h3 className="caps-label skills-group-label">Tech stack</h3>
+          <ul className="tag-list skills-tags">
+            {skillsSection.stack.map((tech) => (
+              <li key={tech}>{tech}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="caps-label skills-group-label">Languages I speak</h3>
+          <ul className="tag-list skills-tags">
+            {skillsSection.languages.map(({ name, level }) => (
+              <li key={name}>
+                {name}
+                <span className="skills-language-level">{level}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="page-actions skills-actions">
+        <Button text="More about me" to="/about" arrow />
+      </div>
+    </section>
   );
 }

@@ -1,31 +1,12 @@
-.error-main {
-  width: 100vw;
-}
-
-.error-main > .error-class {
-  width: 90%;
-  margin: auto 5%;
-  /* min-height: calc(100vh - 192px); */
-  text-align: center;
+/* The code takes the media slot other pages give the portrait, so it shares their entrance */
+.error-code {
   display: block;
-  padding-top: 100px;
+  font-size: clamp(7rem, 20vw, 14rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
-.error-main > .error-class > .error-404 {
-  font-size: 7em;
-  overflow: hidden;
-  padding-top: 10px 0;
-  margin: 10px 0;
-}
-
-.error-main > .error-class p {
-  font-size: 1.4em;
-  margin-top: 0;
-}
-
-@media screen and (min-width: 1364px) {
-  .error-main > .error-class > .error-404 {
-    height: 175px;
-    padding-top: 60px;
-  }
+/* Keeps the footer near the bottom of the screen on a short page */
+.error-page .page-hero {
+  min-height: 50vh;
 }

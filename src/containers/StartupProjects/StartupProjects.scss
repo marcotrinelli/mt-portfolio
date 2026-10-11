@@ -1,89 +1,263 @@
-@import "../../_globalColor";
-
-.card-image {
-  max-width: 100%;
-  height: auto;
-  width: 250px;
-}
-.card-title {
-  color: $titleColor;
-  font-size: 22px;
-  line-height: 24px;
-  font-weight: 700;
-  margin: 15px 0 0 0;
-}
-.card-subtitle {
-  color: $cardSubtitle;
-  font-size: 17px;
-  line-height: 1.5rem;
-}
-.project-card {
-  display: flex;
-  flex-direction: column;
-  background-color: $lightBackground2;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-  justify-content: center;
-}
-
-.project-card-light {
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.project-card-dark {
-  box-shadow: 0px 10px 30px -15px $darkBoxShadow;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.25s ease;
-}
-
-.project-detail {
-  text-align: center;
-}
-.project-card-light:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
-}
-.project-card-dark:hover {
-  box-shadow: 0px 20px 30px -10px $darkBoxShadow;
-}
-.project-image {
-    text-align: center;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
+// Capped column width: cards stop stretching on wide screens, so the
+// 500px-wide images are never blown up far past their native size
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 420px));
+  gap: 1.75rem;
 }
 
-.project-card-footer span.project-tag {
-//   background: $buttonColor;
-  color: $lightBackground3;
-  vertical-align: middle;
+// Narrower than two capped columns (2 × 420px + 1.75rem gap) the grid holds a
+// single card, which is centred rather than left hanging off the left edge.
+// Measured on the grid's own width, so it holds whatever the page column is
+.projects-grid {
+  container-type: inline-size;
+}
+
+@container (max-width: 867px) {
+  .projects-container {
+    justify-content: center;
+  }
+}
+
+// Embla carousel: slide widths drive how many cards fit, and the leftover
+// fraction becomes the peek of the previous/next card at each edge. The gap is
+// split across both sides of each slide so the peeks stay symmetric
+.projects-carousel {
+  --slides-per-view: 3.5;
+  --slide-gap: 1.75rem;
+}
+
+// Full-bleed: the viewport breaks out of the page column to the screen edges,
+// so the whole cards span the page and the neighbours peek in from the edges.
+// Vertical padding leaves room for the hover lift and shadow, which the
+// viewport's overflow would otherwise clip
+.projects-carousel-viewport {
+  overflow: hidden;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding: 0.5rem 0 1.5rem;
+}
+
+.projects-carousel-track {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.projects-carousel-slide {
+  flex: 0 0 calc(100% / var(--slides-per-view));
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0 calc(var(--slide-gap) / 2);
+  display: flex;
+}
+
+.projects-carousel-slide .project-card {
+  width: 100%;
+}
+
+.projects-carousel-controls {
+  display: flex;
   align-items: center;
-  border-radius: 4px;
-  display: inline-flex;
-  font-size: 0.75rem;
-  height: 2em;
   justify-content: center;
-  white-space: nowrap;
-  line-height: 1.5;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0 0.75em;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.projects-carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
   cursor: pointer;
-  transition: 0.2s ease-in;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.projects-carousel-arrow:hover,
+.projects-carousel-arrow:focus-visible {
+  color: var(--color-accent-1);
+  border-color: var(--color-accent-1);
+}
+
+// The indicator's position is set from script in dot pitches and dot widths, so the sizes live here once
+.projects-carousel-dots {
+  --dot-size: 0.6rem;
+  --dot-gap: 0.5rem;
+  --dot-pitch: calc(var(--dot-size) + var(--dot-gap));
+  // The indicator overhangs the dots by a hairline, so their anti-aliased edges
+  // don't show through it as a grey rim
+  --indicator-bleed: 0.5px;
+  position: relative;
+  display: flex;
+  gap: var(--dot-gap);
+}
+
+.projects-carousel-dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-rule);
+  cursor: pointer;
+}
+
+// Same pill as the row of dots: the end dots' curves clip the line as it wraps round
+.projects-carousel-indicator-track {
+  position: absolute;
+  inset: calc(-1 * var(--indicator-bleed));
+  overflow: hidden;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.projects-carousel-indicator {
+  position: absolute;
+  top: 0;
+  left: calc(
+    var(--indicator-start-pitches, 0) * var(--dot-pitch) +
+      var(--indicator-start-dots, 0) * var(--dot-size)
+  );
+  width: calc(
+    var(--indicator-length-pitches, 0) * var(--dot-pitch) +
+      (var(--indicator-length-dots, 0) + 1) * var(--dot-size) + 2 *
+      var(--indicator-bleed)
+  );
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-1),
+    var(--color-accent-2)
+  );
+}
+
+@media (max-width: 1200px) {
+  .projects-carousel {
+    --slides-per-view: 2.4;
+  }
 }
 
 @media (max-width: 768px) {
-  .project-subtitle {
-    font-size: 16px;
-    text-align: center;
+  .projects-carousel {
+    --slides-per-view: 1.25;
+    --slide-gap: 1rem;
+  }
+}
+
+// Card look (border, surface, shadow) comes from .surface-card
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+// A shade deeper than the resting shadow. It reaches 24px below the card, so it
+// fits inside the carousel viewport's bottom padding and every card, in a
+// carousel or a grid, shows the same full shadow
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -24px var(--color-shadow);
+}
+
+// Fixed frame so screenshots, diagrams and logos line up across a row
+.project-media {
+  aspect-ratio: 16 / 9;
+}
+
+.project-media img {
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-media img {
+  transform: scale(1.04);
+}
+
+.project-body {
+  flex: 1;
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.project-year {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.project-title {
+  margin: 0 0 0.75rem;
+  font-family: "Google Sans Medium";
+  font-weight: 400;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.project-desc {
+  margin: 0 0 1.25rem;
+  font-family: "Google Sans Regular";
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  padding: 1rem 1.5rem 1.25rem;
+  border-top: 1px solid var(--color-rule);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  font-family: "Google Sans Medium";
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-link-icon {
+  color: var(--color-accent-1);
+  font-size: 1rem;
+}
+
+.project-link-arrow {
+  font-size: 0.7rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.project-link:hover,
+.project-link:focus-visible {
+  color: var(--color-accent-1);
+  text-decoration: none;
+}
+
+.project-link:hover .project-link-arrow,
+.project-link:focus-visible .project-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-media img,
+  .project-link-arrow,
+  .projects-carousel-arrow {
+    transition: none;
+  }
+  .project-card:hover,
+  .project-card:hover .project-media img {
+    transform: none;
   }
 }

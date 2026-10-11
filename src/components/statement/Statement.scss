@@ -1,0 +1,31 @@
+.statement {
+  max-width: 22em;
+  margin: 0;
+  font-family: "Google Sans Medium";
+  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: pretty;
+  color: var(--color-text);
+}
+
+// Words go from dim to lit in reading order, all lit by the time the statement reaches mid-viewport.
+// Left fully lit where the browser cannot drive it from the scroll position
+@supports (animation-timeline: view()) {
+  .statement {
+    view-timeline-name: --statement;
+  }
+
+  .statement span {
+    animation: statement-word-lit linear both;
+    animation-timeline: --statement;
+    animation-range: cover calc(12% + var(--word) / var(--word-count) * 30%)
+      cover calc(18% + var(--word) / var(--word-count) * 30%);
+  }
+}
+
+@keyframes statement-word-lit {
+  from {
+    opacity: 0.18;
+  }
+}

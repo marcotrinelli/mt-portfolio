@@ -1,41 +1,60 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "./ToggleSwitch.css";
-import DarkModeToggle from "react-dark-mode-toggle";
 
 interface ToggleSwitchProps {
   theme: string;
   toggleTheme: () => void;
 }
 
+const SUN_RAYS: [number, number, number, number][] = [
+  [12, 1, 12, 3],
+  [12, 21, 12, 23],
+  [4.22, 4.22, 5.64, 5.64],
+  [18.36, 18.36, 19.78, 19.78],
+  [1, 12, 3, 12],
+  [21, 12, 23, 12],
+  [4.22, 19.78, 5.64, 18.36],
+  [18.36, 5.64, 19.78, 4.22],
+];
+
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ theme, toggleTheme }) => {
-  const toggleRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Ensure proper positioning after component mounts and renders
-    if (toggleRef.current) {
-      // Force a reflow to ensure positioning is calculated correctly
-      toggleRef.current.style.position = "fixed";
-      toggleRef.current.style.bottom = "15px";
-      toggleRef.current.style.left = "15px";
-      toggleRef.current.style.zIndex = "1000";
-
-      // On mobile, apply safe area insets
-      if (window.innerWidth <= 768) {
-        toggleRef.current.style.bottom =
-          "calc(15px + env(safe-area-inset-bottom))";
-        toggleRef.current.style.left = "calc(15px + env(safe-area-inset-left))";
-      }
-    }
-  }, []);
+  const isDark = theme === "dark";
 
   return (
-    <div className={"toggle-button"} ref={toggleRef}>
-      <DarkModeToggle
-        onChange={toggleTheme}
-        checked={theme === "dark"}
-        size={80}
-      />
-    </div>
+    <button
+      type="button"
+      role="switch"
+      aria-checked={isDark}
+      aria-label="Dark mode"
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className={`toggle-button${isDark ? " toggle-button-dark" : ""}`}
+      onClick={toggleTheme}
+    >
+      <span className="toggle-thumb">
+        {/* One icon morphs sun -> moon: the core grows, the rays spin away, a cut-out slides in */}
+        <svg className="toggle-icon" viewBox="0 0 24 24" aria-hidden>
+          <mask
+            id="toggle-moon-mask"
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="24"
+            height="24"
+          >
+            <rect width="24" height="24" fill="white" />
+            <circle className="toggle-moon-cut" cx="33" cy="8" r="8" />
+          </mask>
+          <g mask="url(#toggle-moon-mask)">
+            <circle className="toggle-core" cx="12" cy="12" r="5" />
+          </g>
+          <g className="toggle-rays">
+            {SUN_RAYS.map(([x1, y1, x2, y2]) => (
+              <line key={`${x1}-${y1}`} x1={x1} y1={y1} x2={x2} y2={y2} />
+            ))}
+          </g>
+        </svg>
+      </span>
+    </button>
   );
 };
 

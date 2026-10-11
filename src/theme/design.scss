@@ -1,0 +1,256 @@
+// Shared look of every page: type scale, accent gradient, section rhythm, tags, chips, metrics,
+// cards and scroll reveals. Colours come from the theme through the --color-* variables (GlobalStyles)
+
+/* Layout */
+
+// Every page section shares one column, so pages read as a single spine
+.page-section {
+  width: min(1100px, 90%);
+  margin-inline: auto;
+  margin-top: clamp(5rem, 13vh, 8.5rem);
+}
+
+.page-section-header {
+  margin-bottom: clamp(2.5rem, 7vh, 4.5rem);
+}
+
+/* Type */
+
+.page-eyebrow {
+  margin: 0 0 1rem;
+  font-family: "Google Sans Medium";
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.page-title {
+  margin: 0 0 1.5rem;
+  font-family: "Google Sans Bold";
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  color: var(--color-text);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    100deg,
+    var(--color-accent-1),
+    var(--color-accent-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  // Each wrapped line gets the whole gradient
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.page-lede,
+.page-section-subtitle {
+  margin: 0;
+  font-family: "Google Sans Regular";
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+  color: var(--color-muted);
+}
+
+.page-lede {
+  max-width: 34em;
+  margin-bottom: 2rem;
+}
+
+.page-section-title {
+  margin: 0 0 1.5rem;
+  font-family: "Google Sans Bold";
+  font-weight: 400;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--color-title);
+}
+
+.page-section-header .page-section-title {
+  margin-bottom: 0.75rem;
+}
+
+// Small caps label for groups, metrics and card meta
+.caps-label {
+  font-family: "Google Sans Medium";
+  font-size: 0.8rem;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Actions */
+
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Google Sans Medium";
+  font-size: 0.95rem;
+  color: var(--color-accent-1);
+  text-decoration: none;
+
+  svg {
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-1);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  &:hover svg,
+  &:focus-visible svg {
+    transform: translateX(3px);
+  }
+}
+
+/* Tags and chips */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-family: "Google Sans Medium";
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: var(--color-muted);
+    background-color: var(--color-tag-bg);
+  }
+}
+
+// Toggle pill (filters, pickers); pressed is filled with the text colour
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  color: var(--color-text);
+  background: transparent;
+  font-family: "Google Sans Medium";
+  font-size: 0.95rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-1);
+    outline-offset: 2px;
+  }
+
+  &[aria-pressed="true"] {
+    border-color: var(--color-text);
+    color: var(--color-body);
+    background-color: var(--color-text);
+  }
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Metrics */
+
+// Big gradient figure. The gradient only paints inside the box, so the padding extends it under
+// descenders ("g", "y") and the negative margin gives the space back to the layout
+.metric-value {
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+  font-family: "Google Sans Bold";
+  font-size: clamp(2.75rem, 5vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(
+    120deg,
+    var(--color-accent-1),
+    var(--color-accent-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+
+.surface-card {
+  border: 1px solid var(--color-rule);
+  border-radius: 16px;
+  background-color: var(--color-surface);
+  box-shadow: 0 12px 32px -24px var(--color-shadow);
+}
+
+/* Motion */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+// Fades up as it scrolls in, left static where the browser cannot drive it from the scroll position
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  // Side by side, like two halves of one control
+  .page-actions {
+    justify-content: center;
+    width: 100%;
+
+    > * {
+      flex: 1 1 8rem;
+      max-width: 12rem;
+    }
+
+    .main-button {
+      width: 100%;
+      min-width: 0;
+      padding-inline: 0.75rem;
+    }
+  }
+}

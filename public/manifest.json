@@ -1,5 +1,8 @@
 {
- "name": "App",
+ "name": "Marco Trinelli",
+ "short_name": "Marco Trinelli",
+ "theme_color": "#001C55",
+ "background_color": "#ffffff",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
