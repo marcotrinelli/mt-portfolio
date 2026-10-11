@@ -19,15 +19,16 @@
   align-items: center;
   justify-content: space-between;
   width: min(1100px, 90%);
-  min-height: 3.75rem;
   margin-inline: auto;
 }
 
 /* Logo */
 
+// Sets the bar height on the logo's own flex line, so the phone menu wrapping below can't squeeze it
 .logo {
   display: inline-flex;
   align-items: center;
+  min-height: 3.75rem;
   font-size: 1.3em;
   line-height: 1;
   color: var(--color-text);
@@ -50,6 +51,8 @@
   font-weight: bold;
   font-variant-ligatures: no-common-ligatures;
   -webkit-font-variant-ligatures: no-common-ligatures;
+  // Agustina's swashes sit high in its line box; pull the ink back onto the bar's centre
+  transform: translateY(0.25em);
 }
 
 /* Menu */
