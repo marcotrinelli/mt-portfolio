@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.b0cc8283.css",
+    "main.css": "./static/css/main.601753c7.css",
     "main.js": "./static/js/main.1f088d1c.js",
     "static/css/448.44f1f288.chunk.css": "./static/css/448.44f1f288.chunk.css",
     "static/js/448.1030728d.chunk.js": "./static/js/448.1030728d.chunk.js",
@@ -22,7 +22,7 @@
     "static/media/deathrunMap.webp": "./static/media/deathrunMap.86195ea374fe198ac8dc.webp",
     "static/media/minotourLogo.webp": "./static/media/minotourLogo.8ff37ee4a91ab85e9a6c.webp",
     "index.html": "./index.html",
-    "main.b0cc8283.css.map": "./static/css/main.b0cc8283.css.map",
+    "main.601753c7.css.map": "./static/css/main.601753c7.css.map",
     "main.1f088d1c.js.map": "./static/js/main.1f088d1c.js.map",
     "448.44f1f288.chunk.css.map": "./static/css/448.44f1f288.chunk.css.map",
     "448.1030728d.chunk.js.map": "./static/js/448.1030728d.chunk.js.map",
@@ -33,7 +33,7 @@
     "545.eaf11090.chunk.js.map": "./static/js/545.eaf11090.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0cc8283.css",
+    "static/css/main.601753c7.css",
     "static/js/main.1f088d1c.js"
   ]
 }
